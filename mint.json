@@ -154,19 +154,6 @@
           ]
         },
         {
-          "group": "ProductLimit",
-          "pages": [
-            "api-reference/ProductLimit",
-            "api-reference/playground/ProductLimit/Product_Currency_Limit",
-            "api-reference/playground/ProductLimit/ProductLimit_Customer_Currency",
-            "api-reference/playground/ProductLimit/Product_Limit_Default",
-            "api-reference/playground/ProductLimit/Customer_Limit_Patch",
-            "api-reference/playground/ProductLimit/Product_Limit_Patch",
-            "api-reference/playground/ProductLimit/ProductLimit_Add",
-            "api-reference/playground/ProductLimit/Customer_Limit"
-          ]
-        },
-        {
           "group": "Checkout",
           "pages": [
             "api-reference/checkout",

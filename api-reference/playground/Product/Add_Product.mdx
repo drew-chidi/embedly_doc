@@ -1,0 +1,74 @@
+---
+title: 'Create new product'
+api: 'POST /products/add'
+description: 'The endpoint allows you to to create a new product.'
+---
+
+## Request Body
+
+<ParamField body='name' type='string' required>
+  The name of the resource. **Example:** 'Loan'
+</ParamField>
+
+<ParamField body='organizationId' type='string' required>
+  The unique identifier of the organization associated with the resource.
+  **Example:** 'e678b629-fb56-11ef-a8a9-6045bd97b81d'
+</ParamField>
+
+<ParamField body='description' type='string' required>
+  A description of the resource. **Example:** 'Loan'
+</ParamField>
+
+<ParamField body='direction' type='string' required>
+  The direction of the resource (e.g., 'D' for debit). **Example:** 'D'
+</ParamField>
+
+<ParamField body='isActive' type='boolean' required>
+  Indicates whether the resource is active. **Example:** true
+</ParamField>
+
+## Response
+
+✅ Success Response
+
+```json
+Status Code: 200 OK
+
+{
+  "code": "00",
+  "success": true,
+  "message": "Created Successfully",
+  "data": {
+    "id": "ed639208-0be4-11f0-a8a9-6045bd97b81d",
+    "name": "Loan",
+    "organizationId": "e678b629-fb56-11ef-a8a9-6045bd97b81d",
+    "description": "Loan",
+    "direction": "D",
+    "isActive": true,
+    "dateCreated": "2025-03-28T14:57:11"
+  }
+}
+
+```
+
+## ❌ Error Responses
+
+```json
+Status Code: 400 Bad Request
+
+{
+  "code": "400",
+  "success": false,
+  "message": "Invalid input data",
+  "data": null
+}
+
+Status Code: 500 Internal Server Error
+
+{
+  "code": "500",
+  "success": false,
+  "message": "An unexpected error occurred",
+  "data": null
+}
+```
