@@ -153,17 +153,6 @@
             "api-reference/playground/payout/check_status"
           ]
         },
-        // {
-        // 	"group": "Product",
-        // 	"pages": [
-        // 		"api-reference/Product",
-        // 		"api-reference/playground/Product/Add_Product",
-        // 		"api-reference/playground/Product/Get_Product",
-        // 		"api-reference/playground/Product/Update_Product",
-        // 		"api-reference/playground/Product/Activate_Id",
-        // 		"api-reference/playground/Product/Deactivate_Id"
-        // 	]
-        // },
         {
           "group": "ProductLimit",
           "pages": [
