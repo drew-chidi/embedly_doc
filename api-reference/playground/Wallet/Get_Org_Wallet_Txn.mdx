@@ -1,31 +1,23 @@
 ---
-title: "Get Organization Wallet Transactions"
-api: "GET /wallets/history/organization/transactions"
-description: "This endpoint retrieves transactions done from wallets created under your organization."
+title: 'Get Organization Wallet Transactions'
+api: 'GET /wallets/history/organization/transactions'
+description: 'This endpoint retrieves transactions done from wallets created under your organization.'
 ---
 
-<ParamField query="customerId" type="string" required>
-	**Example:** `02600494-1a3c-11f0-a818-6045bd97b81d`
+<ParamField query='startDate' type='number' required>
+  **Example:** `1`
 </ParamField>
 
-<ParamField query="onlyOrganization" type="boolean" required>
-	**Example:** `true`
+<ParamField query='endDate' type='number' required>
+  **Example:** `10`
 </ParamField>
 
-<ParamField query="startDate" type="number" required>
-	**Example:** `1`
+<ParamField query='pageNumber' type='number' required>
+  **Example:** `1`
 </ParamField>
 
-<ParamField query="endDate" type="number" required>
-	**Example:** `10`
-</ParamField>
-
-<ParamField query="pageNumber" type="number" required>
-	**Example:** `1`
-</ParamField>
-
-<ParamField query="pageSize" type="number" required>
-	**Example:** `10`
+<ParamField query='pageSize' type='number' required>
+  **Example:** `10`
 </ParamField>
 
 <ResponseExample>
@@ -95,37 +87,37 @@ description: "This endpoint retrieves transactions done from wallets created und
 
 ```json 400 Bad Request
 {
-	"code": "400",
-	"success": false,
-	"message": "Invalid request data",
-	"data": null
+  "code": "400",
+  "success": false,
+  "message": "Invalid request data",
+  "data": null
 }
 ```
 
 ```json 401 Unauthorized
 {
-	"code": "401",
-	"success": false,
-	"message": "You do not have rights to access this account",
-	"data": null
+  "code": "401",
+  "success": false,
+  "message": "You do not have rights to access this account",
+  "data": null
 }
 ```
 
 ```json 403 Forbidden
 {
-	"code": "403",
-	"success": false,
-	"message": "Access denied for this operation",
-	"data": null
+  "code": "403",
+  "success": false,
+  "message": "Access denied for this operation",
+  "data": null
 }
 ```
 
 ```json 500 Internal Server Error
 {
-	"code": "500",
-	"success": false,
-	"message": "An unexpected error occurred",
-	"data": null
+  "code": "500",
+  "success": false,
+  "message": "An unexpected error occurred",
+  "data": null
 }
 ```
 
