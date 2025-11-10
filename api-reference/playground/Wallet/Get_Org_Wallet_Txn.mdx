@@ -4,6 +4,14 @@ api: 'GET /wallets/history/organization/transactions'
 description: 'This endpoint retrieves transactions done from wallets created under your organization.'
 ---
 
+<ParamField query='customerId' type='string'>
+  **Example:** `82688494-ef56-7890-ab12-cd34ef567890`
+</ParamField>
+
+<ParamField query='onlyOrganization' type='boolean'>
+  **Example:** `true`
+</ParamField>
+
 <ParamField query='startDate' type='number' required>
   **Example:** `1`
 </ParamField>
