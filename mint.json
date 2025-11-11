@@ -167,7 +167,6 @@
           "group": "Card",
           "pages": [
             "api-reference/cards",
-            "api-reference/playground/cards/afrigo/issue_card",
             "api-reference/playground/cards/afrigo/activate_card"
           ]
         },
