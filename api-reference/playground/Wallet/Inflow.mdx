@@ -1,14 +1,14 @@
 ---
 title: 'Inflow'
-api: 'POST /wallets/wallet/transaction/v2/inflow'
-description: 'The endpoint facilitates transferring inflow transactions'
+api: 'POST https://waas-staging.embedly.ng/WaasCore/api/v1/nip/inflow/simulate-inflow'
+description: 'The endpoint facilitates simulating inflow transactions on staging environment'
 ---
 
-<ParamField body='BeneficiaryAccountName' type='string' required>
+<ParamField body='beneficiaryAccountName' type='string' required>
   The beneficiary account name for the inflow. **Example:** "Dataseed's Wallet"
 </ParamField>
 
-<ParamField body='BeneficiaryAccountNumber' type='string' required>
+<ParamField body='beneficiaryAccountNumber' type='string' required>
   The beneficiary account number for the inflow. **Example:** "9710005607"
 </ParamField>
 
