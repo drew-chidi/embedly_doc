@@ -1,7 +1,7 @@
 ---
 title: 'Inflow'
 api: 'POST https://waas-staging.embedly.ng/WaasCore/api/v1/nip/inflow/simulate-inflow'
-description: 'The endpoint facilitates simulating inflow transactions on staging environment'
+description: '"This endpoint ONLY works on staging environment" and is added solely to enable you to fund your staging accounts for test purposes. It is not available on production environment.'
 ---
 
 <ParamField body='beneficiaryAccountName' type='string' required>
@@ -12,17 +12,13 @@ description: 'The endpoint facilitates simulating inflow transactions on staging
   The beneficiary account number for the inflow. **Example:** "9710005607"
 </ParamField>
 
-<ParamField body='amount' type='number' required>
-  The amount to transfer. **Example:** 100000
+<ParamField body='amount' type='string' required>
+  The amount to transfer. Maximum of 500 million **Example:** "10000000"
 </ParamField>
 
 <ParamField body='narration' type='string' required>
   Additional notes or description for the transaction. **Example:** "December
   Party Sweep"
-</ParamField>
-
-<ParamField body='amount' type='string'>
-  Maximum of 500 million **Example:** "10000000"
 </ParamField>
 
 <ResponseExample>
