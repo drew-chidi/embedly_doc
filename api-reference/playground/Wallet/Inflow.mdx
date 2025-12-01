@@ -1,29 +1,28 @@
 ---
-title: 'Wallet to Wallet Transfers'
-api: 'PUT /wallets/wallet/transaction/v2/wallet-to-wallet'
-description: 'The endpoint facilitates transferring funds from one embedly wallet to another embedly wallet.'
+title: 'Inflow'
+api: 'POST /wallets/wallet/transaction/v2/inflow'
+description: 'The endpoint facilitates transferring inflow transactions'
 ---
 
-<ParamField body='fromAccount' type='string' required>
-  The source account number for the transfer. **Example:** "3025831139"
+<ParamField body='BeneficiaryAccountName' type='string' required>
+  The beneficiary account name for the inflow. **Example:** "Dataseed's Wallet"
 </ParamField>
 
-<ParamField body='toAccount' type='string' required>
-  The destination account number for the transfer. **Example:** "211651183"
+<ParamField body='BeneficiaryAccountNumber' type='string' required>
+  The beneficiary account number for the inflow. **Example:** "9710005607"
 </ParamField>
 
 <ParamField body='amount' type='number' required>
   The amount to transfer. **Example:** 100000
 </ParamField>
 
-<ParamField body='transactionReference' type='string' required>
-  A unique reference identifier for the transaction. **Example:**
-  "retw33344556670900"
+<ParamField body='narration' type='string' required>
+  Additional notes or description for the transaction. **Example:** "December
+  Party Sweep"
 </ParamField>
 
-<ParamField body='remarks' type='string'>
-  Additional notes or description for the transaction. **Example:** "For
-  Holidays"
+<ParamField body='amount' type='string'>
+  Maximum of 500 million **Example:** "10000000"
 </ParamField>
 
 <ResponseExample>
