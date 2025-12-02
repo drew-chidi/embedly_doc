@@ -1,20 +1,20 @@
 ---
-title: "Customer Address Verification (Tier 3 upgrade)"
-api: "POST /customers/kyc/address-verification"
+title: 'Customer KYC Upgrade - Address Verification'
+api: 'POST https://developer.embedly.ng/api-reference/playground/customer/individual/kyc/address-verification'
 description: "This endpoint enables you to complete address verification for customer in order to upgrade the customer's KYC to Tier 3"
 ---
 
-<ParamField body="customerId" type="string" required>
-	The Embedly unique identifier of the customer whose KYC tier is being
-	upgraded. **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
+<ParamField body='customerId' type='string' required>
+  The Embedly unique identifier of the customer whose KYC tier is being
+  upgraded. **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
 </ParamField>
 
-<ParamField body="meterNumber" type="string" required>
-	The utility document of the customer's address.
+<ParamField body='meterNumber' type='string' required>
+  The utility document of the customer's address.
 </ParamField>
 
-<ParamField body="houseAddress" type="string" required>
-	The address of the customer whose kyc is to be upgraded.
+<ParamField body='houseAddress' type='string' required>
+  The address of the customer whose kyc is to be upgraded.
 </ParamField>
 
 <ResponseExample>

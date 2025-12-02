@@ -1,7 +1,7 @@
 ---
-title: "Inter Bank Transfer"
-api: "POST https://payout-staging.embedly.ng/api/Payout/inter-bank-transfer"
-description: "This endpoint initiates a bank funds transfer."
+title: 'Inter Bank Transfer'
+api: 'POST https://payout-staging.embedly.ng/api/Payout/inter-bank-transfer'
+description: 'This endpoint initiates a bank funds transfer from an Embedly wallet account within your organization, to an external bank account. (GTBank, OPAY, UBA, etc).'
 ---
 
 <Info>
@@ -15,46 +15,44 @@ When a payout transaction is successfully submitted, a `transactionRef` is inclu
 - The `transactionRef` can be used to **confirm the status** of the transaction at a later time.
 - It is also essential for **mapping webhook notifications** to the correct payout transaction—especially for tracking successful debits.
 
+Note: On Staging environment, you must include the stagingStatus field in the request body. This allows you to simulate either a successful or failed payout. In both cases, a webhook notification will be sent indicating the outcome of the payout. On Production, you must skip this field entirely. Please ensure that you have configured your webhook URL on your staging dashboard in order to receive webhook notifications.
+
 </Info>
 
-<ParamField body="destinationBankCode" type="string" required>
-	**Example:** `000010`
+<ParamField body='destinationBankCode' type='string' required>
+  **Example:** `000010`
 </ParamField>
 
-<ParamField body="destinationAccountNumber" type="string" required>
-	**Example:** `1111111111`
+<ParamField body='destinationAccountNumber' type='string' required>
+  **Example:** `1111111111`
 </ParamField>
 
-<ParamField body="destinationAccountName" type="string" required>
-	**Example:** `Bruce Banner`
+<ParamField body='destinationAccountName' type='string' required>
+  **Example:** `Bruce Banner`
 </ParamField>
 
-<ParamField body="sourceAccountNumber" type="string" required>
-	**Example:** `9666055662`
+<ParamField body='sourceAccountNumber' type='string' required>
+  **Example:** `9666055662`
 </ParamField>
 
-<ParamField body="sourceAccountName" type="string" required>
-	**Example:** `Tony Stark`
+<ParamField body='sourceAccountName' type='string' required>
+  **Example:** `Tony Stark`
 </ParamField>
 
-<ParamField body="remarks" type="string" required>
-	**Example:** `Hello World`
+<ParamField body='remarks' type='string' required>
+  **Example:** `Hello World`
 </ParamField>
 
-<ParamField body="amount" type="integer" required>
-	**Example:** `100000`
+<ParamField body='amount' type='integer' required>
+  **Example:** `100000`
 </ParamField>
 
-<ParamField body="currencyId" type="string" required>
-	**Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
+<ParamField body='currencyId' type='string' required>
+  **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
 </ParamField>
 
-<ParamField body="customerTransactionReference" type="string">
-	**Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
-</ParamField>
-
-<ParamField body="webhookUrl" type="string" required>
-	**Example:** `http://sample.com/hook`
+<ParamField body='customerTransactionReference' type='string'>
+  **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
 </ParamField>
 
 <ResponseExample>

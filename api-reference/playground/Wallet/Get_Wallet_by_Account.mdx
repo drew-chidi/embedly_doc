@@ -1,11 +1,11 @@
 ---
-title: "Get Wallet by Account Number"
-api: "GET /wallets/get/wallet/account/{accountNumber}"
-description: "The endpoint retrieves the details of a specific wallet using its associated account number.."
+title: 'Get Wallet by Wallet Account Number'
+api: 'GET /wallets/get/wallet/account/{accountNumber}'
+description: 'The endpoint retrieves the details of a specific wallet using its associated account number..'
 ---
 
-<ParamField path="accountNumber" type="string" required>
-	Unique identifier for the account
+<ParamField path='accountNumber' type='string' required>
+  Unique identifier for the account
 </ParamField>
 
 <ResponseExample>
@@ -27,37 +27,37 @@ description: "The endpoint retrieves the details of a specific wallet using its 
 
 ```json 400 Bad Request
 {
-	"code": "400",
-	"success": false,
-	"message": "The wallet you have specified does not exist",
-	"data": null
+  "code": "400",
+  "success": false,
+  "message": "The wallet you have specified does not exist",
+  "data": null
 }
 ```
 
 ```json 404 Not Found
 {
-	"code": "404",
-	"success": false,
-	"message": "Account number not found",
-	"data": null
+  "code": "404",
+  "success": false,
+  "message": "Account number not found",
+  "data": null
 }
 ```
 
 ```json 401 Unauthorized
 {
-	"code": "401",
-	"success": false,
-	"message": "Unauthorized access",
-	"data": null
+  "code": "401",
+  "success": false,
+  "message": "Unauthorized access",
+  "data": null
 }
 ```
 
 ```json 500 Internal Server Error
 {
-	"code": "500",
-	"success": false,
-	"message": "An unexpected error occurred",
-	"data": null
+  "code": "500",
+  "success": false,
+  "message": "An unexpected error occurred",
+  "data": null
 }
 ```
 
