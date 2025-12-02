@@ -15,7 +15,9 @@ When a payout transaction is successfully submitted, a `transactionRef` is inclu
 - The `transactionRef` can be used to **confirm the status** of the transaction at a later time.
 - It is also essential for **mapping webhook notifications** to the correct payout transaction—especially for tracking successful debits.
 
-Note: On Staging environment, you must include the stagingStatus field in the request body. This allows you to simulate either a successful or failed payout. In both cases, a webhook notification will be sent indicating the outcome of the payout. On Production, you must skip this field entirely. Please ensure that you have configured your webhook URL on your staging dashboard in order to receive webhook notifications.
+#### **Note:**
+
+On Staging environment, you must include the stagingStatus field in the request body. This allows you to simulate either a successful or failed payout. In both cases, a webhook notification will be sent indicating the outcome of the payout. On Production, you must skip this field entirely. Please ensure that you have configured your webhook URL on your staging dashboard in order to receive webhook notifications.
 
 </Info>
 
@@ -53,6 +55,17 @@ Note: On Staging environment, you must include the stagingStatus field in the re
 
 <ParamField body='customerTransactionReference' type='string'>
   **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
+</ParamField>
+
+<ParamField body='stagingStatus' type='string'>
+ The status of the staging process. Possible values are
+  `success` or `failed`. 
+  
+  **Note:** This field doesn't apply on production and
+  should be removed entirely.
+
+**Example:** `success`
+
 </ParamField>
 
 <ResponseExample>
