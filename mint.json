@@ -74,8 +74,8 @@
                 {
                   "group": "KYC",
                   "pages": [
-                    "api-reference/playground/customer/individual/kyc/tier2_upgrade_nin",
-                    "api-reference/playground/customer/individual/kyc/tier2_upgrade_bvn",
+                    "api-reference/playground/customer/individual/kyc/nin",
+                    "api-reference/playground/customer/individual/kyc/bvn",
                     "api-reference/playground/customer/individual/kyc/address_verification"
                   ]
                 }
