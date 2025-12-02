@@ -123,8 +123,7 @@
               "group": "Utils",
               "pages": [
                 "api-reference/playground/Wallet/utils/get_currency",
-                "api-reference/playground/Wallet/utils/get_restriction_types",
-                "api-reference/playground/Wallet/utils/Account_Closure_Reasons"
+                "api-reference/playground/Wallet/utils/get_restriction_types"
               ]
             }
           ]

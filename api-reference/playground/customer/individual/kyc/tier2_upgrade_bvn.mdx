@@ -1,19 +1,18 @@
 ---
-title: "Customer KYC Upgrade-bvn"
-api: "POST customers/kyc/premium-kyc"
+title: 'Customer KYC Upgrade - BVN'
+api: 'POST https://developer.embedly.ng/api-reference/playground/customer/individual/kyc/bvn'
 description: "This endpoint enables you to upgrade a customer's KYC using bvn"
 ---
 
-<ParamField query="verify" type="string" required>
-	**Example:** `1` **This is a
-	query parameter**
+<ParamField query='verify' type='string' required>
+  **Example:** `1` **This is a query parameter**
 </ParamField>
 
-<ParamField body="customerId" type="string" required>
-	The unique identifier of the customer whose KYC tier is being upgraded.
-	**Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
+<ParamField body='customerId' type='string' required>
+  The unique identifier of the customer whose KYC tier is being upgraded.
+  **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
 </ParamField>
 
-<ParamField body="bvn" type="string" required>
-	The unique value of the customer's bvn. **Example:** `12345678909`
+<ParamField body='bvn' type='string' required>
+  The unique value of the customer's bvn. **Example:** `12345678909`
 </ParamField>

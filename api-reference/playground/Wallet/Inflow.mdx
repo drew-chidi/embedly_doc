@@ -1,7 +1,22 @@
 ---
-title: 'Simulate Inflow'
+title: 'Simulate Inflow (Staging)'
 api: 'POST https://waas-staging.embedly.ng/WaasCore/api/v1/nip/inflow/simulate-inflow'
-description: '"This endpoint ONLY works on staging environment" and is added solely to enable you to fund your staging accounts for test purposes. It is not available on production environment.'
+description: 'This endpoint is available only on the staging environment and exists solely to help you fund your staging accounts for testing.
+It is not available in production.
+
+An Inflow transaction refers to a transfer from an account outside your organization into an account within your organization.
+In production, this mirrors the real scenario where your users fund their wallets by transferring money from an external bank account.
+
+When an inflow occurs, your application will receive a webhook notification containing the transaction details.
+This allows you to:
+
+Send notifications to your users
+
+Perform internal calculations or updates
+
+Trigger other workflow processes
+
+To configure your webhook endpoint, please see the Webhook Configuration section of the documentation.'
 ---
 
 <ParamField body='beneficiaryAccountName' type='string' required>
