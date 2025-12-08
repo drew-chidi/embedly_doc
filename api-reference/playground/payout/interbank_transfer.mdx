@@ -1,7 +1,7 @@
 ---
-title: 'Inter Bank Transfer'
-api: 'POST https://payout-staging.embedly.ng/api/Payout/inter-bank-transfer'
-description: 'This endpoint initiates a bank funds transfer from an Embedly wallet account within your organization, to an external bank account. (GTBank, OPAY, UBA, etc).'
+title: "Inter Bank Transfer"
+api: "POST https://payout-staging.embedly.ng/api/Payout/inter-bank-transfer"
+description: "This endpoint initiates a bank funds transfer from an Embedly wallet account within your organization, to an external bank account. (GTBank, OPAY, UBA, etc)."
 ---
 
 <Info>
@@ -21,39 +21,39 @@ On Staging environment, you must include the stagingStatus field in the request 
 
 </Info>
 
-<ParamField body='destinationBankCode' type='string' required>
+<ParamField body="destinationBankCode" type="string" required>
   **Example:** `000010`
 </ParamField>
 
-<ParamField body='destinationAccountNumber' type='string' required>
+<ParamField body="destinationAccountNumber" type="string" required>
   **Example:** `1111111111`
 </ParamField>
 
-<ParamField body='destinationAccountName' type='string' required>
+<ParamField body="destinationAccountName" type="string" required>
   **Example:** `Bruce Banner`
 </ParamField>
 
-<ParamField body='sourceAccountNumber' type='string' required>
+<ParamField body="sourceAccountNumber" type="string" required>
   **Example:** `9666055662`
 </ParamField>
 
-<ParamField body='sourceAccountName' type='string' required>
+<ParamField body="sourceAccountName" type="string" required>
   **Example:** `Tony Stark`
 </ParamField>
 
-<ParamField body='remarks' type='string' required>
+<ParamField body="remarks" type="string" required>
   **Example:** `Hello World`
 </ParamField>
 
-<ParamField body='amount' type='integer' required>
+<ParamField body="amount" type="integer" required>
   **Example:** `100000`
 </ParamField>
 
-<ParamField body='currencyId' type='string' required>
+<ParamField body="currencyId" type="string" required>
   **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
 </ParamField>
 
-<ParamField body='customerTransactionReference' type='string'>
+<ParamField body="customerTransactionReference" type="string">
   **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
 </ParamField>
 
@@ -71,10 +71,11 @@ On Staging environment, you must include the stagingStatus field in the request 
 <ResponseExample>
 ```json
 {
-	"data": "EMB2433478798576453242131324",
-	"statusCode": 200,
-	"message": "Successfully initiated payout",
-	"succeeded": true
+    "data": "EMBe66029d4f6e2432a905a3642fa0dd380",
+    "statusCode": 200,
+    "code": "00",
+    "message": "Request is being processed.",
+    "succeeded": true
 }
 ```
 </ResponseExample>

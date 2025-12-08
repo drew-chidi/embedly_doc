@@ -3,3 +3,344 @@ title: "Get Banks"
 api: "GET https://payout-staging.embedly.ng/api/Payout/banks"
 description: "Endpoint for retrieving banks available for processing transfers to and their respective bank codes."
 ---
+
+<ResponseExample>
+```json 200 Success
+{
+  "data": [
+    {
+      "bankname": "9 payment service Bank",
+      "bankcode": "120001"
+    },
+    {
+      "bankname": "AB MICROFINANCE BANK",
+      "bankcode": "090270"
+    },
+    {
+      "bankname": "ABBEY MORTGAGE BANK",
+      "bankcode": "070010"
+    },
+    {
+      "bankname": "ABOVE ONLY MICROFINANCE BANK",
+      "bankcode": "090260"
+    },
+    {
+      "bankname": "ABU MICROFINANCE BANK",
+      "bankcode": "090197"
+    },
+    {
+      "bankname": "ACCESS BANK",
+      "bankcode": "000014"
+    },
+    {
+      "bankname": "ACCESSMONEY",
+      "bankcode": "100013"
+    },
+    {
+      "bankname": "ACCION MFB",
+      "bankcode": "090134"
+    },
+    {
+      "bankname": "ADDOSSER MFBB",
+      "bankcode": "090160"
+    },
+    {
+      "bankname": "ADEYEMI COLLEGE STAFF MICROFINANCE BANK",
+      "bankcode": "090268"
+    },
+    {
+      "bankname": "ADVANS LA FAYETTE MFB",
+      "bankcode": "090155"
+    },
+    {
+      "bankname": "AG MORTGAGE BANK PLC",
+      "bankcode": "100028"
+    },
+    {
+      "bankname": "AGOSASA MICROFINANCE BANK",
+      "bankcode": "090371"
+    },
+    {
+      "bankname": "AL-BARKAH MFB",
+      "bankcode": "090133"
+    },
+    {
+      "bankname": "ALEKUN MICROFINANCE BANK",
+      "bankcode": "090259"
+    },
+    {
+      "bankname": "ALERT MFB",
+      "bankcode": "090297"
+    },
+    {
+      "bankname": "ALHAYAT MFB",
+      "bankcode": "090277"
+    },
+    {
+      "bankname": "ALLWORKERS MFB",
+      "bankcode": "090131"
+    },
+    {
+      "bankname": "ALPHAKAPITAL MFB",
+      "bankcode": "090169"
+    },
+    {
+      "bankname": "AMJU MFB",
+      "bankcode": "090180"
+    },
+    {
+      "bankname": "AMML MFB",
+      "bankcode": "090116"
+    },
+    {
+      "bankname": "APEKS MICROFINANCE BANK",
+      "bankcode": "090143"
+    },
+    {
+      "bankname": "APPLE  MICROFINANCE BANK",
+      "bankcode": "090376"
+    },
+    {
+      "bankname": "ARISE MFB",
+      "bankcode": "090282"
+    },
+    {
+      "bankname": "ASOSAVINGS",
+      "bankcode": "090001"
+    },
+    {
+      "bankname": "ASSETS Microfinance Bank",
+      "bankcode": "090473"
+    },
+    {
+      "bankname": "ASTRAPOLARIS MFB",
+      "bankcode": "090172"
+    },
+    {
+      "bankname": "ATBU  Microfinance Bank",
+      "bankcode": "090451"
+    },
+    {
+      "bankname": "AUCHI MICROFINANCE BANK",
+      "bankcode": "090264"
+    },
+    {
+      "bankname": "Abucoop  Microfinance Bank",
+      "bankcode": "090424"
+    },
+    {
+      "bankname": "Ada MFB",
+      "bankcode": "090483"
+    },
+    {
+      "bankname": "Afekhafe MFB",
+      "bankcode": "090292"
+    },
+    {
+      "bankname": "Afemai Microfinance Bank",
+      "bankcode": "090518"
+    },
+    {
+      "bankname": "Alvana Microfinance Bank",
+      "bankcode": "090489"
+    },
+    {
+      "bankname": "Amac Microfinance Bank",
+      "bankcode": "090394"
+    },
+    {
+      "bankname": "Ampersand Microfinance bank",
+      "bankcode": "090529"
+    },
+    {
+      "bankname": "Anchorage MFB",
+      "bankcode": "090476"
+    },
+    {
+      "bankname": "Aniocha MFB",
+      "bankcode": "090469"
+    },
+    {
+      "bankname": "Arca Payments",
+      "bankcode": "110011"
+    },
+    {
+      "bankname": "Assets Matrix MFB",
+      "bankcode": "090287"
+    },
+    {
+      "bankname": "Avuenegbe MFB",
+      "bankcode": "090478"
+    },
+    {
+      "bankname": "BAINES CREDIT MFB",
+      "bankcode": "090188"
+    },
+    {
+      "bankname": "BALOGUN GAMBARI MFB",
+      "bankcode": "090326"
+    },
+    {
+      "bankname": "BAYERO MICROFINANCE BANK",
+      "bankcode": "090316"
+    },
+    {
+      "bankname": "BC KASH MFB",
+      "bankcode": "090127"
+    },
+    {
+      "bankname": "BETA-ACCESS YELLO",
+      "bankcode": "100052"
+    },
+    {
+      "bankname": "BIPC MICROFINANCE BANK",
+      "bankcode": "090336"
+    },
+    {
+      "bankname": "BOCTRUST MICROFINANCE BANK",
+      "bankcode": "090117"
+    },
+    {
+      "bankname": "BOI MF Bank",
+      "bankcode": "090444"
+    },
+    {
+      "bankname": "BOSAK MFB",
+      "bankcode": "090176"
+    },
+    {
+      "bankname": "BOWEN MFB",
+      "bankcode": "090148"
+    },
+    {
+      "bankname": "BRENT MORTGAGE BANK",
+      "bankcode": "070015"
+    },
+    {
+      "bankname": "BRETHREN MICROFINANCE BANK",
+      "bankcode": "090293"
+    },
+    {
+      "bankname": "BRIGHTWAY MFB",
+      "bankcode": "090308"
+    },
+    {
+      "bankname": "BUBAYERO Microfinance Bank",
+      "bankcode": "090512"
+    },
+    {
+      "bankname": "Balogun Fulani  Microfinance Bank",
+      "bankcode": "090181"
+    },
+    {
+      "bankname": "Banex Microfinance Bank",
+      "bankcode": "090425"
+    },
+    {
+      "bankname": "Benysta Microfinance Bank",
+      "bankcode": "090413"
+    },
+    {
+      "bankname": "Bluewhales  Microfinance Bank",
+      "bankcode": "090431"
+    },
+    {
+      "bankname": "Boji Boji Microfinance Bank",
+      "bankcode": "090494"
+    },
+    {
+      "bankname": "Bonghe Microfinance Bank",
+      "bankcode": "090319"
+    },
+    {
+      "bankname": "Borgu MFB",
+      "bankcode": "090395"
+    },
+    {
+      "bankname": "Borno Renaissance Microfinance bank",
+      "bankcode": "090508"
+    },
+    {
+      "bankname": "Boromu Microfinance bank",
+      "bankcode": "090501"
+    },
+    {
+      "bankname": "Borstal Microfinance Bank",
+      "bankcode": "090454"
+    },
+    {
+      "bankname": "Bridgeway Microfinance Bank",
+      "bankcode": "090393"
+    },
+    {
+      "bankname": "Business Support Microfinance Bank",
+      "bankcode": "090406"
+    },
+    {
+      "bankname": "CAPITALMETRIQ SWIFT MICROFINANCE BANK",
+      "bankcode": "090509"
+    },
+    {
+      "bankname": "CARBON",
+      "bankcode": "100026"
+    },
+    {
+      "bankname": "CARETAKER Microfinance Bank",
+      "bankcode": "090472"
+    },
+    {
+      "bankname": "CASHCONNECT   MICROFINANCE BANK",
+      "bankcode": "090360"
+    },
+    {
+      "bankname": "CELLULANT",
+      "bankcode": "100005"
+    },
+    {
+      "bankname": "CEMCS MFB",
+      "bankcode": "090154"
+    },
+    {
+      "bankname": "CHIKUM MICROFINANCE BANK",
+      "bankcode": "090141"
+    },
+    {
+      "bankname": "CIT MICROFINANCE BANK",
+      "bankcode": "090144"
+    },
+    {
+      "bankname": "CITI BANK",
+      "bankcode": "000009"
+    },
+    {
+      "bankname": "COASTLINE MICROFINANCE BANK",
+      "bankcode": "090374"
+    },
+    {
+      "bankname": "CONSUMER  MFB",
+      "bankcode": "090130"
+    },
+    {
+      "bankname": "CONTEC GLOBAL",
+      "bankcode": "100032"
+    },
+    {
+      "bankname": "COOP Mortgage Bank",
+      "bankcode": "070021"
+    },
+    {
+      "bankname": "CORONATION",
+      "bankcode": "060001"
+    },
+    {
+      "bankname": "COVENANT MFB",
+      "bankcode": "070006"
+    },
+  ],
+  "statusCode": 200,
+  "code": null,
+  "message": "Successfully retrieved bank list",
+  "succeeded": true
+}
+```
+</ResponseExample>

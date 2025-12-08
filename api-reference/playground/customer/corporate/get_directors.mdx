@@ -9,32 +9,51 @@ description: "This endpoint enables you to retrieve all directors of. a corporat
 ## Request Parameters
 
 <ParamField path="customerId" type="string" required>
-	The unique identifier of a corporate customer. **Example:** `123456`
+  The unique identifier of a corporate customer. **Example:** `123456`
 </ParamField>
 
 <ParamField path="directorId" type="string" required>
-	The unique identifier mapped to a corporate customer's director. **Example:**
-	`01234567-0001`
+  The unique identifier mapped to a corporate customer's director. **Example:**
+  `01234567-0001`
 </ParamField>
 
 <ParamField query="page" type="integer" optional>
-	**Example:** `1`
+  **Example:** `1`
 </ParamField>
 
 <ParamField query="pageSize" type="integer" optional>
-	The number of records to return per page. **Example:** `10`
+  The number of records to return per page. **Example:** `10`
 </ParamField>
 
 <ResponseExample>
 
 ```json
 {
-    "statuscode": "00",
-    "message": "Customer successfully profiled",
-    "data": {
-      "customerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "code": "00",
+  "success": true,
+  "message": "Retrieved successfully",
+  "data": [
+    {
+      "id": "08de3625-31fb-4a92-8fa6-db702adee6b7",
+      "customerId": "724bb798-fae8-4856-97a6-9d2076266c29",
+      "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+      "firstName": "Sam",
+      "lastName": "Shire",
+      "middleName": "Wise",
+      "dob": "1980-01-01",
+      "email": "samwise@gmail.com",
+      "phoneNumber": "08066694686",
+      "address": "12 Adeola Odeku Street, Victoria Island, Lagos",
+      "meterNumber": "1234567890",
+      "bvn": "12345678901",
+      "nin": "12345678901",
+      "isDirectorBVNVerified": false,
+      "isDirectorNINVerified": false,
+      "isDirectorAddressVerified": false,
+      "createdAt": "2025-12-08T06:44:11",
+      "updatedAt": "2025-12-08T06:44:11"
     }
-    "errors": [],
+  ]
 }
 ```
 

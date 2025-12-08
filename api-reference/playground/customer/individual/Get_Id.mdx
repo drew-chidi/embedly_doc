@@ -1,23 +1,39 @@
 ---
 title: "Get Customer by ID"
 description: "This endpoint retrieves customer  using their unique identifier"
-api: "GET /customers/get/id/{id}"
+api: "GET /customers/get/id/{customerId}"
 ---
 
-<ParamField path="id" type="string" required>
-  The unique identifier for the customer.  
-  **Example:** 'f6210a05-fb5b-11ef-a8a9-6045bd97b81d'
+<ParamField path="customerId" type="string" required>
+  The unique identifier for the customer. **Example:**
+  'f6210a05-fb5b-11ef-a8a9-6045bd97b81d'
 </ParamField>
 
-
-## Response
+<ResponseExample>
 
 ```json
 {
-  "code": "00",
-  "success": true,
-  "message": "Retrieved Successfully",
-  "data": null
+  "data": {
+    "id": "7119da47-7903-11f0-a7cf-0274f77d4a81",
+    "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+    "firstName": "Jesam",
+    "lastName": "ofem",
+    "middleName": "Ofem",
+    "dob": "1964-08-04T00:00:00",
+    "customerTypeId": "f671da57-e281-4b40-965f-a96f4205405e",
+    "customerTierId": 2,
+    "alias": null,
+    "countryId": "c15ad9ae-c4d7-4342-b70f-de5508627e3b",
+    "city": "Mushin area",
+    "address": "4 ogunsanya",
+    "mobileNumber": "08062190561",
+    "emailAddress": "godok84@yop.com",
+    "dateCreated": null,
+    "isCorporateVerified": ""
+  },
+  "status": 200,
+  "message": ""
 }
 ```
 
+</ResponseExample>
