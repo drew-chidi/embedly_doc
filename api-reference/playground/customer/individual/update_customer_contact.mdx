@@ -4,25 +4,30 @@ description: "This endpoint is used to update a customer's contact details"
 api: "PATCH /customers/customer/{customerId}/updatecontact"
 ---
 
-<ParamField query="customerId" type="string" required>
-	The unique identifier of the customer whose contact details are to be updated.
-	**Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
+<ParamField path="customerId" type="string" required>
+  The unique identifier of the customer whose contact details are to be updated.
+  **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
 </ParamField>
 
 <ParamField body="organizationId" type="string"></ParamField>
 
 <ParamField body="mobileNumber" type="string" required>
-	The new mobile number of the individual. **Example:** `09090909090`
+  The new mobile number of the individual. **Example:** `09090909090`
 </ParamField>
 
 <ParamField body="emailAddress" type="string">
-	The new email addrress of the individual. **Example:** `john@email.com`
+  The new email addrress of the individual. **Example:** `john@email.com`
 </ParamField>
 
 <ResponseExample>
 
 ```json
-{}
+{
+  "code": "00",
+  "success": true,
+  "message": "Updated Successfully",
+  "data": null
+}
 ```
 
 </ResponseExample>

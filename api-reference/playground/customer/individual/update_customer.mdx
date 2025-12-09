@@ -4,35 +4,33 @@ description: "This endpoint is used to update a customer's name"
 api: "PATCH /customers/customer/{customerId}/updatename"
 ---
 
-
-<ParamField query="customerId" type="string" required>
-</ParamField>
+<ParamField path="customerId" type="string" required></ParamField>
 
 <ParamField body="organizationId" type="string"></ParamField>
 
 <ParamField body="firstName" type="string">
-	The first name of the individual. **Example:** `John`
+  The first name of the individual. **Example:** `John`
 </ParamField>
 
 <ParamField body="lastName" type="string">
-	The last name of the individual. **Example:** `Doe`
+  The last name of the individual. **Example:** `Doe`
 </ParamField>
 
 <ParamField body="middleName" type="string">
-	The middle name of the individual. **Example:** `Michael`
+  The middle name of the individual. **Example:** `Michael`
 </ParamField>
 
 <ParamField body="dob" type="string">
-	The individual's date of birth in `YYYY-MM-DDTHH:MM:SS.000Z` format. **Example:**
-	`2025-03-19T19:11:05.302Z`
+  The individual's date of birth in `YYYY-MM-DDTHH:MM:SS.000Z` format.
+  **Example:** `2025-03-19T19:11:05.302Z`
 </ParamField>
 
 <ParamField body="city" type="string">
-	The individual's residential city
+  The individual's residential city
 </ParamField>
 
 <ParamField body="address" type="string">
-	The individual's residential address
+  The individual's residential address
 </ParamField>
 
 <ParamField body="occupation" type="string">
@@ -40,27 +38,30 @@ api: "PATCH /customers/customer/{customerId}/updatename"
 </ParamField>
 
 <ParamField body="gender" type="string">
-	The individual's gender
+  The individual's gender
 </ParamField>
 
-<ParamField body="bvnVerified" type="boolean">
-</ParamField>
+<ParamField body="bvnVerified" type="boolean"></ParamField>
 
-<ParamField body="ninVerified" type="boolean">
-</ParamField>
+<ParamField body="ninVerified" type="boolean"></ParamField>
 
 <ParamField body="bvn" type="string">
-	The individual's BVN. **Example:** `12345678901`
+  The individual's BVN. **Example:** `12345678901`
 </ParamField>
 
 <ParamField body="nin" type="string">
-	The individual's NIN. **Example:** `23456789012`
+  The individual's NIN. **Example:** `23456789012`
 </ParamField>
 
 <ResponseExample>
 
 ```json
-{}
+{
+  "code": "00",
+  "success": true,
+  "message": "Updated Successfully",
+  "data": null
+}
 ```
 
 </ResponseExample>
