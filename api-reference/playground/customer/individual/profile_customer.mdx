@@ -9,18 +9,16 @@ description: "This endpoint enables you to create a customer profile"
 Use this endpoint to create profile for an individual.
 
 <Info>
-	Once a customer profile is created, you are required to provide the customer's
-	BVN and NIN via the KYC endpoints. 
-	
-	**Please note**: A customer must attain a KYC
-	Tier 1 status before an open wallet can be created for them.
+  Once a customer profile is created, you are required to provide the customer's
+  BVN and NIN via the KYC endpoints. **Please note**: A customer must attain a
+  KYC Tier 1 status before an open wallet can be created for them.
 </Info>
 
 <Warn>
-	It is standard practice to save the returned customerId once you have
-	successfully created a customer. This reduces the number of api calls you have
-	to make to embedly to perform certain actions thereby improving the speed of
-	your application
+  It is standard practice to save the returned customerId once you have
+  successfully created a customer. This reduces the number of api calls you have
+  to make to embedly to perform certain actions thereby improving the speed of
+  your application
 </Warn>
 
 ---
@@ -30,62 +28,77 @@ Use this endpoint to create profile for an individual.
 <ParamField body="organizationId" type="string" required></ParamField>
 
 <ParamField body="firstName" type="string" required>
-	The first name of the individual. **Example:** `John`
+  The first name of the individual. **Example:** `John`
 </ParamField>
 
 <ParamField body="lastName" type="string" required>
-	The last name of the individual. **Example:** `Doe`
+  The last name of the individual. **Example:** `Doe`
 </ParamField>
 
 <ParamField body="middleName" type="string" required>
-	The middle name of the individual. **Example:** `Michael`
+  The middle name of the individual. **Example:** `Michael`
 </ParamField>
 
 <ParamField body="emailAddress" type="string" required>
-	The individual's email address. **Example:** `john.doe@example.com`
+  The individual's email address. **Example:** `john.doe@example.com`
 </ParamField>
 
 <ParamField body="mobileNumber" type="string" required>
-	The individual's phone number. **Example:** `08012345678`
+  The individual's phone number. **Example:** `08012345678`
 </ParamField>
 
 <ParamField body="dob" type="string" required>
-	The individual's date of birth in `YYYY-MM-DD` format. **Example:**
-	`1980-01-01`
+  The individual's date of birth in `YYYY-MM-DD` format. **Example:**
+  `1980-01-01`
 </ParamField>
 
 <ParamField body="customerTypeId" type="string" required>
-	The type of customer. _(Must be a UUID)_ **Example:
-	f671da57-e281-4b40-965f-a96f4205405e** `The value should be gotten from the
-	get customer types endpoint in the customer utils section`
+  The type of customer. _(Must be a UUID)_ **Example:
+  f671da57-e281-4b40-965f-a96f4205405e** `The value should be gotten from the
+  get customer types endpoint in the customer utils section`
 </ParamField>
 
 <ParamField body="address" type="string" required>
-	The customer's residential street. **Example:** `20 Marina`
+  The customer's residential street. **Example:** `20 Marina`
 </ParamField>
 
 <ParamField body="city" type="string" required>
-	The customer's residential city. **Example:** `Lagos`
+  The customer's residential city. **Example:** `Lagos`
 </ParamField>
 
 <ParamField body="countryId" type="string" required>
-	The unique identifier of the customer's nationality. _(Must be a UUID)_
-	**Example: f671da57-e281-4b40-965f-a96f4205405e** `The value should be gotten
-	from the get countries endpoint in the customer utils section`
+  The unique identifier of the customer's nationality. _(Must be a UUID)_
+  **Example: f671da57-e281-4b40-965f-a96f4205405e** `The value should be gotten
+  from the get countries endpoint in the customer utils section`
 </ParamField>
 
 <ParamField body="alias" type="string"></ParamField>
 
 <ResponseExample>
 
-```json
+```json 200 Success
 {
-    "statuscode": "00",
-    "message": "Customer successfully profiled",
-    "data": {
-      "customerId": "7100987614",
-    }
-    "errors": [],
+  "code": "00",
+  "success": true,
+  "message": "Created Successfully",
+  "data": {
+    "id": "788859f5-d3b2-11f0-97df-02789e000022",
+    "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+    "firstName": "string",
+    "lastName": "string",
+    "middleName": "string",
+    "dob": "2025-12-05T10:57:13",
+    "customerTypeId": "f671da57-e281-4b40-965f-a96f4205405e",
+    "customerTierId": 0,
+    "alias": null,
+    "countryId": "c15ad9ae-c4d7-4342-b70f-de5508627e3b",
+    "city": "string",
+    "address": "string",
+    "mobileNumber": "08039494859",
+    "emailAddress": "string@gmail.com",
+    "dateCreated": null,
+    "isCorporateVerified": ""
+  }
 }
 ```
 

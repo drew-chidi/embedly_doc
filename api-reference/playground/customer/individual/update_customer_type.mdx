@@ -13,18 +13,17 @@ Use this endpoint to update the type mapped to a customer
 ### Path Parameters
 
 <ParamField body="customerId" type="string" required>
-	The unique identifier for the customer.  
-	**Example:** '3fa85f64-5717-4562-b3fc-2c963f66afa6'
+  The unique identifier for the customer. **Example:**
+  '3fa85f64-5717-4562-b3fc-2c963f66afa6'
 </ParamField>
 
 <ParamField body="customerTypeId" type="string" required>
-	The unique identifier for the customer type.  
-	**Example:** 'customerTypeId'
+  The unique identifier for the customer type. **Example:** 'customerTypeId'
 </ParamField>
 
 <ResponseExample>
 
-```json
+```json 200 Success
 {
   "code": "500",
   "success": false,

@@ -1,10 +1,27 @@
 ---
 title: Transaction Status Re-Query
-api: 'GET https://payout-staging.embedly.ng/api/Payout/status/{transactionRef}'
-description: 'Endpoint for re-querying the status of an inter-bank transaction using its transaction reference.'
+api: "GET https://payout-staging.embedly.ng/api/Payout/status/{transactionRef}"
+description: "Endpoint for re-querying the status of an inter-bank transaction using its transaction reference."
 ---
 
 <ParamField path='transactionRef' type='string' required>
   The unique reference number of the transaction whose status you want to check.
   Exmaple: `3212-1234-5678-9101`
 </ParamField>
+<ResponseExample>
+  ```json 200 Success
+{
+  "data": {
+    "status": "Pending",
+    "transactionReference": "EMBEDLY-IB-12-1765129847157",
+    "providerReference": null,
+    "paymentReference": null,
+    "sessionId": null
+  },
+  "statusCode": 200,
+  "code": null,
+  "message": "Transaction is still pending",
+  "succeeded": true
+}
+```
+</ResponseExample>
