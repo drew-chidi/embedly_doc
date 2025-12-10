@@ -1,8 +1,31 @@
 ---
 title: 'Wallet to Wallet Transfers'
 api: 'PUT /wallets/wallet/transaction/v2/wallet-to-wallet'
-description: 'The endpoint facilitates transferring funds from one embedly wallet to another embedly wallet.'
+description: 'This endpoint enables fund transfers between wallets within the same organization profile.
+
+
+It can be used for:
+
+- Allowing customers to send funds to your organization wallet(s) and vice versa.
+
+- Collecting charges or fees from customer wallets.
+
+- Performing intra-organization transfers between customer wallets and organization wallets.
+
+- Any use case that involves movement of funds within your organization.
+
+
+Each request must include a unique transactionReference. We recommend using a GUID or any randomly generated unique string of at least 10 characters.
+
+
+
+Transfers are instant. A successful response means the transfer has been completed immediately.
+For verification, a dedicated requery endpoint is available to check the status of any transaction. See the next section for details.'
 ---
+
+<info>
+
+</info>
 
 <ParamField body='fromAccount' type='string' required>
   The source account number for the transfer. **Example:** "3025831139"
