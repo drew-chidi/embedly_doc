@@ -1,18 +1,68 @@
 ---
-title: 'Customer KYC Upgrade - BVN'
-api: 'POST customers/kyc/premium-kyc'
+title: "Customer KYC Upgrade - BVN"
+api: "POST customers/kyc/premium-kyc"
 description: "This endpoint enables you to upgrade a customer's KYC using bvn"
 ---
 
-<ParamField query='verify' type='string' required>
+<ParamField query="verify" type="string" required>
   **Example:** `1` **This is a query parameter**
 </ParamField>
 
-<ParamField body='customerId' type='string' required>
+<ParamField body="customerId" type="string" required>
   The unique identifier of the customer whose KYC tier is being upgraded.
   **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
 </ParamField>
 
-<ParamField body='bvn' type='string' required>
+<ParamField body="bvn" type="string" required>
   The unique value of the customer's bvn. **Example:** `12345678909`
 </ParamField>
+
+<ResponseExample>
+
+```json 200 Success
+{
+  "code": "00",
+  "success": true,
+  "message": "Completed Successfully",
+  "data": {
+    "kycCompleted": true,
+    "response": {
+      "id": 53495589,
+      "applicant": {
+        "firstname": "Bunch",
+        "lastname": "Dillon",
+        "dob": "2025-12-05"
+      },
+      "summary": {
+        "bvn_check": {
+          "status": "EXACT_MATCH",
+          "fieldMatches": { "firstname": true, "lastname": true }
+        },
+        "nin_check": null
+      },
+      "status": { "state": "complete", "status": "verified" },
+      "bvn": {
+        "bvn": "95888168924",
+        "firstname": "Bunch",
+        "lastname": "Dillon",
+        "middlename": "Joe",
+        "birthdate": "2025-12-05",
+        "gender": "Male",
+        "phone": null,
+        "photo": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAK4SURBVBgZBcFfaFV1AADg7/zO2Zy7A3fVebdEQ2yCoeVfmmhQGlRgmCg0sEAoeivvWy/BiigYvoi9hPYgEfQYKGVgiIhaaJPSVlC6hU7v9Pon166755577+n7ovRtvZ3LjUiUAQQEAAQAQBO3HWrc8HHSudyIwRfLShuJOwgJUUSIiAIhIkSIiRAhb3H7Urnz++MSibLSRtKY/s3EuPsH9y4TAnFAIEYUyHN6FrNkA0uOlxMQdxC6WL8bsJusxt+nuPYdrVlE5DkiHk7TtYg2QRtRwuMKV79l4hy1Kh0Fnn6dVw/zxBAgIsuoZzQbNEgEhIjHFX7/mhCRBBavY92bLFjOcwe4fIRrp0ibNFKyFnWCgID+zez9iu2f8NQuZiY4/QE3zgIb3qW0jjSl3iRr0iBoQ0yEjgJ9q3l2H68cpncFY1/wzxlgywHyedQzshZ1goAID37j5PuMHaFWpaObbR/Ss5Szh5idprOHNTupN8naNEgEhEAemLurfv20cxfGXElXKi7qc/9en709tyz88XNfTixSLBY99JJnJqu2pbFEGyLiXLap7JsT5/2Xd9r31htqtZqpqSnHf0p136l6bd9+cRyrVCrGxsbcbKySgJDTt8aFyYbrlX/tGR527NP3nJ+c0z8wYO3atSYezbl48KDp6WlbV5Zs27vfyckdEiBi7q5fxy8pFAqgvHrGmT8bhoeHFYtFs7OzqtWqo0ePKj8/6BcUehdKNJA30TJw/5yfHw2A0cvztNoNo6OjCoUCqNVq8mZm9MRFO97ZqnrrpvijQb365w8pDpo/v9vZ8WnpXGrV+i02DW21bNkyrVZLqVQyNDTkhe3bDawY9Nf4VdfGrzyI0pf1dvYb0a/cajE52+Oz25t1L3lSx7wu7Zw9d36wMJtzbOkurSjI0rp7lamZBTMPdv4PY0MOogadRGMAAAAASUVORK5CYII=",
+        "lga_of_residence": "Agege",
+        "marital_status": "Single",
+        "nationality": "Nigeria",
+        "residential_address": "123 Paul Gas Avenue",
+        "state_of_residence": "Lagos State",
+        "email": "Jody.Grant@gmail.com",
+        "enrollment_bank": "011",
+        "watch_listed": "NO"
+      }
+    },
+    "successful": true
+  }
+}
+```
+
+</ResponseExample>
