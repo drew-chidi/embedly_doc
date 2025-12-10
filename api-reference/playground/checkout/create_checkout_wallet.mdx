@@ -1,30 +1,30 @@
 ---
-title: "Create Checkout Wallet"
-api: "POST https://checkout-staging.embedly.ng/api/v1/checkout-wallet"
-description: "This endpoint creates a checkout wallet."
+title: 'Create Checkout Wallet'
+api: 'POST https://checkout-staging.embedly.ng/api/v1/checkout-wallet'
+description: 'This endpoint creates a checkout wallet.'
 ---
 
 <Info>
-	When a checkout wallet is generated without an 'expiryDurationMinutes', the
-	system default of 30 minutes is applied to that wallet.
+  When a checkout wallet is generated without an 'expiryDurationMinutes', the
+  system default of 30 minutes is applied to that wallet.
 </Info>
 
-<ParamField body="organizationId" type="string" required>
-	**Example:** `02600494-1a3c-11f0-a818-6045bd97b81d`
+<ParamField body='organizationId' type='string' required>
+  **Example:** `02600494-1a3c-11f0-a818-6045bd97b81d`
 </ParamField>
 
-<ParamField body="expectedAmount" type="number" required>
-	**Example:** `20000`
+<ParamField body='expectedAmount' type='number' required>
+  **Example:** `20000`
 </ParamField>
 
-<ParamField body="organizationPrefixMappingId" type="string" required>
-	**Example:** `8b4432bc-f3c7-4055-b5e5-e232707e79af`. You can get this Id using
-	the 'Get Organization Prefix Mapping Endpoint'
+<ParamField body='organizationPrefixMappingId' type='string' required>
+  **Example:** `8b4432bc-f3c7-4055-b5e5-e232707e79af`. You can get this Id using
+  the 'Get Organization Prefix Mapping Endpoint'
 </ParamField>
 
-<ParamField body="expiryDurationMinutes" type="number">
-	This is the duration in minutes for which the wallet is to be active
-	**Example:** `30`.
+<ParamField body='expiryDurationMinutes' type='number'>
+  This is the duration in minutes for which the wallet is to be active
+  **Example:** `30`.
 </ParamField>
 
 <ResponseExample>
@@ -46,4 +46,39 @@ description: "This endpoint creates a checkout wallet."
   }
 }
 ```
+
+```json 400 Bad Request
+{
+  "statusCode": 400,
+  "message": "Specified organization prefix mapping not found",
+  "data": null
+}
+```
+
+```json 401 Unauthorized
+{
+  "code": "401",
+  "success": false,
+  "message": "x-api-key is missing in the header",
+  "data": null
+}
+```
+
+```json 403 Forbidden
+{
+  "statusCode": 403,
+  "message": "Access denied. The API key provided is for another organization. You can only access your organization's wallets.",
+  "data": null
+}
+```
+
+```json 500 Internal Server Error
+{
+  "code": "500",
+  "success": false,
+  "message": "An unexpected error occurred",
+  "data": null
+}
+```
+
 </ResponseExample>
