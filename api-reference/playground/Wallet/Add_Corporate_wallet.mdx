@@ -1,37 +1,56 @@
 ---
-title: "Create Corporate Customer Wallet"
-api: "POST /corporate/customers/{customerId}/wallets"
-description: "This endpoint enables you to create a wallet for a corporate customer"
+title: 'Create Corporate Customer Wallet'
+api: 'POST /corporate/customers/{customerId}/wallets'
+description: 'This endpoint enables you to create a wallet for a corporate customer'
 ---
 
 ---
 
 ## Request Parameters
 
-<ParamField path="customerId" type="string" required>
-	Thr uniqe identifier of the corporate customer to whom the director is to be
-	added. **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
+<ParamField path='customerId' type='string' required>
+  Thr uniqe identifier of the corporate customer to whom the director is to be
+  added. **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
 </ParamField>
 
-<ParamField body="currencyId" type="string" required>
-	The unique identifier of the currency. **Example:**
-	`3fa85f64-5717-4562-b3fc-2c963f66afa6`
+<ParamField body='currencyId' type='string' required>
+  The unique identifier of the currency. **Example:**
+  `3fa85f64-5717-4562-b3fc-2c963f66afa6`
 </ParamField>
 
-<ParamField body="name" type="string" required>
-	The name of the currency. **Example:** `Nigerian Naira`
+<ParamField body='name' type='string' required>
+  The name of the currency. **Example:** `Nigerian Naira`
 </ParamField>
 
 <ResponseExample>
 
 ```json
 {
-    "statuscode": "00",
-    "message": "Customer successfully profiled",
-    "data": {
-      "customerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "code": "00",
+  "success": true,
+  "message": "Created Successfully",
+  "data": {
+    "id": "a6d754bb-a7af-11f0-8d44-4af84d9ff6f1",
+    "currencyId": "12345f0c-24fa-410c-b66c-1hhec56e5cd8",
+    "customerId": "037be221-6a1e-458c-aa50-c2ff06136b83",
+    "name": "Chow/Chow's Business - Chow's first",
+    "walletGroupId": null,
+    "customerTypeId": "23g77cf6-f355-4536-ae96-adf24682809f",
+    "virtualAccount": {
+      "accountNumber": "9710123456",
+      "bankCode": "232",
+      "bankName": "Sterling Bank"
     }
-    "errors": [],
+  }
+}
+```
+
+```json 500 Internal Server Error
+{
+  "code": "500",
+  "success": false,
+  "message": "An unexpected error occurred",
+  "data": null
 }
 ```
 
