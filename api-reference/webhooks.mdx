@@ -1,5 +1,5 @@
 ---
-title: "Webhooks"
+title: 'Webhooks'
 ---
 
 ## Overview
@@ -15,10 +15,24 @@ It’s like getting a text message when a delivery arrives, instead of refreshin
 1. You configure your webhook URL (an API endpoint on your server).
 2. We send a `POST` request to that URL when a payment/collection is successfully processed on behalf of **you** or your **customer**.
 3. You verify the authenticity of the webhook by using your apikey to hash the notification payload and compare with the signature attached in the headers of the webhook.
-4. If, verification is successful process the transaction data on your end — e.g., mark an order as paid - and respond to the notfication with a light response like 00 Success.
+4. If, verification is successful process the transaction data on your end — e.g., mark an order as paid - and respond to the notification with a light response like 200 Success.
 
 <Info>
-  If we receive an error response from your webhook url, our system would automatically retry sending you that notification 4 times.
+If we receive an error response from your webhook url, our system would automatically retry sending you that notification 4 times.
+We will retry with the schedule below:
+
+1st try => immediately
+
+2nd try => after 5mins
+
+3rd try => after 5mins
+
+4th try => after 1hour
+
+5th//last try => after 4hours.
+
+If we don't get a 200 Success response after the last and 5th retry, we stop resending the webhook.
+
 </Info>
 
 Here is simple example of a webhook URL
@@ -34,7 +48,8 @@ app.post('/your-url/webhook', (req, res) => {
 <Info>
   The below is the field name of the signature header to verify the authenticity of the request. This is important for security, ensuring that the data comes from us and hasn't been tampered with.
 
-  `**x-embedly-signature : sha512(notification payload, api_key)**`
+`**x-embedly-signature : sha512(notification payload, api_key)**`
+
 </Info>
 
 ## Sample code for payload verification
@@ -42,35 +57,32 @@ app.post('/your-url/webhook', (req, res) => {
 <CodeGroup>
 
 ```javascript JavaScript
-app.post("/webhook", jsonParserWithRaw, (req, res) => {
-	const signature = req.headers["x-embedly-signature"];
-	const rawBody = req.rawBody; 
-	if (!signature || !rawBody) {
-		return res.status(400).json({ error: "Missing signature or body" });
-	}
+app.post('/webhook', jsonParserWithRaw, (req, res) => {
+  const signature = req.headers['x-embedly-signature'];
+  const rawBody = req.rawBody;
+  if (!signature || !rawBody) {
+    return res.status(400).json({ error: 'Missing signature or body' });
+  }
 
-    const hmac = crypto.createHmac("sha512", api_key);
-    hmac.update(rawBody, "utf8");
-    const computedSignature = hmac.digest("hex");
+  const hmac = crypto.createHmac('sha512', api_key);
+  hmac.update(rawBody, 'utf8');
+  const computedSignature = hmac.digest('hex');
 
-
-    if (computedSignature !== signature) {
-    	return res.status(401).json({
-    		status: "error",
-    		message: "Invalid signature",
-    	});
-    }
-
-    res.status(200).json({
-    	status: "success",
-    	message: "Webhook received and verified",
-    	data: req.body,
-    	timestamp: new Date().toISOString(),
+  if (computedSignature !== signature) {
+    return res.status(401).json({
+      status: 'error',
+      message: 'Invalid signature',
     });
+  }
 
+  res.status(200).json({
+    status: 'success',
+    message: 'Webhook received and verified',
+    data: req.body,
+    timestamp: new Date().toISOString(),
+  });
 });
 ```
-
 
 ```go Go
 func webhookHandler(w http.ResponseWriter, r *http.Request) {
@@ -143,60 +155,58 @@ func webhookHandler(w http.ResponseWriter, r *http.Request) {
 
 ```json Payout
 {
-	"event": "payout",
-	"data": {
-		"sessionId": null,
-		"debitAccountNumber": "0097411531",
-		"creditAccountNumber": "0003433020",
-		"debitAccountName": "Olufunso Olunaike",
-		"creditAccountName": "OLUNAIKE OLUFUNSO ABRAHAM",
-		"amount": 500.0,
-		"currency": "NGN",
-		"status": "Success",
-		"paymentReference": "668931654633533785081478974241",
-		"deliveryStatusMessage": null,
-		"deliveryStatusCode": null,
-		"dateOfTransaction": "0001-01-01T00:00:00"
-	}
+  "event": "payout",
+  "data": {
+    "sessionId": null,
+    "debitAccountNumber": "0097411531",
+    "creditAccountNumber": "0003433020",
+    "debitAccountName": "Olufunso Olunaike",
+    "creditAccountName": "OLUNAIKE OLUFUNSO ABRAHAM",
+    "amount": 500.0,
+    "currency": "NGN",
+    "status": "Success",
+    "paymentReference": "668931654633533785081478974241",
+    "deliveryStatusMessage": null,
+    "deliveryStatusCode": null,
+    "dateOfTransaction": "0001-01-01T00:00:00"
+  }
 }
 ```
-
 
 ```json Inflow
 {
-	"event": "nip",
-	"data": {
-		"accountNumber": "9710128903",
-		"reference": "000001250630150523063421028600",
-		"amount": 100.0,
-		"fee": 0.0,
-		"senderName": "OGHENETEGA KELVIN ESEDERE",
-		"senderBank": "",
-		"dateOfTransaction": "2025-06-30T14:07:14.4553594Z",
-		"description": "TRF 9710128903 PAYREF: OneBank Transfer from OGHENETEGA KELVIN ESEDERE to Neosmart Consulting/Onajite Esedere"
-	}
+  "event": "nip",
+  "data": {
+    "accountNumber": "9710128903",
+    "reference": "000001250630150523063421028600",
+    "amount": 100.0,
+    "fee": 0.0,
+    "senderName": "OGHENETEGA KELVIN ESEDERE",
+    "senderBank": "",
+    "dateOfTransaction": "2025-06-30T14:07:14.4553594Z",
+    "description": "TRF 9710128903 PAYREF: OneBank Transfer from OGHENETEGA KELVIN ESEDERE to Neosmart Consulting/Onajite Esedere"
+  }
 }
 ```
 
-
 ```json Checkout Success
 {
-    "event": "checkout.payment.success",
-    "data": {
-        "transactionId": "f958ce5d-4878-4e4d-ab64-6e8a6209ed6e",
-        "walletId": "9bea6e3e-2e55-46c4-a624-b47b0c8c8053",
-        "checkoutRef": "CHK202510172015590962305",
-        "amount": 200.00,
-        "status": "success",
-        "message": "Payment received successfully",
-        "senderAccountNumber": "0098960218",
-        "senderName": "OLALEKAN YUSUF BALOGUN",
-        "senderBankCode": "000001",
-        "recipientAccountNumber": "9550016702",
-        "recipientName": "Crow Pilot Checkout",
-        "reference": "000001251017211645a630c9aa9405",
-        "createdAt": "2025-10-17T20:18:38.0815347Z"
-    }
+  "event": "checkout.payment.success",
+  "data": {
+    "transactionId": "f958ce5d-4878-4e4d-ab64-6e8a6209ed6e",
+    "walletId": "9bea6e3e-2e55-46c4-a624-b47b0c8c8053",
+    "checkoutRef": "CHK202510172015590962305",
+    "amount": 200.0,
+    "status": "success",
+    "message": "Payment received successfully",
+    "senderAccountNumber": "0098960218",
+    "senderName": "OLALEKAN YUSUF BALOGUN",
+    "senderBankCode": "000001",
+    "recipientAccountNumber": "9550016702",
+    "recipientName": "Crow Pilot Checkout",
+    "reference": "000001251017211645a630c9aa9405",
+    "createdAt": "2025-10-17T20:18:38.0815347Z"
+  }
 }
 ```
 
