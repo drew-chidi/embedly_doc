@@ -129,18 +129,6 @@
           ]
         },
         {
-          "group": "WalletGroup",
-          "pages": [
-            "api-reference/WalletGroup",
-            "api-reference/playground/WalletGroup/Add_Wallet_Group_add",
-            "api-reference/playground/WalletGroup/Add_Wallet_to_WalletGroup",
-            "api-reference/playground/WalletGroup/Add_WalletGroup_Feature",
-            "api-reference/playground/WalletGroup/Get_Wallet_Features",
-            "api-reference/playground/WalletGroup/Get_Wallet_Group_ID",
-            "api-reference/playground/WalletGroup/Get_Wallet_Group"
-          ]
-        },
-        {
           "group": "Payout",
           "pages": [
             "api-reference/payout",
