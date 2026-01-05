@@ -1,65 +1,74 @@
 ---
-title: "Update Corporate Customer Director"
-api: "PUT /corporate/customers/{customerId}/directors/{directorId}"
-description: "This endpoint enables you to update a corporate customer director details"
+title: 'Update Corporate Customer Director'
+api: 'PUT /corporate/customers/{customerId}/directors/{directorId}'
+description: 'This endpoint enables you to update a corporate customer director details'
 ---
 
 ---
 
 ## Request Parameters
 
-<ParamField path="customerId" type="string" required>
+<ParamField path='customerId' type='string' required>
   The unique identifier of a corporate customer. **Example:** `123456`
 </ParamField>
 
-<ParamField path="directorId" type="string" required>
+<ParamField path='directorId' type='string' required>
   The unique identifier mapped to a corporate customer's director. **Example:**
   `01234567-0001`
 </ParamField>
 
-<ParamField body="firstName" type="string">
+<ParamField body='firstName' type='string'>
   The first name of the individual. **Example:** `John`
 </ParamField>
 
-<ParamField body="lastName" type="string">
+<ParamField body='lastName' type='string'>
   The last name of the individual. **Example:** `Doe`
 </ParamField>
 
-<ParamField body="middleName" type="string" optional>
+<ParamField body='middleName' type='string' optional>
   The middle name of the individual. **Example:** `Michael`
 </ParamField>
 
-<ParamField body="email" type="string">
+<ParamField body='email' type='string'>
   The individual's email address. **Example:** `john.doe@example.com`
 </ParamField>
 
-<ParamField body="phoneNumber" type="string">
+<ParamField body='phoneNumber' type='string'>
   The individual's phone number. **Example:** `08012345678`
 </ParamField>
 
-<ParamField body="dateOfBirth" type="string">
+<ParamField body='dateOfBirth' type='string'>
   The individual's date of birth in `YYYY-MM-DD` format. **Example:**
   `1980-01-01`
 </ParamField>
 
-<ParamField body="address" type="string">
+<ParamField body='address' type='string'>
   The residential address of the individual. **Example:** `12 Adeola Odeku
   Street, Victoria Island, Lagos`
 </ParamField>
 
-<ParamField body="bvn" type="string">
+<ParamField body='bvn' type='string'>
   The Bank Verification Number (BVN) of the individual. **Example:**
   `12345678901`
 </ParamField>
 
-<ParamField body="nin" type="string">
+<ParamField body='nin' type='string'>
   The National Identification Number (NIN) of the individual. **Example:**
   `12345678901`
 </ParamField>
 
-<ParamField body="meterNumber" type="string" optional>
+<ParamField body='meterNumber' type='string' optional>
   The individual's electricity meter number, if applicable. **Example:**
   `1234567890`
+</ParamField>
+
+<ParamField body='discoCode' type='string' optional>
+  Disco Code must be one of ABUJA, EKO, IKEJA, IBADAN, ENUGU, PH, JOS, KADUNA,
+  KANO, BH, PROTOGY, PHISBOND, ACCESSPOWER, YOLA, ABIA, ADAMAWA, AKWA IBOM,
+  ANAMBRA, BAUCHI, BAYELSA, BENUE, BORNO, CROSS RIVER, DELTA, EBONYI, EDO,
+  EKITI, GOMBE, IMO, JIGAWA, KATSINA, KEBBI, KOGI, KWARA, LAGOS, NASSARAWA,
+  NIGER, OGUN, ONDO, OSUN, OYO, PLATEAU, RIVERS, SOKOTO, TARABA, YOBE, ZAMFARA,
+  FCT
 </ParamField>
 
 <ResponseExample>
