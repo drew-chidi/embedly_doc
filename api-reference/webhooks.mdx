@@ -221,4 +221,61 @@ func webhookHandler(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
+```json Payout
+{
+  "event": "payout",
+  "data": {
+    "sessionId": null,
+    "debitAccountNumber": "0097411531",
+    "creditAccountNumber": "0003433020",
+    "debitAccountName": "Olufunso Olunaike",
+    "creditAccountName": "OLUNAIKE OLUFUNSO ABRAHAM",
+    "amount": 500.0,
+    "currency": "NGN",
+    "status": "Success",
+    "paymentReference": "668931654633533785081478974241",
+    "deliveryStatusMessage": null,
+    "deliveryStatusCode": null,
+    "dateOfTransaction": "0001-01-01T00:00:00"
+  }
+}
+```
+
+```json Inflow
+{
+  "event": "nip",
+  "data": {
+    "accountNumber": "9710128903",
+    "reference": "000001250630150523063421028600",
+    "amount": 100.0,
+    "fee": 0.0,
+    "senderName": "OGHENETEGA KELVIN ESEDERE",
+    "senderBank": "",
+    "dateOfTransaction": "2025-06-30T14:07:14.4553594Z",
+    "description": "TRF 9710128903 PAYREF: OneBank Transfer from OGHENETEGA KELVIN ESEDERE to Neosmart Consulting/Onajite Esedere"
+  }
+}
+```
+
+```json Checkout Success
+{
+  "event": "checkout.payment.success",
+  "data": {
+    "transactionId": "f958ce5d-4878-4e4d-ab64-6e8a6209ed6e",
+    "walletId": "9bea6e3e-2e55-46c4-a624-b47b0c8c8053",
+    "checkoutRef": "CHK202510172015590962305",
+    "amount": 200.0,
+    "status": "success",
+    "message": "Payment received successfully",
+    "senderAccountNumber": "0098960218",
+    "senderName": "OLALEKAN YUSUF BALOGUN",
+    "senderBankCode": "000001",
+    "recipientAccountNumber": "9550016702",
+    "recipientName": "Crow Pilot Checkout",
+    "reference": "000001251017211645a630c9aa9405",
+    "createdAt": "2025-10-17T20:18:38.0815347Z"
+  }
+}
+```
+
 </RequestExample>
