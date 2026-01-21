@@ -153,7 +153,8 @@
           "pages": [
             "api-reference/cards",
             "api-reference/playground/cards/afrigo/activate_card",
-            "api-reference/playground/cards/afrigo/reset_card_pin"
+            "api-reference/playground/cards/afrigo/reset_card_pin",
+            "api-reference/playground/cards/afrigo/Simulate_Debit_Card_Trx"
           ]
         },
         {
