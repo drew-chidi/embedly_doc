@@ -1,0 +1,133 @@
+---
+title: Get all split beneficiaries
+api: 'GET https://checkout-staging.embedly.ng/api/v1/split-beneficiaries'
+description: 'Retrieves all split beneficiaries for the authenticated organization with optional filters for active status and search term. Supports pagination. Organization API key required.'
+---
+
+<ParamField path='organizationId' type='string' required>
+  The unique organizationId. Example: `3fa85f64-5717-4562-b3fc-2c963f66afa6`
+</ParamField>
+
+<ParamField query='page' type='string' default='1' />
+<ParamField query='pageSize' type='string' default='10' />
+<ParamField query='isActive' type='boolean' />
+<ParamField query='searchTerm' type='string' />
+
+<ResponseExample>
+  ```json 200 Success
+{
+  "statusCode": 200,
+  "message": "Beneficiaries retrieved successfully",
+  "data": {
+    "beneficiaries": [
+      {
+        "id": "6b6e94a9-c795-4c22-a94a-bc3fce632cc9",
+        "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+        "beneficiaryName": "string",
+        "accountNumber": "4278816936",
+        "bankCode": "string",
+        "bankName": "string",
+        "beneficiaryAlias": "string",
+        "isActive": true,
+        "createdAt": "2026-02-16T07:59:45.982564Z",
+        "updatedAt": "2026-02-16T08:01:42.358107Z"
+      },
+      {
+        "id": "1c7e2c80-9f8c-4bd8-8c9d-bd63810c5df9",
+        "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+        "beneficiaryName": "string",
+        "accountNumber": "4278816938",
+        "bankCode": "string",
+        "bankName": "string",
+        "beneficiaryAlias": "string",
+        "isActive": true,
+        "createdAt": "2026-02-16T07:57:04.468813Z",
+        "updatedAt": null
+      },
+      {
+        "id": "97c576be-7953-4b58-8699-2b0cd2265857",
+        "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+        "beneficiaryName": "John Doe",
+        "accountNumber": "2345667880",
+        "bankCode": "000007",
+        "bankName": "Fidelity Bank",
+        "beneficiaryAlias": "testing",
+        "isActive": true,
+        "createdAt": "2026-01-28T08:20:13.899217Z",
+        "updatedAt": null
+      },
+      {
+        "id": "0c11927f-f4a3-4c0b-b712-db457375ad43",
+        "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+        "beneficiaryName": "John Doe",
+        "accountNumber": "0108834787",
+        "bankCode": "000009",
+        "bankName": "Citi Bank",
+        "beneficiaryAlias": "testing",
+        "isActive": true,
+        "createdAt": "2026-01-23T16:10:55.768738Z",
+        "updatedAt": null
+      },
+      {
+        "id": "6978ba2c-b7dd-4d7c-aca2-293695637977",
+        "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+        "beneficiaryName": "John Doe",
+        "accountNumber": "2345667887",
+        "bankCode": "000013",
+        "bankName": "GTBank Plc",
+        "beneficiaryAlias": "pop",
+        "isActive": true,
+        "createdAt": "2026-01-21T08:43:30.223918Z",
+        "updatedAt": null
+      },
+      {
+        "id": "8ccbefcb-f90b-431b-bec6-c35b0ca96daf",
+        "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+        "beneficiaryName": "John Doe",
+        "accountNumber": "2345667881",
+        "bankCode": "090108",
+        "bankName": "New Prudential Bank",
+        "beneficiaryAlias": "New",
+        "isActive": true,
+        "createdAt": "2026-01-20T08:06:48.919992Z",
+        "updatedAt": null
+      },
+      {
+        "id": "0dc6566a-dc10-4cd4-945a-620c71ef3d11",
+        "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+        "beneficiaryName": "John Doe",
+        "accountNumber": "0000000000",
+        "bankCode": "000009",
+        "bankName": null,
+        "beneficiaryAlias": "John Doe",
+        "isActive": true,
+        "createdAt": "2026-01-19T17:36:38.598417Z",
+        "updatedAt": "2026-01-21T17:06:32.333421Z"
+      },
+    ],
+    "page": 1,
+    "pageSize": 20,
+    "totalCount": 15,
+    "totalPages": 1
+  }
+}
+```
+
+```json 401 Unauthorized
+{
+  "code": "401",
+  "success": false,
+  "message": "x-api-key is missing in the header",
+  "data": null
+}
+```
+
+```json 403 Forbidden
+{
+  "statusCode": 403,
+  "message": "Access denied. The API key provided is for another organization. You can only access your organization's wallets.",
+  "data": null
+}
+```
+
+</ResponseExample>

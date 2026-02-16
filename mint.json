@@ -144,7 +144,20 @@
             "api-reference/playground/checkout/get_org_prefix_mappings",
             "api-reference/playground/checkout/create_checkout_wallet",
             "api-reference/playground/checkout/get_checkout_wallet",
-            "api-reference/playground/checkout/get_checkout_txns_by_walletId"
+            "api-reference/playground/checkout/get_checkout_txns_by_walletId",
+
+            {
+              "group": "Split Checkout",
+              "pages": [
+                "api-reference/playground/checkout/SplitCheckout/create_split_beneficiary",
+
+                "api-reference/playground/checkout/SplitCheckout/get_split_beneficiaries",
+
+                "api-reference/playground/checkout/SplitCheckout/activate_a_split_beneficiary",
+
+                "api-reference/playground/checkout/SplitCheckout/deactivate_a_split_beneficiary"
+              ]
+            }
           ]
         },
         {
