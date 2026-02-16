@@ -1,0 +1,69 @@
+---
+title: 'Activate a Split Beneficiary'
+api: 'PATCH https://checkout-staging.embedly.ng/api/v1/split-beneficiaries/{beneficiaryId}/activate'
+description: 'Activates a split beneficiary for the authenticated organization. Organization API key required.'
+---
+
+<ParamField body='beneficiaryId' type='string' required>
+  **Example:** `02600494-1a3c-11f0-a818-6045bd97b81d`
+</ParamField>
+
+<ParamField body='organizationId' type='string' required>
+  **Example:** `02600494-1a3c-11f0-a818-6045bd97b81d`
+</ParamField>
+
+<ResponseExample>
+```json 200 Success
+{
+  "statusCode": 200,
+  "message": "Checkout wallet reactivated successfully",
+  "data": {
+      "id": "bfce68af-4b43-4827-abb8-985a2d3b8a79",
+      "walletNumber": "2225657965",
+      "organizationId": "02600494-1a3c-11f0-a818-6045bd97b81d",
+      "walletName": "Embedly Check Demo",
+      "status": "Reactivated",
+      "createdAt": "2025-07-14T16:47:32.297357Z",
+      "expiresAt": "2025-07-24T14:28:01.1254478Z",
+      "reactivatedAt": "2025-07-24T13:58:01.1254127Z",
+      "expectedAmount": 20000,
+      "checkoutRef": "CHK202507241358013544205"
+  }
+}
+```
+
+```json 400 Bad Request
+{
+  "statusCode": 400,
+  "message": "Specified organization prefix mapping not found",
+  "data": null
+}
+```
+
+```json 401 Unauthorized
+{
+  "code": "401",
+  "success": false,
+  "message": "x-api-key is missing in the header",
+  "data": null
+}
+```
+
+```json 403 Forbidden
+{
+  "statusCode": 403,
+  "message": "Access denied. The API key provided is for another organization. You can only access your organization's wallets.",
+  "data": null
+}
+```
+
+```json 500 Internal Server Error
+{
+  "code": "500",
+  "success": false,
+  "message": "An unexpected error occurred",
+  "data": null
+}
+```
+
+</ResponseExample>

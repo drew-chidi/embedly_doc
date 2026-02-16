@@ -1,0 +1,114 @@
+---
+title: Get all split beneficiaries
+api: 'GET https://checkout-staging.embedly.ng/api/v1/split-beneficiaries'
+description: 'Retrieves all split beneficiaries for the authenticated organization with optional filters for active status and search term. Supports pagination. Organization API key required.'
+---
+
+<ParamField path='organizationId' type='string' required>
+  The unique organizationId. Example: `3fa85f64-5717-4562-b3fc-2c963f66afa6`
+</ParamField>
+
+<ParamField query='page' type='string' default='1' />
+<ParamField query='pageSize' type='string' default='10' />
+<ParamField query='isActive' type='boolean' />
+<ParamField query='searchTerm' type='string' />
+
+<ResponseExample>
+  ```json 200 Success
+{
+  "statusCode": 200,
+  "message": "success",
+  "data": [
+    {
+      "id": "d8c01350-b07a-4547-a9e6-71e3654dca7c",
+      "walletNumber": "7537432415",
+      "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+      "walletName": "Seafinish Global",
+      "status": "Expired",
+      "createdAt": "2025-11-19T17:41:48.083601Z",
+      "expiresAt": "2025-11-19T18:31:48.083613Z",
+      "usedAt": null,
+      "expiredAt": "2025-11-19T18:32:45.075012Z",
+      "reactivatedAt": null,
+      "expectedAmount": 5000,
+      "invoiceReference": null,
+      "description": null,
+      "currencyCode": "NGN",
+      "customerEmail": "ada@getnada.com",
+      "customerName": null,
+      "metadata": "{\"name\": \"Ada\"}",
+      "splitType": "Fixed",
+      "splitConfigurations": [
+        {
+          "id": "1b6bd9e3-0822-4840-b414-a75c22cafe7b",
+          "beneficiaryId": "cb0ada60-472a-49a3-b1d2-35d25522c5d8",
+          "splitValue": 3000,
+          "feeValue": 500,
+          "feeBearer": true,
+          "beneficiary": {
+            "id": "cb0ada60-472a-49a3-b1d2-35d25522c5d8",
+            "beneficiaryName": "Ikem",
+            "accountNumber": "7035336912",
+            "bankCode": "034",
+            "beneficiaryAlias": "Ada",
+            "isActive": true
+          }
+        },
+        {
+          "id": "d921f009-2537-4934-ba77-4e6e75b85171",
+          "beneficiaryId": "3c10b0c8-d1e1-4814-b997-561c45454964",
+          "splitValue": 2000,
+          "feeValue": 500,
+          "feeBearer": true,
+          "beneficiary": {
+            "id": "3c10b0c8-d1e1-4814-b997-561c45454964",
+            "beneficiaryName": "lope",
+            "accountNumber": "3469967352",
+            "bankCode": "099",
+            "beneficiaryAlias": "Mel",
+            "isActive": true
+          }
+        }
+      ],
+      "walletHistories": [
+        {
+          "id": "31187004-d803-401c-92d9-538b503d08f0",
+          "checkoutRef": "CHK202511191741489589689",
+          "expectedAmount": 5000,
+          "generatedAt": "2025-11-19T17:41:48.962458Z",
+          "usedAt": null,
+          "status": "Expired",
+          "transactionId": null
+        }
+      ]
+    },
+  ],
+  "pagination": {
+    "currentPage": 1,
+    "pageSize": 10,
+    "totalCount": 82,
+    "totalPages": 9,
+    "hasNextPage": true,
+    "hasPreviousPage": false
+  }
+}
+```
+
+```json 401 Unauthorized
+{
+  "code": "401",
+  "success": false,
+  "message": "x-api-key is missing in the header",
+  "data": null
+}
+```
+
+```json 403 Forbidden
+{
+  "statusCode": 403,
+  "message": "Access denied. The API key provided is for another organization. You can only access your organization's wallets.",
+  "data": null
+}
+```
+
+</ResponseExample>
