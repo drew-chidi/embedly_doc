@@ -17,79 +17,98 @@ description: 'Retrieves all split beneficiaries for the authenticated organizati
   ```json 200 Success
 {
   "statusCode": 200,
-  "message": "success",
-  "data": [
-    {
-      "id": "d8c01350-b07a-4547-a9e6-71e3654dca7c",
-      "walletNumber": "7537432415",
-      "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
-      "walletName": "Seafinish Global",
-      "status": "Expired",
-      "createdAt": "2025-11-19T17:41:48.083601Z",
-      "expiresAt": "2025-11-19T18:31:48.083613Z",
-      "usedAt": null,
-      "expiredAt": "2025-11-19T18:32:45.075012Z",
-      "reactivatedAt": null,
-      "expectedAmount": 5000,
-      "invoiceReference": null,
-      "description": null,
-      "currencyCode": "NGN",
-      "customerEmail": "ada@getnada.com",
-      "customerName": null,
-      "metadata": "{\"name\": \"Ada\"}",
-      "splitType": "Fixed",
-      "splitConfigurations": [
-        {
-          "id": "1b6bd9e3-0822-4840-b414-a75c22cafe7b",
-          "beneficiaryId": "cb0ada60-472a-49a3-b1d2-35d25522c5d8",
-          "splitValue": 3000,
-          "feeValue": 500,
-          "feeBearer": true,
-          "beneficiary": {
-            "id": "cb0ada60-472a-49a3-b1d2-35d25522c5d8",
-            "beneficiaryName": "Ikem",
-            "accountNumber": "7035336912",
-            "bankCode": "034",
-            "beneficiaryAlias": "Ada",
-            "isActive": true
-          }
-        },
-        {
-          "id": "d921f009-2537-4934-ba77-4e6e75b85171",
-          "beneficiaryId": "3c10b0c8-d1e1-4814-b997-561c45454964",
-          "splitValue": 2000,
-          "feeValue": 500,
-          "feeBearer": true,
-          "beneficiary": {
-            "id": "3c10b0c8-d1e1-4814-b997-561c45454964",
-            "beneficiaryName": "lope",
-            "accountNumber": "3469967352",
-            "bankCode": "099",
-            "beneficiaryAlias": "Mel",
-            "isActive": true
-          }
-        }
-      ],
-      "walletHistories": [
-        {
-          "id": "31187004-d803-401c-92d9-538b503d08f0",
-          "checkoutRef": "CHK202511191741489589689",
-          "expectedAmount": 5000,
-          "generatedAt": "2025-11-19T17:41:48.962458Z",
-          "usedAt": null,
-          "status": "Expired",
-          "transactionId": null
-        }
-      ]
-    },
-  ],
-  "pagination": {
-    "currentPage": 1,
-    "pageSize": 10,
-    "totalCount": 82,
-    "totalPages": 9,
-    "hasNextPage": true,
-    "hasPreviousPage": false
+  "message": "Beneficiaries retrieved successfully",
+  "data": {
+    "beneficiaries": [
+      {
+        "id": "6b6e94a9-c795-4c22-a94a-bc3fce632cc9",
+        "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+        "beneficiaryName": "string",
+        "accountNumber": "4278816936",
+        "bankCode": "string",
+        "bankName": "string",
+        "beneficiaryAlias": "string",
+        "isActive": true,
+        "createdAt": "2026-02-16T07:59:45.982564Z",
+        "updatedAt": "2026-02-16T08:01:42.358107Z"
+      },
+      {
+        "id": "1c7e2c80-9f8c-4bd8-8c9d-bd63810c5df9",
+        "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+        "beneficiaryName": "string",
+        "accountNumber": "4278816938",
+        "bankCode": "string",
+        "bankName": "string",
+        "beneficiaryAlias": "string",
+        "isActive": true,
+        "createdAt": "2026-02-16T07:57:04.468813Z",
+        "updatedAt": null
+      },
+      {
+        "id": "97c576be-7953-4b58-8699-2b0cd2265857",
+        "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+        "beneficiaryName": "John Doe",
+        "accountNumber": "2345667880",
+        "bankCode": "000007",
+        "bankName": "Fidelity Bank",
+        "beneficiaryAlias": "testing",
+        "isActive": true,
+        "createdAt": "2026-01-28T08:20:13.899217Z",
+        "updatedAt": null
+      },
+      {
+        "id": "0c11927f-f4a3-4c0b-b712-db457375ad43",
+        "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+        "beneficiaryName": "John Doe",
+        "accountNumber": "0108834787",
+        "bankCode": "000009",
+        "bankName": "Citi Bank",
+        "beneficiaryAlias": "testing",
+        "isActive": true,
+        "createdAt": "2026-01-23T16:10:55.768738Z",
+        "updatedAt": null
+      },
+      {
+        "id": "6978ba2c-b7dd-4d7c-aca2-293695637977",
+        "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+        "beneficiaryName": "John Doe",
+        "accountNumber": "2345667887",
+        "bankCode": "000013",
+        "bankName": "GTBank Plc",
+        "beneficiaryAlias": "pop",
+        "isActive": true,
+        "createdAt": "2026-01-21T08:43:30.223918Z",
+        "updatedAt": null
+      },
+      {
+        "id": "8ccbefcb-f90b-431b-bec6-c35b0ca96daf",
+        "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+        "beneficiaryName": "John Doe",
+        "accountNumber": "2345667881",
+        "bankCode": "090108",
+        "bankName": "New Prudential Bank",
+        "beneficiaryAlias": "New",
+        "isActive": true,
+        "createdAt": "2026-01-20T08:06:48.919992Z",
+        "updatedAt": null
+      },
+      {
+        "id": "0dc6566a-dc10-4cd4-945a-620c71ef3d11",
+        "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+        "beneficiaryName": "John Doe",
+        "accountNumber": "0000000000",
+        "bankCode": "000009",
+        "bankName": null,
+        "beneficiaryAlias": "John Doe",
+        "isActive": true,
+        "createdAt": "2026-01-19T17:36:38.598417Z",
+        "updatedAt": "2026-01-21T17:06:32.333421Z"
+      },
+    ],
+    "page": 1,
+    "pageSize": 20,
+    "totalCount": 15,
+    "totalPages": 1
   }
 }
 ```

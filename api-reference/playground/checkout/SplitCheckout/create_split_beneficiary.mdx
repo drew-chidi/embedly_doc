@@ -32,18 +32,18 @@ description: 'This endpoint generates a new checkout split beneficiary for an or
 ```json 200 Success
 {
   "statusCode": 200,
-  "message": "Checkout wallet reactivated successfully",
+  "message": "Split beneficiary created successfully",
   "data": {
-      "id": "bfce68af-4b43-4827-abb8-985a2d3b8a79",
-      "walletNumber": "2225657965",
-      "organizationId": "02600494-1a3c-11f0-a818-6045bd97b81d",
-      "walletName": "Embedly Check Demo",
-      "status": "Reactivated",
-      "createdAt": "2025-07-14T16:47:32.297357Z",
-      "expiresAt": "2025-07-24T14:28:01.1254478Z",
-      "reactivatedAt": "2025-07-24T13:58:01.1254127Z",
-      "expectedAmount": 20000,
-      "checkoutRef": "CHK202507241358013544205"
+    "id": "1c7e2c80-9f8c-4bd8-8c9d-bd63810c5df9",
+    "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+    "beneficiaryName": "string",
+    "accountNumber": "4278816938",
+    "bankCode": "string",
+    "bankName": "string",
+    "beneficiaryAlias": "string",
+    "isActive": true,
+    "createdAt": "2026-02-16T07:57:04.4688132Z",
+    "updatedAt": null
   }
 }
 ```
@@ -51,7 +51,11 @@ description: 'This endpoint generates a new checkout split beneficiary for an or
 ```json 400 Bad Request
 {
   "statusCode": 400,
-  "message": "Specified organization prefix mapping not found",
+  "message": "Validation failed",
+  "errors": [
+    "The request field is required.",
+    "The JSON value could not be converted to System.Guid. Path: $.organizationId | LineNumber: 1 | BytePositionInLine: 60."
+  ],
   "data": null
 }
 ```

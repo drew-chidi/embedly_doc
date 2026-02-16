@@ -16,19 +16,8 @@ description: 'Activates a split beneficiary for the authenticated organization. 
 ```json 200 Success
 {
   "statusCode": 200,
-  "message": "Checkout wallet reactivated successfully",
-  "data": {
-      "id": "bfce68af-4b43-4827-abb8-985a2d3b8a79",
-      "walletNumber": "2225657965",
-      "organizationId": "02600494-1a3c-11f0-a818-6045bd97b81d",
-      "walletName": "Embedly Check Demo",
-      "status": "Reactivated",
-      "createdAt": "2025-07-14T16:47:32.297357Z",
-      "expiresAt": "2025-07-24T14:28:01.1254478Z",
-      "reactivatedAt": "2025-07-24T13:58:01.1254127Z",
-      "expectedAmount": 20000,
-      "checkoutRef": "CHK202507241358013544205"
-  }
+  "message": "Beneficiary activated successfully",
+  "data": null
 }
 ```
 
@@ -52,7 +41,15 @@ description: 'Activates a split beneficiary for the authenticated organization. 
 ```json 403 Forbidden
 {
   "statusCode": 403,
-  "message": "Access denied. The API key provided is for another organization. You can only access your organization's wallets.",
+  "message": "Access denied. The API key provided is invalid. Please try again.",
+  "data": null
+}
+```
+
+```json 404 Forbidden
+{
+  "statusCode": 404,
+  "message": "Beneficiary with ID 6b6e94a9-c795-4c22-a94a-bc3fce632cc0 not found for this organization",
   "data": null
 }
 ```
