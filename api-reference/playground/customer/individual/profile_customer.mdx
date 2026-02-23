@@ -1,7 +1,7 @@
 ---
-title: "Create Customer"
-api: "POST /customers/add"
-description: "This endpoint enables you to create a customer profile"
+title: 'Create Customer'
+api: 'POST /customers/add'
+description: 'This endpoint enables you to create a customer profile'
 ---
 
 # Create Customer
@@ -25,54 +25,56 @@ Use this endpoint to create profile for an individual.
 
 ## Request Parameters
 
-<ParamField body="organizationId" type="string" required></ParamField>
+<ParamField body='organizationId' type='string' required></ParamField>
 
-<ParamField body="firstName" type="string" required>
+<ParamField body='firstName' type='string' required>
   The first name of the individual. **Example:** `John`
 </ParamField>
 
-<ParamField body="lastName" type="string" required>
+<ParamField body='lastName' type='string' required>
   The last name of the individual. **Example:** `Doe`
 </ParamField>
 
-<ParamField body="middleName" type="string" required>
+<ParamField body='middleName' type='string' required>
   The middle name of the individual. **Example:** `Michael`
 </ParamField>
 
-<ParamField body="emailAddress" type="string" required>
-  The individual's email address. **Example:** `john.doe@example.com`
+<ParamField body='emailAddress' type='string'>
+  The individual's email address. This is only required if the organisation is
+  an Open Organization. **Example:** `john.doe@example.com`
 </ParamField>
 
-<ParamField body="mobileNumber" type="string" required>
-  The individual's phone number. **Example:** `08012345678`
+<ParamField body='mobileNumber' type='string'>
+  The individual's phone number. This is only required if the organisation is an
+  Open Organization. **Example:** `08012345678`
 </ParamField>
 
-<ParamField body="dob" type="string" required>
+<ParamField body='dob' type='string' required>
   The individual's date of birth in `YYYY-MM-DD` format. **Example:**
   `1980-01-01`
 </ParamField>
 
-<ParamField body="customerTypeId" type="string" required>
+<ParamField body='customerTypeId' type='string' required>
   The type of customer. _(Must be a UUID)_ **Example:
   f671da57-e281-4b40-965f-a96f4205405e** `The value should be gotten from the
   get customer types endpoint in the customer utils section`
 </ParamField>
 
-<ParamField body="address" type="string" required>
+<ParamField body='address' type='string' required>
   The customer's residential street. **Example:** `20 Marina`
 </ParamField>
 
-<ParamField body="city" type="string" required>
+<ParamField body='city' type='string' required>
   The customer's residential city. **Example:** `Lagos`
 </ParamField>
 
-<ParamField body="countryId" type="string" required>
+<ParamField body='countryId' type='string' required>
   The unique identifier of the customer's nationality. _(Must be a UUID)_
   **Example: f671da57-e281-4b40-965f-a96f4205405e** `The value should be gotten
   from the get countries endpoint in the customer utils section`
 </ParamField>
 
-<ParamField body="alias" type="string"></ParamField>
+<ParamField body='alias' type='string'></ParamField>
 
 <ResponseExample>
 
