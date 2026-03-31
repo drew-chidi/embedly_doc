@@ -1,14 +1,15 @@
 ---
-title: 'Get Wallet History by Wallet ID'
-api: 'GET /wallets/history'
-description: 'The endpoint displays the transaction history for a specific wallet using the walletId over a specified time range.'
+title: 'Get Wallet History by Account Number'
+api: 'GET /wallets/account-number/history'
+description: 'The endpoint displays the transaction history for a specific wallet using the account number over a specified time range.'
 ---
 
 ## Request Param
 
-<ParamField query='walletId' type='string' required>
-  Unique identifier for the wallet. **Example:**
-  "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+<ParamField query="AccountNumber" type="string" required>
+Unique identifier for the customer. **Example:**
+"9704651223"
+
 </ParamField>
 
 <ParamField query='From' type='string' format='date-time' required>
@@ -22,7 +23,7 @@ description: 'The endpoint displays the transaction history for a specific walle
 </ParamField>
 
 <ParamField query='PageNumber' type='integer'>
-  Page to be returned **Example:** "1"
+  Page to be returned. **Example:** "1"
 </ParamField>
 
 <ParamField query='PageSize' type='integer'>

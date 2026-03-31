@@ -9,22 +9,22 @@ description: "This endpoint enables you to create a wallet for a corporate custo
 ## Request Parameters
 
 <ParamField path="customerId" type="string" required>
-	Thr uniqe identifier of the corporate customer to whom the director is to be
-	added. **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
+  Thr uniqe identifier of the corporate customer to whom the director is to be
+  added. **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
 </ParamField>
 
 <ParamField body="currencyId" type="string" required>
-	The unique identifier of the currency. **Example:**
-	`3fa85f64-5717-4562-b3fc-2c963f66afa6`
+  The unique identifier of the currency. **Example:**
+  `3fa85f64-5717-4562-b3fc-2c963f66afa6`
 </ParamField>
 
 <ParamField body="name" type="string" required>
-	The name of the currency. **Example:** `Nigerian Naira`
+  The name of the currency. **Example:** `Nigerian Naira`
 </ParamField>
 
 <ResponseExample>
 
-```json
+```json 200 Success
 {
     "statuscode": "00",
     "message": "Customer successfully profiled",

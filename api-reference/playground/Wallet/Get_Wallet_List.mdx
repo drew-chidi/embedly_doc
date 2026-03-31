@@ -1,0 +1,100 @@
+---
+title: 'Get Wallet By Customer ID'
+api: 'GET https://waas-staging.embedly.ng/WaasCore/api/v1/wallets/get/list/{customerId}'
+description: 'The endpoint retrieves the details of a specific wallet using its associated account number..'
+---
+
+<ParamField path='customerId' type='string' required>
+  Unique identifier for the customer
+</ParamField>
+
+<ResponseExample>
+```json 200 Success
+{
+  "code": "00",
+  "success": true,
+  "message": "Retrieved Successfully",
+  "data": [
+    {
+      "id": "22353aea-8a48-11f0-a7cf-0274f77d4a81",
+      "walletGroupId": null,
+      "customerId": "15d8ac99-83ef-11f0-a7cf-0274f77d4a81",
+      "availableBalance": 0,
+      "ledgerBalance": 0,
+      "walletRestrictionId": "b9606a2c-7e5b-11f0-a7cf-0274f77d4a81",
+      "walletClassificationId": "4f734eea-b0d8-4c6c-8738-a5e13668c32f",
+      "currencyId": "fd5e474d-bb42-4db1-ab74-e8d2a01047e9",
+      "isInternal": false,
+      "isDefault": false,
+      "name": "Tchnology",
+      "overdraft": null,
+      "virtualAccount": {
+        "accountNumber": "9710005689",
+        "bankCode": "232",
+        "bankName": "Sterling Bank"
+      },
+      "mobNum": null,
+      "customerTypeId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+      "id": "28aa090a-8a48-11f0-a7cf-0274f77d4a81",
+      "walletGroupId": null,
+      "customerId": "15d8ac99-83ef-11f0-a7cf-0274f77d4a81",
+      "availableBalance": 0,
+      "ledgerBalance": 0,
+      "walletRestrictionId": "b9606a2c-7e5b-11f0-a7cf-0274f77d4a81",
+      "walletClassificationId": "4f734eea-b0d8-4c6c-8738-a5e13668c32f",
+      "currencyId": "fd5e474d-bb42-4db1-ab74-e8d2a01047e9",
+      "isInternal": false,
+      "isDefault": false,
+      "name": "Investments",
+      "overdraft": null,
+      "virtualAccount": {
+        "accountNumber": "9710005698",
+        "bankCode": "232",
+        "bankName": "Sterling Bank"
+      },
+      "mobNum": null,
+      "customerTypeId": "00000000-0000-0000-0000-000000000000"
+    }
+  ]
+}
+```
+
+```json 400 Bad Request
+{
+  "code": "400",
+  "success": false,
+  "message": "Invalid Customer ID specified",
+  "data": null
+}
+```
+
+```json 404 Not Found
+{
+  "code": "404",
+  "success": false,
+  "message": "Invalid Customer",
+  "data": null
+}
+```
+
+```json 401 Unauthorized
+{
+  "code": "401",
+  "success": false,
+  "message": "Unauthorized access",
+  "data": null
+}
+```
+
+```json 500 Internal Server Error
+{
+  "code": "500",
+  "success": false,
+  "message": "An unexpected error occurred",
+  "data": null
+}
+```
+
+</ResponseExample>

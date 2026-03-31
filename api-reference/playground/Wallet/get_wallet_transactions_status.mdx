@@ -1,50 +1,52 @@
 ---
-title: "Wallet to Wallet Requery"
-api: "GET /wallets/wallet/transaction/wallet-to-wallet/status/{transactionReference}"
-description: "The endpoint facilitates requerying transfer requests between emedly wallets."
+title: 'Get Wallet to Wallet Transfer Status'
+api: 'GET /wallets/wallet/transaction/wallet-to-wallet/status/{transactionReference}'
+description: 'The endpoint facilitates requerying transfer requests between emedly wallets.'
 ---
 
-<ParamField body="transactionReference" type="string" required>
-	The source account number for the transfer **Example:** "retw33344556670900"
+<ParamField body='transactionReference' type='string' required>
+  The source account number for the transfer **Example:** "retw33344556670900"
 </ParamField>
 
 <ResponseExample>
 
 ```json 200 OK
 {
-	"code": "200",
-	"success": true,
-	"message": "Transaction completed successfully.",
-	"data": {
-		// Additional transaction details if applicable
-	}
+  "code": "00",
+  "success": true,
+  "message": "Transaction status retrieved successfully",
+  "data": {
+    "reference": "SFTest44491711",
+    "status": "Success",
+    "timestamp": "2025-12-10T11:12:41.072733"
+  }
 }
 ```
 
 ```json 401 Unauthorized
 {
-	"code": "401",
-	"success": false,
-	"message": "x-api-key is missing in the header",
-	"data": null
+  "code": "401",
+  "success": false,
+  "message": "x-api-key is missing in the header",
+  "data": null
 }
 ```
 
-```json 400 Bad Request
+```json 404 Bad Request
 {
-	"code": "400",
-	"success": false,
-	"message": "Invalid request data",
-	"data": null
+  "code": "404",
+  "success": false,
+  "message": "Transaction not found",
+  "data": null
 }
 ```
 
 ```json 500 Internal Server Error
 {
-	"code": "500",
-	"success": false,
-	"message": "An unexpected error occurred",
-	"data": null
+  "code": "500",
+  "success": false,
+  "message": "An unexpected error occurred",
+  "data": null
 }
 ```
 

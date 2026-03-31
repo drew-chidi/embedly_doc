@@ -1,0 +1,70 @@
+---
+title: "Customer KYC Upgrade - NIN"
+api: "POST customers/kyc/customer/nin"
+description: "This endpoint enables you to upgrade a customer's KYC using nin"
+---
+
+<ParamField query="customerId" type="string" required>
+  The unique identifier of the customer whose KYC tier is being upgraded.
+  **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6` **This is a query
+  parameter**
+</ParamField>
+
+<ParamField query="nin" type="string" required>
+  The unique value of the customer's nin. **Example:** `12345678909` **This is a
+  query parameter**
+</ParamField>
+
+<ParamField query="verify" type="string" required>
+  **Example:** `1` **This is a query parameter**
+</ParamField>
+
+<ParamField body="firstname" type="string" required>
+  The firstname of the customer as stated against the customer's nin.
+  **Example:** `John`
+</ParamField>
+
+<ParamField body="lastname" type="string" required>
+  The lastname of the customer as stated against the customer's nin.
+  **Example:** `Doe`
+</ParamField>
+
+<ParamField body="dob" type="string" required>
+  The customer's dob. **Example:** "1999-10-27T09"
+</ParamField>
+
+<ResponseExample>
+
+```json 200 Success
+{
+  "code": "00",
+  "success": true,
+  "message": "Completed Successfully",
+  "data": {
+    "id": 130,
+    "applicant": { "firstname": "Bunch", "lastname": "Dillon", "dob": null },
+    "summary": {
+      "v_nin_check": null,
+      "nin_check": {
+        "status": "EXACT_MATCH",
+        "fieldMatches": { "firstname": true, "lastname": true }
+      }
+    },
+    "status": { "state": "complete", "status": "verified" },
+    "nin": {
+      "firstname": "Bunch",
+      "lastname": "Dillon",
+      "middlename": "John",
+      "birthdate": "06-01-1974",
+      "gender": "m",
+      "phone": "08000000000",
+      "vNin": null,
+      "nin": "63184876213",
+      "photo": "/9j/4AAQSk******/wCpiNUFoooEf//Z",
+      "residence": null
+    }
+  }
+}
+```
+
+</ResponseExample>

@@ -1,14 +1,14 @@
 ---
-title: "WalletGroup ID"
-api: "GET /walletgroups/get/{id}"
-description: "The endpoint allows you to retrieves details of a specified wallet group using its ID."
+title: 'WalletGroup ID'
+api: 'GET /walletgroups/get/{id}'
+description: 'The endpoint allows you to retrieves details of a specified wallet group using its ID.'
 ---
 
 ## Request
+
 ### **Path Parameter**
 
-<ParamField body="WalletGroupID" type="string" required>
-</ParamField>
+<ParamField body='WalletGroupID' type='string' required></ParamField>
 
 ## Response
 
@@ -22,7 +22,9 @@ Status Code: 200 OK
   "success": true,
   "message": "Wallet group retrieved successfully.",
   "data": {
-    // Wallet group details here
+      "id": "d1d0e7a1-0830-11f0-a8a9-6045bd97b81d",
+      "name": "string",
+      "walletGroupFeatureDto": []
   }
 }
 ```
@@ -57,3 +59,4 @@ Status Code: 500 Internal Server Error
   "message": "An unexpected error occurred",
   "data": null
 }
+```

@@ -1,19 +1,23 @@
 ---
-title: "Get Organization Prefix Mappings"
-api: "GET https://checkout-staging.embedly.ng/api/v1/checkout-wallet/prefix-mappings"
-description: "This endpoint creates a checkout wallet."
+title: 'Get Organization Prefix Mappings'
+api: 'GET https://checkout-staging.embedly.ng/api/v1/prefix-map/me'
+description: 'Retrieves all paginated organization prefix mappings for the specified organization. Supports search by secondary prefix, alias, organization name, or primary prefix code. Admin access required.'
 ---
 
-<ParamField query="organizationId" type="string" required>
-	**Example:** `02600494-1a3c-11f0-a818-6045bd97b81d`
+<ParamField query='organizationId' type='string' required>
+  **Example:** `02600494-1a3c-11f0-a818-6045bd97b81d`
 </ParamField>
 
-<ParamField query="page" type="number" required>
-	**Example:** `1`
+<ParamField query='page' type='number'>
+  **Example:** `1`
 </ParamField>
 
-<ParamField query="pageSize" type="number" required>
-	**Example:** `10`
+<ParamField query='pageSize' type='number'>
+  **Example:** `10`
+</ParamField>
+
+<ParamField query='search' type='string'>
+  **Example:** `123`
 </ParamField>
 
 <ResponseExample>
@@ -42,4 +46,22 @@ description: "This endpoint creates a checkout wallet."
   }
 }
 ```
+
+```json 401 Unauthorized
+{
+  "code": "401",
+  "success": false,
+  "message": "x-api-key is missing in the header",
+  "data": null
+}
+```
+
+```json 403 Forbidden
+{
+  "statusCode": 403,
+  "message": "Access denied. The API key provided is for another organization. You can only access your organization's wallets.",
+  "data": null
+}
+```
+
 </ResponseExample>

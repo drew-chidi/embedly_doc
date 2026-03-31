@@ -1,72 +1,92 @@
 ---
-title: "Wallet to Wallet Transfers"
-api: "PUT /wallets/wallet/transaction/v2/wallet-to-wallet"
-description: "The endpoint facilitates transferring funds from one embedly wallet to another embedly wallet."
+title: 'Wallet to Wallet Transfers'
+api: 'PUT /wallets/wallet/transaction/v2/wallet-to-wallet'
+description: 'This endpoint enables fund transfers between wallets within the same organization profile.
+
+
+It can be used for:
+
+- Allowing customers to send funds to your organization wallet(s) and vice versa.
+
+- Collecting charges or fees from customer wallets.
+
+- Performing intra-organization transfers between customer wallets and organization wallets.
+
+- Any use case that involves movement of funds within your organization.
+
+
+Each request must include a unique transactionReference. We recommend using a GUID or any randomly generated unique string of at least 10 characters.
+
+
+
+Transfers are instant. A successful response means the transfer has been completed immediately.
+For verification, a dedicated requery endpoint is available to check the status of any transaction. See the next section for details.'
 ---
 
-<ParamField body="fromAccount" type="string" required>
-	The source account number for the transfer. **Example:** "3025831139"
+<ParamField body='fromAccount' type='string' required>
+  The source account number for the transfer. **Example:** "3025831139"
 </ParamField>
 
-<ParamField body="toAccount" type="string" required>
-	The destination account number for the transfer. **Example:** "211651183"
+<ParamField body='toAccount' type='string' required>
+  The destination account number for the transfer. **Example:** "211651183"
 </ParamField>
 
-<ParamField body="amount" type="number" required>
-	The amount to transfer. **Example:** 100000
+<ParamField body='amount' type='number' required>
+  The amount to transfer. **Example:** 100000
 </ParamField>
 
-<ParamField body="transactionReference" type="string" required>
-	A unique reference identifier for the transaction. **Example:**
-	"retw33344556670900"
+<ParamField body='transactionReference' type='string' required>
+  A unique reference identifier for the transaction. **Example:**
+  "retw33344556670900"
 </ParamField>
 
-<ParamField body="remarks" type="string">
-	Additional notes or description for the transaction. **Example:** "For
-	Holidays"
-</ParamField>
-
-<ParamField body="transactionTypeId" type="number">
-	Unique identifier for the type of transaction. **Example:** 0
+<ParamField body='remarks' type='string'>
+  Additional notes or description for the transaction. **Example:** "For
+  Holidays"
 </ParamField>
 
 <ResponseExample>
 
 ```json 200 OK
 {
-	"code": "200",
-	"success": true,
-	"message": "Transaction completed successfully.",
-	"data": {
-		// Additional transaction details if applicable
-	}
+  "code": "00",
+  "success": true,
+  "message": "Transfer processed successfully",
+  "data": 0
 }
 ```
 
 ```json 401 Unauthorized
 {
-	"code": "401",
-	"success": false,
-	"message": "x-api-key is missing in the header",
-	"data": null
+  "code": "401",
+  "success": false,
+  "message": "x-api-key is missing in the header",
+  "data": null
 }
 ```
 
 ```json 400 Bad Request
 {
-	"code": "400",
-	"success": false,
-	"message": "Invalid request data",
-	"data": null
+  "code":"-999",
+  "success":false,
+  "message":"Insufficient funds in the from wallet",
+  "data":null
+}
+
+{
+  "code": "-2",
+  "success": false,
+  "message": "Transaction amount exceeds single debit limit of 100000.00",
+  "data": null
 }
 ```
 
 ```json 500 Internal Server Error
 {
-	"code": "500",
-	"success": false,
-	"message": "An unexpected error occurred",
-	"data": null
+  "code": "500",
+  "success": false,
+  "message": "An unexpected error occurred",
+  "data": null
 }
 ```
 
