@@ -1,0 +1,211 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Embedly API Documentation",
+  "colors": {
+    "primary": "#725AC1",
+    "light": "#9B84DA",
+    "dark": "#4B3A91"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "versions": [
+      {
+        "version": "1.0.0-Beta",
+        "tabs": [
+          {
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Home",
+                "pages": [
+                  "home/introduction",
+                  "home/onboarding",
+                  "home/authentication",
+                  "home/environments",
+                  "home/response",
+                  "home/webhook",
+                  {
+                    "group": "Going Live",
+                    "pages": [
+                      "home/live/going-live",
+                      "home/live/checklist",
+                      "home/live/security"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API Reference",
+            "groups": [
+              {
+                "group": "API Documentation",
+                "pages": [
+                  {
+                    "group": "Getting Started",
+                    "pages": [
+                      "api-reference/authentication"
+                    ]
+                  },
+                  {
+                    "group": "Customer",
+                    "pages": [
+                      "api-reference/customers",
+                      {
+                        "group": "Individual",
+                        "pages": [
+                          "api-reference/playground/customer/individual/profile_customer",
+                          "api-reference/playground/customer/individual/Get_Id",
+                          "api-reference/playground/customer/individual/get_all_customers",
+                          "api-reference/playground/customer/individual/update_customer",
+                          "api-reference/playground/customer/individual/update_customer_contact",
+                          "api-reference/playground/customer/individual/get_customer_kyc_status",
+                          {
+                            "group": "KYC",
+                            "pages": [
+                              "api-reference/playground/customer/individual/kyc/nin",
+                              "api-reference/playground/customer/individual/kyc/bvn",
+                              "api-reference/playground/customer/individual/kyc/address_verification"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "group": "Corporate",
+                        "pages": [
+                          "api-reference/playground/customer/corporate/profile_customer",
+                          "api-reference/playground/customer/corporate/get_customer",
+                          "api-reference/playground/customer/corporate/update_customer",
+                          "api-reference/playground/customer/corporate/add_director",
+                          "api-reference/playground/customer/corporate/get_director",
+                          "api-reference/playground/customer/corporate/get_directors",
+                          "api-reference/playground/customer/corporate/update_director",
+                          "api-reference/playground/customer/corporate/add_documents",
+                          "api-reference/playground/customer/corporate/update_documents",
+                          "api-reference/playground/customer/corporate/get_documents"
+                        ]
+                      },
+                      {
+                        "group": "Utils",
+                        "pages": [
+                          "api-reference/playground/customer/utils/get_countries",
+                          "api-reference/playground/customer/utils/get_all_customer_types"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Wallet",
+                    "pages": [
+                      "api-reference/Wallet",
+                      "api-reference/playground/Wallet/Add_Wallet",
+                      "api-reference/playground/Wallet/Add_Corporate_wallet",
+                      "api-reference/playground/Wallet/Get_Wallet_by_Id",
+                      "api-reference/playground/Wallet/Get_Wallet_by_Account",
+                      "api-reference/playground/Wallet/Get_Wallet_List",
+                      "api-reference/playground/Wallet/Wallet_to_Wallet",
+                      "api-reference/playground/Wallet/get_wallet_transactions_status",
+                      "api-reference/playground/Wallet/Get_Wallet_History",
+                      "api-reference/playground/Wallet/Get_Wallet_History_by_Account",
+                      "api-reference/playground/Wallet/Inflow",
+                      {
+                        "group": "Utils",
+                        "pages": [
+                          "api-reference/playground/Wallet/utils/get_currency",
+                          "api-reference/playground/Wallet/utils/get_restriction_types"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Payout",
+                    "pages": [
+                      "api-reference/payout",
+                      "api-reference/playground/payout/get_banks",
+                      "api-reference/playground/payout/name_enquiry",
+                      "api-reference/playground/payout/interbank_transfer",
+                      "api-reference/playground/payout/check_status"
+                    ]
+                  },
+                  {
+                    "group": "Checkout",
+                    "pages": [
+                      "api-reference/checkout",
+                      "api-reference/playground/checkout/get_org_prefix_mappings",
+                      "api-reference/playground/checkout/create_checkout_wallet",
+                      "api-reference/playground/checkout/get_checkout_wallet",
+                      "api-reference/playground/checkout/get_checkout_txns_by_walletId",
+                      {
+                        "group": "Split Checkout",
+                        "pages": [
+                          "api-reference/playground/checkout/SplitCheckout/create_split_beneficiary",
+                          "api-reference/playground/checkout/SplitCheckout/get_split_beneficiaries",
+                          "api-reference/playground/checkout/SplitCheckout/activate_a_split_beneficiary",
+                          "api-reference/playground/checkout/SplitCheckout/deactivate_a_split_beneficiary"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Card",
+                    "pages": [
+                      "api-reference/cards",
+                      "api-reference/playground/cards/afrigo/activate_card",
+                      "api-reference/playground/cards/afrigo/reset_card_pin",
+                      "api-reference/playground/cards/afrigo/Simulate_Debit_Card_Trx"
+                    ]
+                  },
+                  {
+                    "group": "Webhook",
+                    "pages": [
+                      "api-reference/webhooks"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/images/logo/embedlight.svg",
+    "dark": "/images/logo/embeddark.svg"
+  },
+  "api": {
+    "mdx": {
+      "server": [
+        "https://waas-staging.embedly.ng/api/v1/",
+        "https://payout-staging.embedly.ng/api/v1",
+        "https://checkout-staging.embedly.ng/api/v1",
+        "https://waas-card-middleware-api-staging.embedly.ng"
+      ],
+      "auth": {
+        "method": "key",
+        "name": "x-api-key"
+      }
+    }
+  },
+  "background": {
+    "color": {
+      "light": "#F7F5FF",
+      "dark": "#1B1523"
+    }
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Join The Community",
+        "href": "https://embedly.ng"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Get Started",
+      "href": "https://merchant-waas-dashboard.embedly.ng/"
+    }
+  }
+}
