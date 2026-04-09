@@ -27,7 +27,7 @@ description: 'The endpoint retrieves the details of a specific wallet using its 
     "currencyId": "45852f0c-84fa-410c-b66c-1ffec56e5cd8",
     "isInternal": false,
     "isDefault": true,
-    "name": "Oghenetega Esedere",
+    "name": "John Doe",
     "overdraft": null,
     "virtualAccount": {
       "accountNumber": "9710067201",
@@ -44,7 +44,34 @@ description: 'The endpoint retrieves the details of a specific wallet using its 
 {
   "code": "400",
   "success": false,
-  "message": "Invalid Wallet ID specified",
+  "message": "The wallet you have specified does not exist",
+  "data": null
+}
+```
+
+```json 404 Not Found
+{
+  "code": "404",
+  "success": false,
+  "message": "Account not found",
+  "data": null
+}
+```
+
+```json 401 Unauthorized
+{
+  "code": "401",
+  "success": false,
+  "message": "Unauthorized access",
+  "data": null
+}
+```
+
+```json 500 Internal Server Error
+{
+  "code": "500",
+  "success": false,
+  "message": "An unexpected error occurred",
   "data": null
 }
 ```

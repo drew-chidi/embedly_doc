@@ -1,30 +1,71 @@
 ---
-title: "Create Checkout Wallet"
-api: "POST https://checkout-staging.embedly.ng/api/v1/checkout-wallet"
-description: "This endpoint creates a checkout wallet."
+title: 'Create Checkout Wallet'
+api: 'POST https://checkout-staging.embedly.ng/api/v1/checkout-wallet'
+description: 'This endpoint generates a new checkout wallet for an organization. Organization must be active and have configured primary and secondary prefixes.'
 ---
 
 <Info>
-	When a checkout wallet is generated without an 'expiryDurationMinutes', the
-	system default of 30 minutes is applied to that wallet.
+  When a checkout wallet is generated without an 'expiryDurationMinutes', the
+  system default of 30 minutes is applied to that wallet.
 </Info>
 
-<ParamField body="organizationId" type="string" required>
-	**Example:** `02600494-1a3c-11f0-a818-6045bd97b81d`
+<ParamField body='organizationId' type='string' required>
+  **Example:** `02600494-1a3c-11f0-a818-6045bd97b81d`
 </ParamField>
 
-<ParamField body="expectedAmount" type="number" required>
-	**Example:** `20000`
+<ParamField body='expectedAmount' type='number' required>
+  **Example:** `20000`
 </ParamField>
 
-<ParamField body="organizationPrefixMappingId" type="string" required>
-	**Example:** `8b4432bc-f3c7-4055-b5e5-e232707e79af`. You can get this Id using
-	the 'Get Organization Prefix Mapping Endpoint'
+<ParamField body='organizationPrefixMappingId' type='string' required>
+  **Example:** `8b4432bc-f3c7-4055-b5e5-e232707e79af`. You can get this Id using
+  the 'Get Organization Prefix Mapping Endpoint'
 </ParamField>
 
-<ParamField body="expiryDurationMinutes" type="number">
-	This is the duration in minutes for which the wallet is to be active
-	**Example:** `30`.
+<ParamField body='expiryDurationMinutes' type='number'>
+  This is the duration in minutes for which the wallet is to be active
+  **Example:** `30`.
+</ParamField>
+
+<ParamField body='invoiceReference' type='string'>
+  **Example:** `CHK202507241358013544205`.
+</ParamField>
+
+<ParamField body='description' type='string'>
+  **Example:** `This is a checkout wallet`.
+</ParamField>
+
+<ParamField body='currencyCode' type='string'>
+  **Example:** `NGN`.
+</ParamField>
+
+<ParamField body='customerEmail' type='string'>
+  **Example:** `john_doe@gmail.com`.
+</ParamField>
+
+<ParamField body='customerName' type='string'>
+  This is the customer name. **Example:** `John Doe`.
+</ParamField>
+
+<ParamField body='metadata' type='string'></ParamField>
+
+<ParamField body='splitType' type='string'>
+  This can either be Fixed or Percentage. This property is required when it is a
+  split payment. **Example:** `Fixed`.
+</ParamField>
+
+<ParamField body='incomeSplitConfig' type='object[]'>
+  Required for split payments. Defines the distribution of funds among multiple beneficiaries.
+  
+  <Expandable title="Properties">
+    * **beneficiaryId** (string): The unique UUID of the recipient.
+    * **splitValue** (number): The amount or percentage to be allocated.
+    * **feeValue** (number): The specific fee amount to be deducted.
+    * **feeBearer** (boolean): Set to `true` if this beneficiary covers the transaction fees.
+  </Expandable>
+
+**Example:** `[{ "beneficiaryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "splitValue": 100, "feeValue": 5, "feeBearer": true }]`
+
 </ParamField>
 
 <ResponseExample>
@@ -46,4 +87,39 @@ description: "This endpoint creates a checkout wallet."
   }
 }
 ```
+
+```json 400 Bad Request
+{
+  "statusCode": 400,
+  "message": "Specified organization prefix mapping not found",
+  "data": null
+}
+```
+
+```json 401 Unauthorized
+{
+  "code": "401",
+  "success": false,
+  "message": "x-api-key is missing in the header",
+  "data": null
+}
+```
+
+```json 403 Forbidden
+{
+  "statusCode": 403,
+  "message": "Access denied. The API key provided is for another organization. You can only access your organization's wallets.",
+  "data": null
+}
+```
+
+```json 500 Internal Server Error
+{
+  "code": "500",
+  "success": false,
+  "message": "An unexpected error occurred",
+  "data": null
+}
+```
+
 </ResponseExample>

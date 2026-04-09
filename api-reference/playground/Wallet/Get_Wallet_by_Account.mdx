@@ -11,16 +11,29 @@ description: 'The endpoint retrieves the details of a specific wallet using its 
 <ResponseExample>
 ```json 200 Success
 {
-  "code": "200",
+  "code": "00",
   "success": true,
-  "message": "Wallet details retrieved successfully.",
+  "message": "Retrieved Successfully",
   "data": {
-    "accountNumber": "304500055000000",
-    "walletId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "availableBalance": 5000,
-    "ledgerBalance": 7500,
-    "currency": "USD",
-    "status": "active"
+    "id": "d3ewbc11-3c8b-66f0-97d7-7c1e54678c35",
+    "walletGroupId": null,
+    "customerId": "b1c8a40b-3c8b-11f0-87d7-7c1e59753c35",
+    "availableBalance": 0,
+    "ledgerBalance": 0,
+    "walletRestrictionId": null,
+    "walletClassificationId": "2c02427d-90a2-46fa-afce-a9c2cc720a12",
+    "currencyId": "12345f0c-24fa-410c-b66c-1hhec56e5cd8",
+    "isInternal": false,
+    "isDefault": true,
+    "name": "Maximum Ali",
+    "overdraft": null,
+    "virtualAccount": {
+      "accountNumber": "9710123456",
+      "bankCode": "232",
+      "bankName": "Sterling Bank"
+    },
+    "mobNum": null,
+    "customerTypeId": "00000000-0000-0000-0000-000000000000"
   }
 }
 ```

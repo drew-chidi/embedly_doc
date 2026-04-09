@@ -15,13 +15,7 @@ To access the full Embedly API services, you’ll need an API key. Follow these 
 
 #### Staging
 
-For testing on the staging environment, use the general credentials below.
-
-1. **OrganizationId:** `02600494-1a3c-11f0-a818-6045bd97b81d`
-
-2. **API Key:** `BSK-sqg0f3hCF3sC2KGtNBVsfxbOFFaiOgCEraaCYmg6G0EsqUQ9ihAbeIE2FkAvFlBtIv4kecDVsy4H`
-
-Alternatively, you can visit the Embedly staging dashboard [here](https://merchant-waas-dashboard-staging.embedly.ng/registration) and follow the steps below to retrieve your unique staging api key:
+For testing on the staging environment, you can visit the Embedly staging dashboard here and follow the steps below to retrieve your unique staging api key:
 
 1. **Navigate to Your Profile Settings Page:**  
    Log in to your Embedly dashboard and go to the Profile Settings section to retrieve your <Tooltip tip="An organizationId is your idenitifation for your organization.">OrganizationId</Tooltip>.
@@ -29,6 +23,8 @@ Alternatively, you can visit the Embedly staging dashboard [here](https://mercha
 2. **Navigate to Your API Credentials Page:**  
    Log in to your Embedly dashboard and go to the <Tooltip tip="API credentials consist of a client key and a secret key, both required for generating tokens.">APIs
    & Integration</Tooltip> section to retrieve your <Tooltip tip="An api key is essential for API authentication.">api key</Tooltip>.
+
+Note: You can submit dummy placeholder documents, images or pdfs during your sign up and onboarding on staging. We will approve your account immediately and promptly to enable you get both your staging api key and staging organisation Id.
 
 #### Production
 
@@ -77,8 +73,8 @@ x-api-key: {{API-KEY}}
 The Embedly API provides a powerful set of tools to manage organizations, customers, wallets, products, and more. Explore the following endpoint categories:
 
 - **[Authentication](/api-reference/authentication):** Authenticate with the API to obtain a token.
-- **[Country](/api-reference/Country):** Create and add Countries
-- **[Currency](/api-reference/Currency):** Manage currency-related operations.
+- **[Country](/api-reference/playground/customer/utils/get_countries):** Create and add Countries
+- **[Currency](/api-reference/playground/Wallet/utils/get_currency):** Manage currency-related operations.
 - **[Customer](/api-reference/customers):** Create, update, and retrieve customer information.
 - **[Product](/api-reference/Product):** Create and manage products.
 - **[ProductLimit](/api-reference/ProductLimit):** Set limits on products and customers.

@@ -1,0 +1,63 @@
+---
+title: 'Simulate Debit Card Transaction (staging)'
+api: 'POST https://waas-staging.embedly.ng/simulate-card-transactions'
+description: 'This endpoint is available only on the staging environment and exists solely to help you simulate debit card transactions your staging accounts for testing. It is not available in production.
+In production environment, this is similar to your user making use of their debit card to make purchases either at POS terminals or at ATMs. This endpoints mirrors such a payment or collection.
+When a card transaction occurs, we will send you a webhook notification containing the transaction details. This allows you to
+
+•⁠  ⁠Send Notifications
+
+•⁠  ⁠Process other workflow processes
+'
+---
+
+<ParamField body='AccountNumber' type='string' required>
+  The account number. **Example:** "9710005607"
+</ParamField>
+
+<ParamField body='amount' type='string' required>
+  The transaction amount. **Example:** "10000000"
+</ParamField>
+
+<ParamField body='TransactionType' type='string' required>
+  Transaction types: POS, ATM. **Example:** "POS"
+</ParamField>
+
+<ResponseExample>
+
+```json 200 OK
+{
+  "isSuccessful": true,
+  "responseCode": "00",
+  "responseMessage": "OK"
+}
+```
+
+```json 401 Unauthorized
+{
+  "code": "401",
+  "success": false,
+  "message": "x-api-key is missing in the header",
+  "data": null
+}
+```
+
+```json 400 Bad Request
+{
+  "code": "03",
+  "success": false,
+  "message": "Account number is not valid",
+  "data": null
+}
+```
+
+```json 500 Internal Server Error
+{
+  "code": "500",
+  "success": false,
+  "message": "An unexpected error occurred",
+  "data": null
+}
+```
+
+</ResponseExample>

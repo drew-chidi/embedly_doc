@@ -1,0 +1,89 @@
+---
+title: 'Create Split Beneficiary'
+api: 'POST https://checkout-staging.embedly.ng/api/v1/split-beneficiaries'
+description: 'This endpoint generates a new checkout split beneficiary for an organization. Organization must be active and have configured primary and secondary prefixes.'
+---
+
+<ParamField body='organizationId' type='string' required>
+  **Example:** `02600494-1a3c-11f0-a818-6045bd97b81d`
+</ParamField>
+
+<ParamField body='beneficiaryName' type='string' required>
+  **Example:** `John Doe`
+</ParamField>
+
+<ParamField body='accountNumber' type='string' required>
+  **Example:** `7891256098`
+</ParamField>
+
+<ParamField body='bankCode' type='string'>
+  **Example:** `30234`.
+</ParamField>
+
+<ParamField body='bankName' type='string'>
+  **Example:** `Sterling Bank`.
+</ParamField>
+
+<ParamField body='beneficiaryAlias' type='string'>
+  **Example:** `Testing`.
+</ParamField>
+
+<ResponseExample>
+```json 200 Success
+{
+  "statusCode": 200,
+  "message": "Split beneficiary created successfully",
+  "data": {
+    "id": "1c7e2c80-9f8c-4bd8-8c9d-bd63810c5df9",
+    "organizationId": "0075b72d-6648-11f0-a7cf-0274f77d4a81",
+    "beneficiaryName": "string",
+    "accountNumber": "4278816938",
+    "bankCode": "string",
+    "bankName": "string",
+    "beneficiaryAlias": "string",
+    "isActive": true,
+    "createdAt": "2026-02-16T07:57:04.4688132Z",
+    "updatedAt": null
+  }
+}
+```
+
+```json 400 Bad Request
+{
+  "statusCode": 400,
+  "message": "Validation failed",
+  "errors": [
+    "The request field is required.",
+    "The JSON value could not be converted to System.Guid. Path: $.organizationId | LineNumber: 1 | BytePositionInLine: 60."
+  ],
+  "data": null
+}
+```
+
+```json 401 Unauthorized
+{
+  "code": "401",
+  "success": false,
+  "message": "x-api-key is missing in the header",
+  "data": null
+}
+```
+
+```json 403 Forbidden
+{
+  "statusCode": 403,
+  "message": "Access denied. The API key provided is for another organization. You can only access your organization's wallets.",
+  "data": null
+}
+```
+
+```json 500 Internal Server Error
+{
+  "code": "500",
+  "success": false,
+  "message": "An unexpected error occurred",
+  "data": null
+}
+```
+
+</ResponseExample>

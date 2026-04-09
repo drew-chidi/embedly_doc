@@ -40,12 +40,10 @@ To configure your webhook endpoint, please see the Webhook Configuration section
 
 ```json 200 OK
 {
-  "code": "200",
+  "code": "00",
   "success": true,
-  "message": "Transaction completed successfully.",
-  "data": {
-    // Additional transaction details if applicable
-  }
+  "message": "Funded successfully",
+  "data": null
 }
 ```
 
@@ -60,9 +58,9 @@ To configure your webhook endpoint, please see the Webhook Configuration section
 
 ```json 400 Bad Request
 {
-  "code": "400",
+  "code": "03",
   "success": false,
-  "message": "Invalid request data",
+  "message": "Account number is not valid",
   "data": null
 }
 ```

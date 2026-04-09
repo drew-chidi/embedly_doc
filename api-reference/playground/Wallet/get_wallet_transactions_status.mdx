@@ -12,11 +12,13 @@ description: 'The endpoint facilitates requerying transfer requests between emed
 
 ```json 200 OK
 {
-  "code": "200",
+  "code": "00",
   "success": true,
-  "message": "Transaction completed successfully.",
+  "message": "Transaction status retrieved successfully",
   "data": {
-    // Additional transaction details if applicable
+    "reference": "SFTest44491711",
+    "status": "Success",
+    "timestamp": "2025-12-10T11:12:41.072733"
   }
 }
 ```
@@ -30,11 +32,11 @@ description: 'The endpoint facilitates requerying transfer requests between emed
 }
 ```
 
-```json 400 Bad Request
+```json 404 Bad Request
 {
-  "code": "400",
+  "code": "404",
   "success": false,
-  "message": "Invalid request data",
+  "message": "Transaction not found",
   "data": null
 }
 ```

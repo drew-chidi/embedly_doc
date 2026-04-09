@@ -4,7 +4,37 @@ api: 'GET https://payout-staging.embedly.ng/api/Payout/status/{transactionRef}'
 description: 'Endpoint for re-querying the status of an inter-bank transaction using its transaction reference.'
 ---
 
+## Payout Status Definitions
+
+The system defines the following primary status states for your transactions:
+
+| Status                 | Description                                    | When It Occurs                                        |
+| :--------------------- | :--------------------------------------------- | :---------------------------------------------------- |
+| **CREATED**            | Initial status when payout record is created   | After successful validation and payout initialization |
+| **DEBIT_INITIATED**    | Wallet debit process has started               | When the system begins debiting the source wallet     |
+| **DEBIT_SUCCESS**      | Wallet debit completed successfully            | After successful withdrawal from the source wallet    |
+| **TRANSFER_INITIATED** | External transfer process has started          | When the system begins the actual money transfer      |
+| **TRANSFER_PROCESSED** | Transfer has been sent to NIBBS for processing | After successful submission to payment gateway        |
+| **SUCCESS**            | Payout completed successfully                  | Final success state after all processes complete      |
+| **FAILED**             | Payout failed at any stage                     | When any critical error occurs during the process     |
+
 <ParamField path='transactionRef' type='string' required>
   The unique reference number of the transaction whose status you want to check.
   Exmaple: `3212-1234-5678-9101`
 </ParamField>
+<ResponseExample>
+
+```json 200 Success
+{
+  "data": {
+    "status": "Pending",
+    "transactionReference": "EMBEDLY-IB-12-1765129847157"
+  },
+  "statusCode": 200,
+  "code": null,
+  "message": "Successfully retrieved transaction",
+  "succeeded": true
+}
+```
+
+</ResponseExample>
