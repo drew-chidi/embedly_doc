@@ -1,0 +1,168 @@
+---
+title: 'Create Customer (v2)'
+api: 'POST /customers/add'
+description: 'This endpoint enables you to create a customer profile.'
+---
+
+<Info>Use this v2 endpoint to create an individual customer profile.</Info>
+
+<Warn>
+  Save the returned <strong>id</strong> for subsequent KYC and wallet
+  operations.
+</Warn>
+
+## Request Parameters
+
+<ParamField body='organizationId' type='string' required>
+  The organization's unique identifier.
+</ParamField>
+
+<ParamField body='firstName' type='string' required>
+  Customer's first name. **Example:** `John`
+</ParamField>
+
+<ParamField body='lastName' type='string' required>
+  Customer's last name. **Example:** `Doe`
+</ParamField>
+
+<ParamField body='middleName' type='string' optional>
+  Customer's middle name.
+</ParamField>
+
+<ParamField body='dob' type='string' required>
+  Date of birth in ISO format. **Example:** `2000-01-15T00:00:00`
+</ParamField>
+
+<ParamField body='customerTypeId' type='string' required>
+  The customer's type (UUID).
+</ParamField>
+
+<ParamField body='customerTierId' type='number' optional>
+  Initial KYC tier. Default is `0`.
+</ParamField>
+
+<ParamField body='alias' type='string' optional>
+  Optional display name for the customer.
+</ParamField>
+
+<ParamField body='countryId' type='string' required>
+  Customer's nationality (UUID).
+</ParamField>
+
+<ParamField body='city' type='string' required>
+  Customer's residential city. **Example:** `Lagos`
+</ParamField>
+
+<ParamField body='address' type='string' required>
+  Customer's residential address. **Example:** `12 Example Street`
+</ParamField>
+
+<ParamField body='mobileNumber' type='string' optional>
+  Customer's phone number. **Example:** `08012345678`
+</ParamField>
+
+<ParamField body='emailAddress' type='string' optional>
+  Customer's email. **Example:** `john.doe@example.com`
+</ParamField>
+
+<ParamField body='gender' type='string' optional>
+  Customer's gender. **Example:** `Male`
+</ParamField>
+
+<ParamField body='maritalStatus' type='string' optional>
+  Customer's marital status. **Example:** `Single`
+</ParamField>
+
+<ParamField body='pepDeclaration' type='boolean' optional>
+  Politically Exposed Person declaration.
+</ParamField>
+
+<ParamField body='employmentStatus' type='string' required>
+  Employment status. **Example:** `Employed`
+</ParamField>
+
+<ParamField body='occupation' type='string' optional>
+  Customer's occupation. **Example:** `Engineer`
+</ParamField>
+
+<ParamField body='sourceOfFunds' type='string' optional>
+  Source of funds. **Example:** `MonthlySalary`
+</ParamField>
+
+<ParamField body='passportUrl' type='string' optional>
+  URL to customer's passport photograph.
+</ParamField>
+
+<ParamField body='mothersMaidenName' type='string' optional>
+  Customer's mother's maiden name.
+</ParamField>
+
+<ParamField body='nextOfKin' type='object' optional>
+  Next of kin details with fields: `surname`, `firstName`, `otherNames`,
+  `relationship`, `mobileNumber`, `address`.
+</ParamField>
+
+<ResponseExample>
+```json 201 Created
+{
+  "data": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "firstName": "John",
+    "middleName": null,
+    "lastName": "Doe",
+    "dob": "2000-01-15T00:00:00",
+    "organizationId": "ecbf7606-30c3-11f0-a818-6045bd97b81d",
+    "city": "Lagos",
+    "address": "12 Example Street",
+    "countryId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "customerTypeId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6e",
+    "emailAddress": "john.doe@example.com",
+    "mobileNumber": "08012345678",
+    "customerTierId": 0,
+    "gender": "Male",
+    "occupation": "Engineer",
+    "maritalStatus": "Single",
+    "pepDeclaration": false,
+    "employmentStatus": "Employed",
+    "sourceOfFunds": "MonthlySalary",
+    "passportUrl": "https://storage.example.com/passport.jpg",
+    "mothersMaidenName": "Smith",
+    "nextOfKin": {
+      "surname": "Doe",
+      "firstName": "Jane",
+      "otherNames": null,
+      "relationship": "Spouse",
+      "mobileNumber": "08098765432",
+      "address": "12 Example Street"
+    }
+  },
+  "status": 201,
+  "message": ""
+}
+```
+
+```json 400 Bad Request
+{
+  "data": null,
+  "status": 400,
+  "message": "employmentStatus is required"
+}
+```
+
+```json 404 Not Found
+{
+  "data": null,
+  "status": 404,
+  "message": "Customer Type not found"
+}
+```
+
+```json 500 Internal Server Error
+{
+  "data": null,
+  "status": 500,
+  "message": "An unexpected error occurred"
+}
+```
+
+</ResponseExample>
