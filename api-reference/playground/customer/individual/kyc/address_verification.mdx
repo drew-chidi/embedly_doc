@@ -1,6 +1,6 @@
 ---
 title: 'Customer KYC Upgrade - Address Verification'
-api: 'POST /api/v2/customers/kyc/address-verification'
+api: 'POST /customers/kyc/address-verification'
 description: "This endpoint enables you to complete address verification for customer in order to upgrade the customer's KYC to Tier 3"
 ---
 
@@ -9,52 +9,12 @@ description: "This endpoint enables you to complete address verification for cus
   upgraded. **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
 </ParamField>
 
-<ParamField body='flatNumber' type='string' optional>
-  Flat/Unit number. **Example:** `12B`
+<ParamField body='meterNumber' type='string' required>
+  The utility document of the customer's address.
 </ParamField>
 
-<ParamField body='buildingNumber' type='string' optional>
-  Building number. **Example:** `8`
-</ParamField>
-
-<ParamField body='street' type='string' required>
-  Street address. **Example:** `Professor Gabriel Olusanya St`
-</ParamField>
-
-<ParamField body='state' type='string' required>
-  State. **Example:** `Lagos`
-</ParamField>
-
-<ParamField body='city' type='string' required>
-  City. **Example:** `Lekki`
-</ParamField>
-
-<ParamField body='country' type='string' required>
-  Country. **Example:** `Nigeria`
-</ParamField>
-
-<ParamField body='landmark' type='string' optional>
-  Nearest landmark. **Example:** `Lekki Phase 1 Gate`
-</ParamField>
-
-<ParamField body='image' type='string' optional>
-  Base64 encoded image. **Example:** `iVBORw0KGgoAAAANSUhEUg...`
-</ParamField>
-
-<ParamField body='imageContentType' type='string' optional>
-  Image MIME type. **Example:** `image/jpeg`
-</ParamField>
-
-<ParamField body='customerNumber' type='string' optional>
-  Customer number. **Example:** `CUST_000123`
-</ParamField>
-
-<ParamField body='ledgerCode' type='string' optional>
-  Ledger code. **Example:** `LEDGER_001`
-</ParamField>
-
-<ParamField body='nuban' type='string' optional>
-  Customer NUBAN. **Example:** `1234567890`
+<ParamField body='houseAddress' type='string' required>
+  The address of the customer whose kyc is to be upgraded.
 </ParamField>
 
 <ParamField body='discoCode' type='string' required>
@@ -70,26 +30,18 @@ description: "This endpoint enables you to complete address verification for cus
 ```json 200 Success
 {
   "data": {
-    "message": "Address verification completed successfully",
-    "referenceNumber": "ADDR_20260409112339_6c6ffb63",
-    "result": "Success"
-  },
-  "status": 200,
-  "message": ""
+    "status":"successful",
+    "message":"Verification successful!",
+    "timestamp":"2025-12-10T07:39:14.9402901Z",
+    "data": {
+    	"verified":true,
+        "houseAddress":"1 Abuja street, Nigeria",
+        "houseOwner":"Du**\***","confidenceLevel":95,"discoCode":"00"
+		}
+ 	},
+	"status":200,
+    "message":""
 }
 ```
-
-```json 400 Bad Request
-{
-  "data": {
-    "message": "Address verification failed",
-    "referenceNumber": "ADDR_20260409110211_12b106fa",
-    "error": "nnnodename nor servnameprovided or not known (hq-qa3-test.sterlingbank.com:9292)"
-  },
-  "status": 400,
-  "message": ""
-}
-```
-
 </ResponseExample>
 ```
