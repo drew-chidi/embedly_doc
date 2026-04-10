@@ -1,89 +1,91 @@
 ---
-title: "Update Customer (v2)"
+title: 'Update Customer (v2)'
 description: "This endpoint is used to update an existing customer's profile using the v2 API."
-api: "PATCH /customers/customer/{customerId}/update"
+api: 'PATCH https://waas-staging.embedly.ng/WaasCore/api/v2/customers/customer/{customerId}/update'
 ---
 
-<ParamField path="customerId" type="string" required>
-  The customer's unique identifier. **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
+<ParamField path='customerId' type='string' required>
+  The customer's unique identifier. **Example:**
+  `3fa85f64-5717-4562-b3fc-2c963f66afa6`
 </ParamField>
 
 ## Request Parameters
 
-<ParamField body="organizationId" type="string" required>
+<ParamField body='organizationId' type='string' required>
   The organization's unique identifier.
 </ParamField>
 
-<ParamField body="firstName" type="string" optional>
+<ParamField body='firstName' type='string' optional>
   Customer's first name. **Example:** `John`
 </ParamField>
 
-<ParamField body="lastName" type="string" optional>
+<ParamField body='lastName' type='string' optional>
   Customer's last name. **Example:** `Doe`
 </ParamField>
 
-<ParamField body="middleName" type="string" optional>
+<ParamField body='middleName' type='string' optional>
   Customer's middle name.
 </ParamField>
 
-<ParamField body="dob" type="string" optional>
+<ParamField body='dob' type='string' optional>
   Date of birth in ISO format. **Example:** `2026-04-10T05:13:56.119Z`
 </ParamField>
 
-<ParamField body="city" type="string" optional>
+<ParamField body='city' type='string' optional>
   Customer's residential city.
 </ParamField>
 
-<ParamField body="address" type="string" optional>
+<ParamField body='address' type='string' optional>
   Customer's residential address.
 </ParamField>
 
-<ParamField body="occupation" type="string" optional>
+<ParamField body='occupation' type='string' optional>
   Customer's occupation.
 </ParamField>
 
-<ParamField body="gender" type="string" optional>
+<ParamField body='gender' type='string' optional>
   Customer's gender.
 </ParamField>
 
-<ParamField body="bvnverified" type="boolean" optional>
+<ParamField body='bvnverified' type='boolean' optional>
   Indicates whether the customer's BVN is verified.
 </ParamField>
 
-<ParamField body="ninVerified" type="boolean" optional>
+<ParamField body='ninVerified' type='boolean' optional>
   Indicates whether the customer's NIN is verified.
 </ParamField>
 
-<ParamField body="bvn" type="string" optional>
+<ParamField body='bvn' type='string' optional>
   Customer's BVN. **Example:** `12345678901`
 </ParamField>
 
-<ParamField body="nin" type="string" optional>
+<ParamField body='nin' type='string' optional>
   Customer's NIN. **Example:** `23456789012`
 </ParamField>
 
-<ParamField body="maritalStatus" type="string" optional>
+<ParamField body='maritalStatus' type='string' optional>
   Customer's marital status. **Example:** `Single`
 </ParamField>
 
-<ParamField body="pepDeclaration" type="boolean" optional>
+<ParamField body='pepDeclaration' type='boolean' optional>
   PEP declaration.
 </ParamField>
 
-<ParamField body="employmentStatus" type="string" optional>
+<ParamField body='employmentStatus' type='string' optional>
   Employment status. **Example:** `Employed`
 </ParamField>
 
-<ParamField body="sourceOfFunds" type="string" optional>
+<ParamField body='sourceOfFunds' type='string' optional>
   Source of funds. **Example:** `MonthlySalary`
 </ParamField>
 
-<ParamField body="passportUrl" type="string" optional>
+<ParamField body='passportUrl' type='string' optional>
   URL to customer's passport photograph.
 </ParamField>
 
-<ParamField body="nextOfKin" type="object" optional>
-  Next of kin details with fields: `surname`, `firstName`, `otherNames`, `relationship`, `mobileNumber`, `address`.
+<ParamField body='nextOfKin' type='object' optional>
+  Next of kin details with fields: `surname`, `firstName`, `otherNames`,
+  `relationship`, `mobileNumber`, `address`.
 </ParamField>
 
 <ResponseExample>
@@ -113,4 +115,5 @@ api: "PATCH /customers/customer/{customerId}/update"
   "data": null
 }
 ```
+
 </ResponseExample>

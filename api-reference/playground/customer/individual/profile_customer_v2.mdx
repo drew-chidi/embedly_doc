@@ -1,6 +1,6 @@
 ---
 title: 'Create Customer (v2)'
-api: 'POST /customers/add'
+api: 'POST https://waas-staging.embedly.ng/WaasCore/api/v2/customers/add'
 description: 'This endpoint enables you to create a customer profile.'
 ---
 
@@ -13,7 +13,7 @@ description: 'This endpoint enables you to create a customer profile.'
 
 ## Request Parameters
 
-<ParamField body='organizationId' type='string' required>
+<ParamField body='organizationId' type='string'>
   The organization's unique identifier.
 </ParamField>
 
@@ -77,7 +77,7 @@ description: 'This endpoint enables you to create a customer profile.'
   Politically Exposed Person declaration.
 </ParamField>
 
-<ParamField body='employmentStatus' type='string' required>
+<ParamField body='employmentStatus' type='string'>
   Employment status. **Example:** `Employed`
 </ParamField>
 
