@@ -76,7 +76,8 @@
                   "pages": [
                     "api-reference/playground/customer/individual/kyc/nin",
                     "api-reference/playground/customer/individual/kyc/bvn",
-                    "api-reference/playground/customer/individual/kyc/address_verification"
+                    "api-reference/playground/customer/individual/kyc/address_verification",
+                    "api-reference/playground/customer/individual/kyc/address_verification_v2"
                   ]
                 }
               ]
