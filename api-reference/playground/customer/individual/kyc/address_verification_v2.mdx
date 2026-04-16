@@ -37,11 +37,12 @@ description: "This endpoint enables you to complete address verification for cus
   Nearest landmark. **Example:** `Lekki Phase 1 Gate`
 </ParamField>
 
-<ParamField body='image' type='string' optional>
-  Base64 encoded image. **Example:** `iVBORw0KGgoAAAANSUhEUg...`
+<ParamField body='image' type='string' required>
+  Base64 encoded image of the customer's utility bill. **Example:**
+  `iVBORw0KGgoAAAANSUhEUg...`
 </ParamField>
 
-<ParamField body='imageContentType' type='string' optional>
+<ParamField body='imageContentType' type='string' required>
   Image MIME type. **Example:** `image/jpeg`
 </ParamField>
 
