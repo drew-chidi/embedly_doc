@@ -13,10 +13,6 @@ description: 'This endpoint enables you to create a customer profile.'
 
 ## Request Parameters
 
-<ParamField body='organizationId' type='string' required>
-  The organization's unique identifier.
-</ParamField>
-
 <ParamField body='firstName' type='string' required>
   Customer's first name. **Example:** `John`
 </ParamField>
@@ -30,15 +26,12 @@ description: 'This endpoint enables you to create a customer profile.'
 </ParamField>
 
 <ParamField body='dob' type='string' required>
-  Date of birth in ISO format. **Example:** `2000-01-15T00:00:00`
+  Must be greater than 18 years. Date of birth in ISO format. **Example:**
+  `2000-01-15T00:00:00`
 </ParamField>
 
 <ParamField body='customerTypeId' type='string' required>
   The customer's type (UUID).
-</ParamField>
-
-<ParamField body='customerTierId' type='number' required>
-  Initial KYC tier. Default is `0`.
 </ParamField>
 
 <ParamField body='alias' type='string' optional>
@@ -57,49 +50,75 @@ description: 'This endpoint enables you to create a customer profile.'
   Customer's residential address. **Example:** `12 Example Street`
 </ParamField>
 
-<ParamField body='mobileNumber' type='string' required>
-  Customer's phone number. **Example:** `08012345678`
+<ParamField body='mobileNumber' type='string' optional>
+  Customer's phone number. Optional only for closed organisations. **Example:**
+  `08012345678`
 </ParamField>
 
 <ParamField body='emailAddress' type='string' required>
-  Customer's email. **Example:** `john.doe@example.com`
+  Customer's email. Optional only for closed organisations. **Example:**
+  `john.doe@example.com`
 </ParamField>
 
-<ParamField body='gender' type='string' required>
+<ParamField body='gender' type='string' optional>
   Customer's gender. **Example:** `Male`
 </ParamField>
 
-<ParamField body='maritalStatus' type='string' required>
+<ParamField body='maritalStatus' type='string' optional>
   Customer's marital status. **Example:** `Single`
 </ParamField>
 
-<ParamField body='pepDeclaration' type='boolean' required>
+<ParamField body='pepDeclaration' type='boolean' optional>
   Politically Exposed Person declaration.
 </ParamField>
 
-<ParamField body='employmentStatus' type='string' required>
+<ParamField body='employmentStatus' type='string' optional>
   Employment status. **Example:** `Employed`
 </ParamField>
 
-<ParamField body='occupation' type='string' required>
+<ParamField body='occupation' type='string' optional>
   Customer's occupation. **Example:** `Engineer`
 </ParamField>
 
-<ParamField body='sourceOfFunds' type='string' required>
+<ParamField body='sourceOfFunds' type='string' optional>
   Source of funds. **Example:** `MonthlySalary`
 </ParamField>
 
-<ParamField body='passportUrl' type='string' required>
+<ParamField body='passportUrl' type='string' optional>
   URL to customer's passport photograph.
 </ParamField>
 
-<ParamField body='mothersMaidenName' type='string' required>
+<ParamField body='mothersMaidenName' type='string' optional>
   Customer's mother's maiden name.
 </ParamField>
 
-<ParamField body='nextOfKin' type='object' required>
-  Next of kin details with fields: `surname`, `firstName`, `otherNames`,
-  `relationship`, `mobileNumber`, `address`.
+<ParamField body='nextOfKin' type='object' optional>
+  Next of kin details.
+  <Expandable title='properties'>
+    <ParamField body='surname' type='string' optional>
+      The surname of the next of kin.
+    </ParamField>
+
+    <ParamField body='firstName' type='string' optional>
+      The first name of the next of kin.
+    </ParamField>
+
+    <ParamField body='otherNames' type='string' optional>
+      Any other names of the next of kin.
+    </ParamField>
+
+    <ParamField body='relationship' type='string' optional>
+      Relationship to the customer (e.g., Spouse, Sibling).
+    </ParamField>
+
+    <ParamField body='mobileNumber' type='string' optional>
+      Phone number of the next of kin.
+    </ParamField>
+
+    <ParamField body='address' type='string' optional>
+      Residential address of the next of kin.
+    </ParamField>
+  </Expandable>
 </ParamField>
 
 <ResponseExample>
