@@ -68,6 +68,11 @@ description: 'This endpoint generates a new checkout wallet for an organization.
 
 </ParamField>
 
+<ParamField body='accountInquiryResponseName' type='string' optional>
+  Pass this to determine the name that should show when you validate the account
+  number on banking applications. **Example:** `John Doe`.
+</ParamField>
+
 <ResponseExample>
 ```json 200 Success
 {
