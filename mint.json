@@ -78,7 +78,6 @@
                   "pages": [
                     "api-reference/playground/customer/individual/kyc/nin",
                     "api-reference/playground/customer/individual/kyc/bvn",
-                    "api-reference/playground/customer/individual/kyc/address_verification",
                     "api-reference/playground/customer/individual/kyc/address_verification_v2"
                   ]
                 }
@@ -181,7 +180,6 @@
     }
   ],
   "api": {
-    
     "baseUrl": [
       "https://waas-staging.embedly.ng/api/v1/",
       "https://payout-staging.embedly.ng/api/v1",
