@@ -1,0 +1,42 @@
+---
+title: 'Upload File'
+api: 'POST /utilities/upload'
+description: 'Upload a file to the server. The request must use the `multipart/form-data` Content-Type.'
+---
+
+<ParamField body='file' type='file' required>
+  The binary content of the file to be uploaded.
+</ParamField>
+
+## Response
+
+<ResponseExample>
+
+```json 200 Success
+{
+  "code": "00",
+  "success": true,
+  "message": "Uploaded successfully",
+  "data": []
+}
+```
+
+```json 400 Bad Request
+{
+  "code": "400",
+  "success": false,
+  "message": "Invalid Admin Key",
+  "data": null
+}
+```
+
+```json 500 Internal Server Error
+{
+  "code": "500",
+  "success": false,
+  "message": "An unexpected error occurred",
+  "data": null
+}
+```
+
+</ResponseExample>
