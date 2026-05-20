@@ -45,9 +45,7 @@
                 "pages": [
                   {
                     "group": "Getting Started",
-                    "pages": [
-                      "api-reference/authentication"
-                    ]
+                    "pages": ["api-reference/authentication"]
                   },
                   {
                     "group": "Customer",
@@ -94,7 +92,8 @@
                         "group": "Utils",
                         "pages": [
                           "api-reference/playground/customer/utils/get_countries",
-                          "api-reference/playground/customer/utils/get_all_customer_types"
+                          "api-reference/playground/customer/utils/get_all_customer_types",
+                          "api-reference/playground/customer/utils/upload"
                         ]
                       }
                     ]
@@ -162,9 +161,7 @@
                   },
                   {
                     "group": "Webhook",
-                    "pages": [
-                      "api-reference/webhooks"
-                    ]
+                    "pages": ["api-reference/webhooks"]
                   }
                 ]
               }
