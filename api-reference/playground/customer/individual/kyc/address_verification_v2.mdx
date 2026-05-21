@@ -38,8 +38,12 @@ description: "This endpoint enables you to complete address verification for cus
 </ParamField>
 
 <ParamField body='image' type='string' required>
-  Base64 encoded image of the customer's utility bill. **Example:**
-  `iVBORw0KGgoAAAANSUhEUg...`
+  Use https://waas-staging.embedly.ng/api/v1/utilities/upload to generate a url
+  string. The image should be a clear photograph of a valid proof of address
+  document, such as a utility bill, bank statement, or government-issued
+  document that clearly shows the customer's name and address. The image must be
+  in JPEG or PNG format and should not exceed 5MB in size. **Example:**
+  `https://waas-staging.embedly.ng/uploads/kyc/addr_verification/1234567890.jpg`
 </ParamField>
 
 <ParamField body='imageContentType' type='string' required>
