@@ -1,0 +1,38 @@
+---
+title: 'Get Organization Batches'
+api: 'GET https://waas-staging.embedly.ng/api/v1/payment-scheduler/organization/batches'
+description: 'Returns batches for the authenticated organization with pagination. The controller resolves `OrganizationId` from the API key.'
+---
+
+<ParamField query="page" type="integer" default="1">
+  Page number
+</ParamField>
+
+<ParamField query="size" type="integer" default="50">
+  Page size (max 100)
+</ParamField>
+
+<ResponseExample>
+```json 200 Success
+{
+  "statusCode": 200,
+  "message": "Batches retrieved successfully",
+  "data": [
+    {
+      "id": "08ddaf4f-77d9-4336-8e62-358d622f09e9",
+      "batchReference": "PAYROLL-2026-06",
+      "approvalStatus": "APPROVED",
+      "processingStatus": "COMPLETED",
+      "totalRecipients": 100,
+      "totalAmount": 50000,
+      "createdAt": "2026-06-01T09:00:00Z"
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "size": 50,
+    "total": 1
+  }
+}
+```
+</ResponseExample>
