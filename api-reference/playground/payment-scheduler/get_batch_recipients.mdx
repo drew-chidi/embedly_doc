@@ -1,0 +1,35 @@
+---
+title: 'Get Batch Recipients'
+api: 'GET https://waas-staging.embedly.ng/api/v1/payment-scheduler/batch/{batchId}/recipients'
+description: 'Returns all recipients associated with a batch.'
+---
+
+<ParamField path="batchId" type="string" required>
+  The unique identifier of the batch.
+</ParamField>
+
+<ResponseExample>
+```json 200 Success
+{
+  "statusCode": 200,
+  "message": "Recipients retrieved successfully",
+  "data": [
+    {
+      "id": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+      "batchId": "08ddaf4f-77d9-4336-8e62-358d622f09e9",
+      "rowNumber": 1,
+      "recipientName": "John Doe",
+      "accountNumber": "0987654321",
+      "bankCode": "058",
+      "bankName": "Guaranty Trust Bank",
+      "amount": 500,
+      "narration": "June Salary",
+      "validationStatus": "VALID",
+      "validationMessage": "Valid recipient",
+      "createdAt": "2026-06-01T09:00:00Z",
+      "isActive": true
+    }
+  ]
+}
+```
+</ResponseExample>

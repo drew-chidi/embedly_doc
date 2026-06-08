@@ -151,6 +151,19 @@
                     ]
                   },
                   {
+                    "group": "Payment Scheduler",
+                    "pages": [
+                      "api-reference/playground/payment-scheduler/create_batch",
+                      "api-reference/playground/payment-scheduler/get_batch_details",
+                      "api-reference/playground/payment-scheduler/get_batch_recipients",
+                      "api-reference/playground/payment-scheduler/get_organization_batches",
+                      "api-reference/playground/payment-scheduler/approve_batch",
+                      "api-reference/playground/payment-scheduler/reject_batch",
+                      "api-reference/playground/payment-scheduler/process_due_transactions",
+                      "api-reference/playground/payment-scheduler/get_batch_processing_status"
+                    ]
+                  },
+                  {
                     "group": "Card",
                     "pages": [
                       "api-reference/cards",

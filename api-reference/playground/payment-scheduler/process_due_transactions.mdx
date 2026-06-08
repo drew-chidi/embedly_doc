@@ -1,0 +1,21 @@
+---
+title: 'Process Due Transactions'
+api: 'POST https://waas-staging.embedly.ng/api/v1/admin/batch/process-due'
+description: 'Triggers processing of due scheduled batches.'
+---
+
+<ResponseExample>
+```json 200 Success
+{
+  "statusCode": 200,
+  "message": "Due transactions processed successfully",
+  "data": {
+    "isSuccess": true,
+    "message": "Processing triggered",
+    "processedBatches": 2,
+    "totalTransactions": 150,
+    "totalAmount": 75000
+  }
+}
+```
+</ResponseExample>
