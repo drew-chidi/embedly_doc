@@ -1,6 +1,6 @@
 ---
-title: 'Create Closed Wallet (beta)'
-api: 'POST /wallets/add-closed-wallet'
+title: 'Create Closed Wallet'
+api: 'POST https://waas-staging.embedly.ng/WaasCore/api/v1/wallets/add-closed-wallet'
 description: 'The endpoint is designed to create a new wallet for a customer(that belongs to a closed organization). This endpoint allows you to fast track the wallet creation process by skipping the create customer step. ONLY closed organizations can use this endpoint.'
 ---
 
@@ -15,7 +15,7 @@ description: 'The endpoint is designed to create a new wallet for a customer(tha
 </ParamField>
 
 <ParamField body='mobileNumber' type='string' optional>
-  **Example:** "08012345678"
+  **Example:** "08012345678" `Optional. However, when passed, must be unique`
 </ParamField>
 
 <ParamField body='emailAddress' type='string' optional>
