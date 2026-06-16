@@ -103,6 +103,7 @@
                     "pages": [
                       "api-reference/Wallet",
                       "api-reference/playground/Wallet/Add_Wallet",
+                      "api-reference/playground/Wallet/Create_Closed_Wallet",
                       "api-reference/playground/Wallet/Add_Corporate_wallet",
                       "api-reference/playground/Wallet/Get_Wallet_by_Id",
                       "api-reference/playground/Wallet/Get_Wallet_by_Account",
