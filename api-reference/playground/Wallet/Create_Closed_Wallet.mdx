@@ -1,0 +1,71 @@
+---
+title: 'Create Closed Wallet (beta)'
+api: 'POST /wallets/add-closed-wallet'
+description: 'The endpoint is designed to create a new wallet for a customer(that belongs to a closed organization). This endpoint allows you to fast track the wallet creation process by skipping the create customer step. ONLY closed organizations can use this endpoint.'
+---
+
+## Request Body
+
+<ParamField body='firstName' type='string' required>
+  **Example:** "John"
+</ParamField>
+
+<ParamField body='lastName' type='string' required>
+  **Example:** "Doe"
+</ParamField>
+
+<ParamField body='mobileNumber' type='string' optional>
+  **Example:** "08012345678"
+</ParamField>
+
+<ParamField body='emailAddress' type='string' optional>
+  **Example:** "john.doe@abc.com" `Optional. However, when passed, must be
+  unique`
+</ParamField>
+
+<ParamField body='currencyId' type='string' optional>
+  ID of the currency for this wallet. _(Must be a UUID)_ **Example:**
+  "3fa85f64-5717-4562-b3fc-2c963f66afa6" `The value should be gotten from the
+  get currency endpoint in the wallet utils section`
+</ParamField>
+
+<ParamField body='alias' type='string' optional>
+  **Example:** "Johny Boy" `This is an optional field`
+</ParamField>
+
+<ResponseExample>
+```json 200 Success
+{
+  "code": "00",
+  "success": true,
+	"message": "Created successfully.",
+    "data": {
+        "customerId": "655b19af-68f5-11f1-869b-02789e000022",
+        "firstName": "Tari",
+        "lastName": "Hilson",
+        "accountNumber": "9710050219",
+        "walletName": "Tari Hilson",
+        "walletId": "655bdfed-68f5-11f1-869b-02789e000022",
+        "currencyId": "fd5e474d-bb42-4db1-ab74-e8d2a01047e9"
+    }
+}
+```
+```json 404 Not Found
+{
+  "code": "404",
+  "success": false,
+  "message": "Customer not found",
+  "data": null
+}
+```
+
+```json 500 Internal Server Error
+{
+  "code": "500",
+  "success": false,
+  "message": "An unexpected error occurred",
+  "data": null
+}
+```
+
+</ResponseExample>
