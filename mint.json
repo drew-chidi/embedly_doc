@@ -147,6 +147,7 @@
           "pages": [
             "api-reference/checkout",
             "api-reference/playground/checkout/get_org_prefix_mappings",
+            "api-reference/playground/checkout/get_org_prefix_mappings_v2",
             "api-reference/playground/checkout/create_checkout_wallet",
             "api-reference/playground/checkout/get_checkout_wallet",
             "api-reference/playground/checkout/get_checkout_txns_by_walletId",
@@ -172,7 +173,8 @@
             "api-reference/playground/payment-scheduler/get_batch_details",
             "api-reference/playground/payment-scheduler/get_batch_recipients",
             "api-reference/playground/payment-scheduler/get_organization_batches",
-            "api-reference/playground/payment-scheduler/get_batch_processing_status"
+            "api-reference/playground/payment-scheduler/get_batch_processing_status",
+            "api-reference/playground/payment-scheduler/get_org_prefix_mappings_v2"
           ]
         },
         {
