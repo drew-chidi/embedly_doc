@@ -173,8 +173,7 @@
             "api-reference/playground/payment-scheduler/get_batch_details",
             "api-reference/playground/payment-scheduler/get_batch_recipients",
             "api-reference/playground/payment-scheduler/get_organization_batches",
-            "api-reference/playground/payment-scheduler/get_batch_processing_status",
-            "api-reference/playground/payment-scheduler/get_org_prefix_mappings_v2"
+            "api-reference/playground/payment-scheduler/get_batch_processing_status"
           ]
         },
         {
