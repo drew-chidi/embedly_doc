@@ -1,0 +1,42 @@
+---
+title: 'Remove CBN Restriction'
+api: 'PUT https://waas-staging.embedly.ng/WaasCore/api/v1/wallet-limits/cbn/remove/:restrictionId'
+description: 'Remove a Central Bank (CBN) enforced restriction. Body is optional.'
+---
+
+<ParamField body='restrictionId' type='string' required>
+  Path parameter: UUID of the restriction to remove
+</ParamField>
+
+<ParamField body='restrictionAmount' type='number'>
+  Optional: override the restriction amount when removing
+</ParamField>
+
+<ParamField body='reasonCode' type='string'>
+  Optional: reason code for removal
+</ParamField>
+
+<ParamField body='reason' type='string'>
+  Optional: human explanation
+</ParamField>
+
+<RequestExample>
+```json
+{
+  "restrictionAmount": 0,
+  "reasonCode": "string",
+  "reason": "string"
+}
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 Success
+{
+  "code": "00",
+  "success": true,
+  "message": "Wallet restriction limit removed successfully",
+  "data": null
+}
+```
+</ResponseExample>

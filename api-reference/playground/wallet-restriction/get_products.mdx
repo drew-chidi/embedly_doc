@@ -1,0 +1,27 @@
+---
+title: 'Get Products'
+api: 'GET https://waas-staging.embedly.ng/WaasCore/api/v1/products/get'
+description: 'List available products for opt-in / opt-out (exemptions).'
+---
+
+<ResponseExample>
+```json 200 Success
+{
+  "code": "00",
+  "success": true,
+  "message": "Retrieved Successfully",
+  "data": [
+    {
+      "id": "3ca924c2-067d-11f1-b253-724d2c90adb1",
+      "name": "Checkout",
+      "organizationId": "fcce8dba-47c9-11f0-a818-6045bd97b81d",
+      "description": "Product for Checkout Charges",
+      "direction": "D",
+      "isActive": true,
+      "dateCreated": "2026-02-10T12:37:18"
+    }
+
+  ]
+}
+```
+</ResponseExample>

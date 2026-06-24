@@ -1,0 +1,58 @@
+---
+title: 'Add Wallet Restriction'
+api: 'POST https://waas-staging.embedly.ng/WaasCore/api/v1/wallet-limits/add'
+description: 'Add a manual restriction (limit) to a wallet.'
+---
+
+<ParamField body='walletId' type='string' required>
+  Wallet UUID to apply the restriction to
+</ParamField>
+
+<ParamField body='restrictionType' type='string' required>
+  Restriction type. Use `MANUAL` for manual limits
+</ParamField>
+
+<ParamField body='restrictionAmount' type='number' required>
+  Maximum allowed amount when restriction is active
+</ParamField>
+
+<ParamField body='reasonCode' type='string' required>
+  Reason code. Use `MANUAL` for manual restrictions
+</ParamField>
+
+<ParamField body='reason' type='string'>
+  Human friendly explanation for the restriction
+</ParamField>
+
+<ParamField body='effectiveFrom' type='string'>
+  ISO 8601 datetime when restriction becomes active
+</ParamField>
+
+<ParamField body='expiresAt' type='string'>
+  ISO 8601 datetime when restriction expires
+</ParamField>
+
+<RequestExample>
+```json
+{
+  "walletId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "restrictionType": "MANUAL",
+  "restrictionAmount": 0,
+  "reasonCode": "MANUAL",
+  "reason": "string",
+  "effectiveFrom": "2026-06-24T11:08:13.040Z",
+  "expiresAt": "2026-06-24T11:08:13.040Z"
+}
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 Success
+{
+  "code": "00",
+  "success": true,
+  "message": "Wallet restriction limit added successfully",
+  "data": null
+}
+```
+</ResponseExample>

@@ -1,0 +1,35 @@
+---
+title: 'List Product Exemptions'
+api: 'GET https://waas-staging.embedly.ng/api/v1/products/exemptions'
+description: 'Returns all product exemptions.'
+---
+
+<ResponseExample>
+```json 200 Success
+{
+  "code": "00",
+  "success": true,
+  "message": "Retrieved Successfully",
+  "data": [
+    {
+      "id": "08dec4d7-971d-4bdb-844f-9e928e1c4b12",
+      "productId": "7cd7757d-aa9a-11f0-a7cf-0274f77d4a81",
+      "keyId": "1f1031a4-3a44-4144-8330-6cacda49a5ec",
+      "keyType": "ORGANIZATION",
+      "organizationId": "fcce8dba-47c9-11f0-a818-6045bd97b81d",
+      "reason": "",
+      "expiresAt": null,
+      "walletId": null,
+      "mode": "",
+      "isActive": true,
+      "dateCreated": "2026-06-07T20:58:57",
+      "dateUpdated": null,
+      "dateDeleted": null,
+      "createdBy": "00000000-0000-0000-0000-000000000001",
+      "updatedBy": null,
+      "deletedBy": null
+    }
+  ]
+}
+```
+</ResponseExample>

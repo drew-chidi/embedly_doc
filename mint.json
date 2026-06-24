@@ -133,6 +133,20 @@
           ]
         },
         {
+          "group": "Wallet Restriction",
+          "pages": [
+            "api-reference/playground/wallet-restriction/add_wallet_restriction",
+            "api-reference/playground/wallet-restriction/get_wallet_restrictions",
+            "api-reference/playground/wallet-restriction/remove_wallet_restriction",
+            "api-reference/playground/wallet-restriction/update_wallet_restriction",
+            "api-reference/playground/wallet-restriction/remove_cbn_restriction",
+            "api-reference/playground/wallet-restriction/get_products",
+            "api-reference/playground/wallet-restriction/exempt-product",
+            "api-reference/playground/wallet-restriction/get_exemptions",
+            "api-reference/playground/wallet-restriction/get_product_exemptions"
+          ]
+        },
+        {
           "group": "Payout",
           "pages": [
             "api-reference/payout",
