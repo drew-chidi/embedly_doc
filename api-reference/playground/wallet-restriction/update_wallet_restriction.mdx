@@ -1,0 +1,48 @@
+---
+title: 'Update Wallet Restriction'
+api: 'PUT https://waas-staging.embedly.ng/WaasCore/api/v1/wallet-limits/update/:restrictionId'
+description: 'Update fields of an existing wallet restriction.'
+---
+
+<ParamField body='restrictionId' type='string' required>
+  Path parameter: UUID of the restriction to update
+</ParamField>
+
+<ParamField body='walletId' type='string' required>
+  Wallet UUID
+</ParamField>
+
+<ParamField body='restrictionType' type='string' required>
+  Restriction type (e.g. `MANUAL`)
+</ParamField>
+
+<ParamField body='restrictionAmount' type='number' required>
+  Restriction amount
+</ParamField>
+
+<ParamField body='reasonCode' type='string' required>
+  Reason code (e.g. `MANUAL`)
+</ParamField>
+
+<ParamField body='reason' type='string'>
+  Human explanation
+</ParamField>
+
+<ParamField body='effectiveFrom' type='string'>
+  ISO 8601 datetime when restriction becomes active
+</ParamField>
+
+<ParamField body='expiresAt' type='string'>
+  ISO 8601 datetime when restriction expires
+</ParamField>
+
+<ResponseExample>
+```json 200 Success
+{
+  "code": "00",
+  "success": true,
+  "message": "Wallet restriction limit updated successfully",
+  "data": null
+}
+```
+</ResponseExample>

@@ -1,0 +1,65 @@
+---
+title: 'Exempt (Opt-out) Product'
+api: 'POST https://waas-staging.embedly.ng/WaasCore/api/v1/products/exempt'
+description: 'Mark a product as exempt for a key (customer/org) or a wallet.'
+---
+
+<ParamField body='productId' type='string' required>
+  Product UUID to exempt
+</ParamField>
+
+<ParamField body='keyId' type='string' required>
+  Customer or organization UUID (see note)
+</ParamField>
+
+<ParamField body='walletId' type='string'>
+  Optional: provide to exempt a specific wallet. Omit to exempt the whole `keyId`
+</ParamField>
+
+<ParamField body='expiresAt' type='string'>
+  Optional expiry datetime for the exemption
+</ParamField>
+
+<ParamField body='reason' type='string'>
+  Optional explanation
+</ParamField>
+
+<ParamField body='mode' type='string'>
+  Optional mode flag
+</ParamField>
+
+<ParamField body='enable' type='boolean'>
+  Set to `true` to enable exemption, `false` to disable
+</ParamField>
+
+Notes:
+
+- `keyId` may be a customer Id or an organization Id.
+- If you want to exempt a whole customer or organization, omit `walletId`.
+- To exempt a single wallet, provide `walletId`.
+
+<RequestExample>
+```json
+{
+  "productId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "keyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "walletId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "expiresAt": "2026-06-24T11:25:32.040Z",
+  "reason": "string",
+  "mode": "string",
+  "enable": true
+}
+```
+</RequestExample>
+    
+
+<ResponseExample>
+```json 200 Success
+{
+  "code": "00",
+  "success": true,
+  "message": "Updated Successfully",
+  "data": null
+}
+```
+</ResponseExample>
