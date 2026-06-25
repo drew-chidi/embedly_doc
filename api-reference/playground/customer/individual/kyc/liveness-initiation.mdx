@@ -1,0 +1,61 @@
+---
+title: 'Initiate Liveness Check'
+api: 'POST /api/v1/customers/kyc/liveliness'
+description: 'Start a HyperVerge liveness session for customer KYC.'
+---
+
+### Endpoint
+
+`POST /api/v1/customers/kyc/liveliness`
+
+### Headers
+
+| Header | Value |
+|---|---|
+| `Content-Type` | `application/json` |
+| `x-api-key` | `<tenant API key>` |
+
+### Request body
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `customerId` | `string` (GUID) | yes | The customer to verify. Must belong to the authenticated organization. |
+| `submissionChannel` | `string` enum | no | Source of the request. Allowed: `WAAS` (default), `MERCHANT_SERVICE`. Frontends calling WaaS Core directly should omit this or send `WAAS`. |
+
+```json
+{
+  "customerId": "8d3e2c4a-19b7-4f2e-9c61-2a78b0f31c45",
+  "submissionChannel": "WAAS"
+}
+```
+
+### Success response — `200 OK`
+
+```json
+{
+  "code": "00",
+  "success": true,
+  "message": "Operation Successful",
+  "data": {
+    "customerId":   "8d3e2c4a-19b7-4f2e-9c61-2a78b0f31c45",
+    "startKycUrl":  "https://hyperverge.co/kyc/xyz789?token=…",
+    "status":       "in_progress",
+    "requestId":    "hv-trn-9f8e7d6c5b4a",
+    "attemptNumber": 1,
+    "channel":      "WAAS"
+  }
+}
+```
+
+### Error responses
+
+| Status | Trigger | Sample body |
+|---|---|---|
+| `400` | `customerId` missing / invalid GUID | `{"code":"400","success":false,"message":"customerId is required","data":null}` |
+| `400` | Unknown `submissionChannel` | `{"code":"400","success":false,"message":"submissionChannel 'X' is not accepted. Allowed values: WAAS, MERCHANT_SERVICE","data":null}` |
+| `404` | Customer not found | `{"code":"404","success":false,"message":"The customer could not be found","data":null}` |
+| `422` | Liveness not enabled | `{"code":"422","success":false,"message":"Liveness verification is not enabled for this organization","data":null}` |
+| `422` | NIN/BVN not verified | `{"code":"422","success":false,"message":"NIN/BVN verification must be completed before initiating liveness","data":null}` |
+| `409` | Already completed | `{"code":"409","success":false,"message":"This customer has already completed liveness verification successfully. Re-initiation is not permitted.","data":null}` |
+| `502` | HyperVerge failure | `{"code":"502","success":false,"message":"Could not generate liveness URL. Please retry shortly.","data":null}` |
+| `500` | Unexpected | `{"code":"500","success":false,"message":"An unexpected error occurred while initiating liveness","data":null}` |
