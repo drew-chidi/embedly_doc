@@ -4,6 +4,8 @@ api: 'POST /api/v1/customers/kyc/liveliness'
 description: 'Start a HyperVerge liveness session for customer KYC.'
 ---
 
+This endpoint begins the liveness portion of the customer KYC flow. It does not complete verification directly; instead it returns a `startKycUrl` that must be opened in a browser or webview so the customer can submit their selfie to HyperVerge. The result is delivered asynchronously via webhook and reflected in the customer's liveness status.
+
 ### Endpoint
 
 `POST /api/v1/customers/kyc/liveliness`

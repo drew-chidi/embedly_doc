@@ -4,6 +4,8 @@ api: 'PUT https://waas-staging.embedly.ng/WaasCore/api/v1/wallet-limits/update/:
 description: 'Update fields of an existing wallet restriction.'
 ---
 
+Use this endpoint to adjust an existing restriction without creating a new one. Common updates include changing the expiry time, amount limit, or reason after a review. The restriction is still identified by `restrictionId`.
+
 <ParamField body='restrictionId' type='string' required>
   Path parameter: UUID of the restriction to update
 </ParamField>

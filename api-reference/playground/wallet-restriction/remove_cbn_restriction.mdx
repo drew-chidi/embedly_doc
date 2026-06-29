@@ -4,6 +4,8 @@ api: 'PUT https://waas-staging.embedly.ng/WaasCore/api/v1/wallet-limits/cbn/remo
 description: 'Remove a Central Bank (CBN) enforced restriction. Body is optional.'
 ---
 
+This endpoint is for CBN-specific wallet restrictions. Use it when a restriction comes from a CBN enforcement workflow and needs to be lifted. The request body is optional, but providing a reason or final amount can help support teams track why the restriction was removed.
+
 <ParamField body='restrictionId' type='string' required>
   Path parameter: UUID of the restriction to remove
 </ParamField>
