@@ -1,8 +1,10 @@
 ---
-title: 'Submit ID Card Document'
-api: 'POST /api/v1/customers/kyc/id-card'
-description: 'Submit an ID-card document URL for back-office review during customer KYC.'
+title: "Submit ID Card Document"
+api: "POST /api/v1/customers/kyc/id-card"
+description: "Submit an ID-card document URL for back-office review during customer KYC."
 ---
+
+This endpoint records an ID-card document that has already been uploaded to a secure HTTPS URL. It does not accept raw file uploads. Use this after liveness has completed and the customer is ready to submit their document for back-office review.
 
 ### Endpoint
 
@@ -10,25 +12,25 @@ description: 'Submit an ID-card document URL for back-office review during custo
 
 ### Headers
 
-| Header | Value |
-|---|---|
+| Header         | Value              |
+| -------------- | ------------------ |
 | `Content-Type` | `application/json` |
-| `x-api-key` | `<tenant API key>` |
+| `x-api-key`    | `<tenant API key>` |
 
 ### Request body
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `customerId` | `string` (GUID) | yes | The customer the document belongs to. Must be on Tier 2 (NIN + BVN verified + liveness completed). |
-| `documentType` | `string` enum | yes | Allowed: `NIN_CARD`, `DRIVERS_LICENCE`, `PASSPORT`, `VOTERS_CARD`. Case-insensitive on input; normalised on output. |
-| `documentUrl` | `string` (HTTPS URL) | yes | **Must use `https://`.** Plain `http://` is rejected. The URL is stored verbatim; the back office presigns / fetches it during review. |
-| `submissionChannel` | `string` enum | no | Source of the request. Allowed: `WAAS` (default), `MERCHANT_SERVICE`. |
+| Field               | Type                 | Required | Description                                                                                                                            |
+| ------------------- | -------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `customerId`        | `string` (GUID)      | yes      | The customer the document belongs to. Must be on Tier 2 (NIN + BVN verified + liveness completed).                                     |
+| `documentType`      | `string` enum        | yes      | Allowed: `NIN_CARD`, `DRIVERS_LICENCE`, `PASSPORT`, `VOTERS_CARD`. Case-insensitive on input; normalised on output.                    |
+| `documentUrl`       | `string` (HTTPS URL) | yes      | **Must use `https://`.** Plain `http://` is rejected. The URL is stored verbatim; the back office presigns / fetches it during review. |
+| `submissionChannel` | `string` enum        | no       | Source of the request. Allowed: `WAAS` (default), `MERCHANT_SERVICE`.                                                                  |
 
 ```json
 {
-  "customerId":   "8d3e2c4a-19b7-4f2e-9c61-2a78b0f31c45",
+  "customerId": "8d3e2c4a-19b7-4f2e-9c61-2a78b0f31c45",
   "documentType": "NIN_CARD",
-  "documentUrl":  "https://your-cdn.example.com/uploads/nin-card-8d3e.jpg",
+  "documentUrl": "https://your-cdn.example.com/uploads/nin-card-8d3e.jpg",
   "submissionChannel": "WAAS"
 }
 ```
@@ -41,28 +43,28 @@ description: 'Submit an ID-card document URL for back-office review during custo
   "success": true,
   "message": "ID card submitted successfully and is pending review",
   "data": {
-    "customerId":    "8d3e2c4a-19b7-4f2e-9c61-2a78b0f31c45",
-    "submissionId":  "DOC-SUB-00001",
-    "documentType":  "NIN_CARD",
-    "documentUrl":   "https://your-cdn.example.com/uploads/nin-card-8d3e.jpg",
-    "status":        "pending_review",
-    "submittedAt":   "2026-06-25T10:14:33.521Z",
+    "customerId": "8d3e2c4a-19b7-4f2e-9c61-2a78b0f31c45",
+    "submissionId": "DOC-SUB-00001",
+    "documentType": "NIN_CARD",
+    "documentUrl": "https://your-cdn.example.com/uploads/nin-card-8d3e.jpg",
+    "status": "pending_review",
+    "submittedAt": "2026-06-25T10:14:33.521Z",
     "attemptNumber": 1,
-    "channel":       "WAAS"
+    "channel": "WAAS"
   }
 }
 ```
 
 ### Error responses
 
-| Status | Trigger | Sample body |
-|---|---|---|
-| `400` | Invalid GUID | `{"code":"400","success":false,"message":"customerId must be a valid GUID","data":null}` |
-| `400` | Unknown `documentType` | `{"code":"400","success":false,"message":"documentType 'X' is not accepted. Allowed values: NIN_CARD, DRIVERS_LICENCE, PASSPORT, VOTERS_CARD","data":null}` |
-| `400` | `documentUrl` not HTTPS | `{"code":"400","success":false,"message":"documentUrl must use HTTPS","data":null}` |
-| `404` | Customer not found | `{"code":"404","success":false,"message":"The customer could not be found","data":null}` |
-| `422` | NIN/BVN not verified | `{"code":"422","success":false,"message":"NIN and BVN verification must be completed before an ID card can be submitted","data":null}` |
-| `422` | Tier below 2 | `{"code":"422","success":false,"message":"Customer must be on Tier 2 before submitting an ID card","data":null}` |
-| `409` | Submission pending | `{"code":"409","success":false,"message":"A document submission is already under review. Re-upload is only permitted after current review completes.","data":null}` |
-| `409` | Already approved | `{"code":"409","success":false,"message":"This customer's ID card has already been approved. No further submission is required.","data":null}` |
-| `500` | Unexpected | `{"code":"500","success":false,"message":"An unexpected error occurred while submitting the ID card","data":null}` |
+| Status | Trigger                 | Sample body                                                                                                                                                         |
+| ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `400`  | Invalid GUID            | `{"code":"400","success":false,"message":"customerId must be a valid GUID","data":null}`                                                                            |
+| `400`  | Unknown `documentType`  | `{"code":"400","success":false,"message":"documentType 'X' is not accepted. Allowed values: NIN_CARD, DRIVERS_LICENCE, PASSPORT, VOTERS_CARD","data":null}`         |
+| `400`  | `documentUrl` not HTTPS | `{"code":"400","success":false,"message":"documentUrl must use HTTPS","data":null}`                                                                                 |
+| `404`  | Customer not found      | `{"code":"404","success":false,"message":"The customer could not be found","data":null}`                                                                            |
+| `422`  | NIN/BVN not verified    | `{"code":"422","success":false,"message":"NIN and BVN verification must be completed before an ID card can be submitted","data":null}`                              |
+| `422`  | Tier below 2            | `{"code":"422","success":false,"message":"Customer must be on Tier 2 before submitting an ID card","data":null}`                                                    |
+| `409`  | Submission pending      | `{"code":"409","success":false,"message":"A document submission is already under review. Re-upload is only permitted after current review completes.","data":null}` |
+| `409`  | Already approved        | `{"code":"409","success":false,"message":"This customer's ID card has already been approved. No further submission is required.","data":null}`                      |
+| `500`  | Unexpected              | `{"code":"500","success":false,"message":"An unexpected error occurred while submitting the ID card","data":null}`                                                  |

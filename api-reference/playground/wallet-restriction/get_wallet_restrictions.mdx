@@ -4,6 +4,8 @@ api: 'GET https://waas-staging.embedly.ng/WaasCore/api/v1/wallet-limits/get/:wal
 description: 'Retrieve all active and historical restrictions for a wallet.'
 ---
 
+Use this endpoint to inspect the restriction history for a wallet. It returns every restriction row associated with the wallet, including active and expired restrictions. Use the `isActive` field to determine whether a restriction is currently enforced.
+
 <ParamField body='walletId' type='string' required>
   Path parameter: UUID of the wallet
 </ParamField>

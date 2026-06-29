@@ -4,6 +4,8 @@ api: 'POST https://waas-staging.embedly.ng/WaasCore/api/v1/wallet-limits/add'
 description: 'Add a manual restriction (limit) to a wallet.'
 ---
 
+This endpoint creates a manual restriction on an existing wallet. It is typically used by support or operations when a wallet needs to be held for review, blocked, or limited due to suspected fraud or compliance concerns. The restriction is associated with a wallet and can be removed or updated later.
+
 <ParamField body='walletId' type='string' required>
   Wallet UUID to apply the restriction to
 </ParamField>
