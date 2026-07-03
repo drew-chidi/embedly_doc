@@ -1,6 +1,6 @@
 ---
 title: 'Initiate Liveness Check'
-api: 'POST /api/v1/customers/kyc/liveliness'
+api: 'POST https://waas-staging.embedly.ng/api/v1/customers/kyc/liveliness'
 description: 'Start a HyperVerge liveness session for customer KYC.'
 ---
 
@@ -23,11 +23,13 @@ This endpoint begins the liveness portion of the customer KYC flow. It does not 
 |---|---|---|---|
 | `customerId` | `string` (GUID) | yes | The customer to verify. Must belong to the authenticated organization. |
 | `submissionChannel` | `string` enum | no | Source of the request. Allowed: `WAAS` (default), `MERCHANT_SERVICE`. Frontends calling WaaS Core directly should omit this or send `WAAS`. |
+| `redirectUrl` | `string` (URL) | no | The URL to redirect the customer to after completing the liveness check. Invalid/relative URLs are rejected with `400`. Omit to use HyperVerge's default post capture behavior. |
 
 ```json
 {
   "customerId": "8d3e2c4a-19b7-4f2e-9c61-2a78b0f31c45",
-  "submissionChannel": "WAAS"
+  "submissionChannel": "WAAS",
+  "redirectUrl": "https://example.com/redirect"
 }
 ```
 
