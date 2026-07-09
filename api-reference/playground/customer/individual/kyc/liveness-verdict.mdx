@@ -1,0 +1,70 @@
+---
+title: "Outbound webhook - Liveness Verdict (WaaS Core --> Merchant )"
+description: "Liveness Verdict."
+---
+
+Whenever a liveness submission reaches a terminal state, WaaS Core fires a signed, fire-and-forget webhook to the organization's configured webhook URL (set in the merchant/back-office webhook settings). This is the push-based alternative to polling §3's "Get liveness status" endpoint.
+
+It fires from every code path that can resolve a liveness verdict: the HyperVerge inbound webhook handler, the reconciliation poller, and the staging/dev mock flow — so you get exactly one delivery attempt-sequence per terminal transition regardless of how the verdict arrived.
+
+If the organization has no webhook URL configured, the event is silently skipped (logged server-side, no error surfaced to you) — nothing to poll for; use `GET /api/v1/customers/kyc/liveliness/output` instead.
+
+### Events
+
+| Event         | Fires when              |
+| -------------- | ------------------ |
+| `customer.liveness.approved` | Liveness submission status becomes `completed` |
+| `customer.liveness.declined`    | Liveness submission status becomes `auto_declined` |
+| `customer.liveness.needs_review`    | Liveness submission status becomes `needs_review` (pending back-office manual review). |
+
+`in_progress` never fires a webhook — only terminal transitions do.
+
+### Delivery
+
+```
+POST <your configured webhook URL>
+Content-Type: application/json
+x-embedly-signature: <hex HMAC-SHA512 of the raw JSON body, keyed with your webhook secret>
+```
+
+- **Signature**: `HMACSHA512(key = your webhook secret, message = raw request body bytes)`, hex-encoded, lowercase. Recompute it over the exact bytes received (before any re-serialization) and compare to the `x-embedly-signature` header to verify authenticity.
+- **Timeout**: 10 seconds per attempt.
+- **Retries**: up to 5 attempts total on non-2xx response or timeout. Production backoff: 5 min → 5 min → 60 min → 240 min after attempts 1–4 (attempt 5 is final — no further retry). Staging/Development use a flat 2-minute delay between every retry. After the 5th failed attempt the event is marked `Failed` and not retried again.
+- **Delivery is at-least-once** — treat handlers as idempotent; use `data.submissionId` + `event` to dedupe if you log deliveries on your side.
+
+
+### Payload
+
+```json
+{
+  "event": "customer.liveness.approved",
+  "organizationId": "3f1a9c2e-7b44-4e9a-9d21-5c8e0a1b2f3d",
+  "data": {
+    "customerId": "8d3e2c4a-19b7-4f2e-9c61-2a78b0f31c45",
+    "submissionId": "4c9b1a7e-2d3f-4a8b-9e6c-1f2a3b4c5d6e",
+    "status": "completed",
+    "attemptNumber": 1,
+    "failureReason": null,
+    "reviewedAt": "2026-06-25T10:16:02.114Z",
+    "reviewerEmail": null
+  }
+}
+```
+
+For `customer.liveness.declined` / `customer.liveness.needs_review`, `failureReason` is populated when HyperVerge supplied one:
+
+```json
+"failureReason": { "text": "Face match below threshold", "id": "FACE_MATCH_LOW" }
+```
+
+| Field | Type | Description |
+|---|---|---|
+| `event` | string | One of the three event names above. |
+| `organizationId` | GUID | The organization the customer belongs to (top level, not inside `data`). |
+| `data.customerId` | GUID | The customer the submission belongs to. |
+| `data.submissionId` | GUID | Internal id of the liveness submission row. |
+| `data.status` | string | `completed` \| `auto_declined` \| `needs_review` — matches the `event`. |
+| `data.attemptNumber` | int | Which liveness attempt this is for the customer (1-based, per §"Liveness status reference"). |
+| `data.failureReason` | object \| null | `{ text, id }` when HyperVerge/back-office supplied a reason; `null` on approval or when no reason was given. |
+| `data.reviewedAt` | ISO-8601 timestamp (UTC) | When the verdict was recorded. |
+| `data.reviewerEmail` | string \| null | Populated only when a back-office reviewer manually resolved a `needs_review` case; `null` for HyperVerge auto-verdicts. |

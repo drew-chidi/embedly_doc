@@ -282,4 +282,20 @@ func webhookHandler(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
+```json Liveness Verdict Success
+{
+  "event": "customer.liveness.approved",
+  "organizationId": "f958ce5d-4878-4e4d-ab64-6e8a6209ed6e",
+  "data": {
+    "customerId": "f958ce5d-4878-4e4d-ab64-6e8a6209ed6e",
+    "submissionId": "9bea6e3e-2e55-46c4-a624-b47b0c8c8053",
+    "status": "success",
+    "attemptNumber": 1,
+    "failure reason": null,
+    "reviewedAt": "2025-10-17T20:18:38.0815347Z",
+    "reviewerEmail": null
+  }
+}
+```
+
 </RequestExample>
