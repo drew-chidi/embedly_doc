@@ -96,6 +96,7 @@
                 "api-reference/playground/customer/corporate/get_director",
                 "api-reference/playground/customer/corporate/get_directors",
                 "api-reference/playground/customer/corporate/update_director",
+                "api-reference/playground/customer/corporate/director_address_verification",
                 "api-reference/playground/customer/corporate/add_documents",
                 "api-reference/playground/customer/corporate/update_documents",
                 "api-reference/playground/customer/corporate/get_documents"
@@ -163,7 +164,6 @@
           "group": "Checkout",
           "pages": [
             "api-reference/checkout",
-            "api-reference/playground/checkout/get_org_prefix_mappings",
             "api-reference/playground/checkout/get_org_prefix_mappings_v2",
             "api-reference/playground/checkout/create_checkout_wallet",
             "api-reference/playground/checkout/get_checkout_wallet",
