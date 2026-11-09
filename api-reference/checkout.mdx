@@ -81,6 +81,107 @@ For testing on the staging environment, use the general credentials below.
 	</li>
 </ul>
 
+## Webhook Signature
+
+Use the signature below for checkout transactions so as to receive webhooks.
+
+| Header                | Algorithm    | Secret       |
+| --------------------- | ------------ | ------------ |
+| `x-webhook-signature` | HMAC SHA-512 | Your API Key |
+
+<Info>The secret is always your API Key.</Info>
+
+## Webhook Payloads
+
+Sample payloads for the notifications sent for checkout payment events.
+
+<CodeGroup>
+
+```json Payment Success
+{
+  "event": "checkout.payment.success",
+  "data": {
+    "transactionId": "2ea4d5ea-3efa-487a-be7c-35c0d",
+    "walletId": "717b9c97-8725-402b-ac0e",
+    "checkoutRef": "CHK202603032254537",
+    "amount": 104.89,
+    "status": "success",
+    "message": "Payment received successfully",
+    "senderAccountNumber": "70884",
+    "senderName": "John Doe",
+    "senderBankCode": "100004",
+    "recipientAccountNumber": "954000",
+    "recipientName": "Pilot Checkout",
+    "reference": "10000426",
+    "createdAt": "2026-03-03T22:55:44.3533536Z"
+  }
+}
+```
+
+```json Payment Failed
+{
+  "event": "checkout.payment.failed",
+  "data": {
+    "transactionId": "c2448c92-1a58-41b7-a7da-",
+    "walletId": "f3abb8f3-17fc-4c57-ad40",
+    "checkoutRef": "CHK12583762",
+    "amount": 15,
+    "status": "failed",
+    "message": "Reversal in progress",
+    "error": "Transfer failed: incoming amount greater than the wallet expected amount",
+    "senderAccountNumber": "81xxxxx97",
+    "senderName": "abc",
+    "senderBankCode": "100033",
+    "recipientAccountNumber": "9517683",
+    "recipientName": "Checkout",
+    "reference": "1000332608061259",
+    "createdAt": "2026-08-06T12:59:16.3418962Z"
+  }
+}
+```
+
+```json Reversal Success
+{
+  "event": "checkout.reversal.success",
+  "data": {
+    "transactionId": "8133453e-1389-4585-a81e",
+    "walletId": "f3abb8f3-17fc-4c57-ad40",
+    "checkoutRef": "CHK2026080",
+    "amount": 15,
+    "status": "reversed",
+    "message": "Reversal completed successfully",
+    "senderAccountNumber": "776752",
+    "senderName": "John Doe",
+    "recipientAccountNumber": "951656",
+    "recipientName": "abc",
+    "reference": "CHK_1786021161_7637hdhdusb",
+    "createdAt": "2026-08-06T12:59:16.82141Z"
+  }
+}
+```
+
+```json Inflow (NIP)
+{
+  "event": "nip",
+  "data": {
+    "accountNumber": "9755677",
+    "accountName": "okay",
+    "bankCode": "000001",
+    "reference": "CHK_6758822_uhhuh22287hhudhdib66373",
+    "amount": 104.89,
+    "fee": 0,
+    "senderName": "Test",
+    "senderBank": "STERLING BANK",
+    "senderBankCode": "000001",
+    "dateOfTransaction": "2026-03-03T22:56:12.2683102Z",
+    "description": "TRF PAYREF: Sterling Intrabank Transfer",
+    "senderAccountNumber": "797222"
+  }
+}
+```
+
+</CodeGroup>
+
 ## Tips for Using the Service
 
 - Initiate Just-in-Time: Only create checkout wallets when the customer is ready to make a payment, since each wallet expires 30 minutes after creation.

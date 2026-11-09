@@ -226,17 +226,33 @@ func webhookHandler(w http.ResponseWriter, r *http.Request) {
   "event": "payout",
   "data": {
     "sessionId": null,
-    "debitAccountNumber": "0097411531",
-    "creditAccountNumber": "0003433020",
-    "debitAccountName": "Olufunso Olunaike",
-    "creditAccountName": "OLUNAIKE OLUFUNSO ABRAHAM",
-    "amount": 500.0,
+    "debitAccountNumber": "9710114446",
+    "creditAccountNumber": "1134567111",
+    "debitAccountName": "Beans/OZB",
+    "creditAccountName": "John Doe",
+    "creditBankCode": "000010",
+    "debitBankCode": "000001",
+    "debitBankName": "Sterling Bank",
+    "creditBankName": "ECOBANK BANK",
+    "amount": 5000,
     "currency": "NGN",
-    "status": "Success",
-    "paymentReference": "668931654633533785081478974241",
+    "status": "success",
+    "paymentReference": "jyk-p12skddgg2p",
     "deliveryStatusMessage": null,
     "deliveryStatusCode": null,
-    "dateOfTransaction": "0001-01-01T00:00:00"
+    "dateOfTransaction": "2026-11-09T11:55:53.6325686+00:00",
+    "description": "21st Staging Payout Test",
+    "alias": null,
+    "failureReason": null
+  }
+}
+```
+
+```json Reversal
+{
+  "event": "reversal",
+  "data": {
+    "transactionReference": "f63xxxx8-88a7-48ce-b1e5-7dxxxc8xxx3c"
   }
 }
 ```
@@ -245,18 +261,20 @@ func webhookHandler(w http.ResponseWriter, r *http.Request) {
 {
   "event": "nip",
   "data": {
-    "accountNumber": "9710301635",
-    "accountName": "Embedly Financial Technology Company Limited/Ifeoluwa Olunubi",
+    "accountNumber": "9710122384",
+    "accountName": "Bamboom Limited",
     "bankCode": "000001",
-    "reference": "100004260219092716152725991782",
-    "amount": 100,
+    "reference": "a03f4d15-9d44-4bcd-97a7-54870722dae0",
+    "amount": 56500,
     "fee": 0,
-    "senderName": "IFEOLUWA EMMANUEL OLUNUBI",
-    "senderBank": "OPAY",
-    "senderBankCode": "100004",
-    "dateOfTransaction": "2026-02-19T09:27:22.5396459Z",
-    "description": "Transfer from IFEOLUWA EMMANUEL OLUNUBI",
-    "senderAccountNumber": "8147615700"
+    "netAmount": 56500,
+    "senderName": "string",
+    "senderBank": "STERLING BANK",
+    "senderBankCode": "000001",
+    "dateOfTransaction": "2026-11-09T11:21:03.425079Z",
+    "description": "olam review test",
+    "senderAccountNumber": "string",
+    "beneficiaryAlias": "NgBow1245"
   }
 }
 ```
