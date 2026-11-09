@@ -18,7 +18,7 @@
   "topbarLinks": [
     {
       "name": "Join The Community",
-      "url": "aa"
+      "url": "https://embedly.ng"
     }
   ],
   "topbarCtaButton": {
@@ -78,8 +78,10 @@
                   "pages": [
                     "api-reference/playground/customer/individual/kyc/nin",
                     "api-reference/playground/customer/individual/kyc/bvn",
-                    "api-reference/playground/customer/individual/kyc/address_verification",
-                    "api-reference/playground/customer/individual/kyc/address_verification_v2"
+                    "api-reference/playground/customer/individual/kyc/address_verification_v2",
+                    "api-reference/playground/customer/individual/kyc/liveness-initiation",
+                    "api-reference/playground/customer/individual/kyc/liveness-verdict",
+                    "api-reference/playground/customer/individual/kyc/id-card-submission"
                   ]
                 }
               ]
@@ -103,7 +105,8 @@
               "group": "Utils",
               "pages": [
                 "api-reference/playground/customer/utils/get_countries",
-                "api-reference/playground/customer/utils/get_all_customer_types"
+                "api-reference/playground/customer/utils/get_all_customer_types",
+                "api-reference/playground/customer/utils/upload"
               ]
             }
           ]
@@ -113,6 +116,7 @@
           "pages": [
             "api-reference/Wallet",
             "api-reference/playground/Wallet/Add_Wallet",
+            "api-reference/playground/Wallet/Create_Closed_Wallet",
             "api-reference/playground/Wallet/Add_Corporate_wallet",
             "api-reference/playground/Wallet/Get_Wallet_by_Id",
             "api-reference/playground/Wallet/Get_Wallet_by_Account",
@@ -132,6 +136,20 @@
           ]
         },
         {
+          "group": "Wallet Restriction",
+          "pages": [
+            "api-reference/playground/wallet-restriction/add_wallet_restriction",
+            "api-reference/playground/wallet-restriction/get_wallet_restrictions",
+            "api-reference/playground/wallet-restriction/remove_wallet_restriction",
+            "api-reference/playground/wallet-restriction/update_wallet_restriction",
+            "api-reference/playground/wallet-restriction/remove_cbn_restriction",
+            "api-reference/playground/wallet-restriction/get_products",
+            "api-reference/playground/wallet-restriction/exempt-product",
+            "api-reference/playground/wallet-restriction/get_exemptions",
+            "api-reference/playground/wallet-restriction/get_product_exemptions"
+          ]
+        },
+        {
           "group": "Payout",
           "pages": [
             "api-reference/payout",
@@ -146,6 +164,7 @@
           "pages": [
             "api-reference/checkout",
             "api-reference/playground/checkout/get_org_prefix_mappings",
+            "api-reference/playground/checkout/get_org_prefix_mappings_v2",
             "api-reference/playground/checkout/create_checkout_wallet",
             "api-reference/playground/checkout/get_checkout_wallet",
             "api-reference/playground/checkout/get_checkout_txns_by_walletId",
@@ -162,6 +181,16 @@
                 "api-reference/playground/checkout/SplitCheckout/deactivate_a_split_beneficiary"
               ]
             }
+          ]
+        },
+        {
+          "group": "Payment Scheduler",
+          "pages": [
+            "api-reference/playground/payment-scheduler/create_batch",
+            "api-reference/playground/payment-scheduler/get_batch_details",
+            "api-reference/playground/payment-scheduler/get_batch_recipients",
+            "api-reference/playground/payment-scheduler/get_organization_batches",
+            "api-reference/playground/payment-scheduler/get_batch_processing_status"
           ]
         },
         {

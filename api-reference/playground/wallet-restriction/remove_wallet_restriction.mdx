@@ -1,0 +1,22 @@
+---
+title: 'Remove Wallet Restriction'
+api: 'PUT https://waas-staging.embedly.ng/WaasCore/api/v1/wallet-limits/remove/:restrictionId'
+description: 'Deactivate or remove a wallet restriction by its id.'
+---
+
+Call this endpoint after a manual wallet restriction is no longer needed or if it was applied incorrectly. It removes the restriction record identified by `restrictionId`, which is typically retrieved from the get restrictions endpoint.
+
+<ParamField body='restrictionId' type='string' required>
+  Path parameter: UUID of the restriction to remove
+</ParamField>
+
+<ResponseExample>
+```json 200 Success
+{
+  "code": "00",
+  "success": true,
+  "message": "Wallet restriction limit removed successfully",
+  "data": null
+}
+```
+</ResponseExample>

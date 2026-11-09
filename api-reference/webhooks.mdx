@@ -245,14 +245,18 @@ func webhookHandler(w http.ResponseWriter, r *http.Request) {
 {
   "event": "nip",
   "data": {
-    "accountNumber": "9710128903",
-    "reference": "000001250630150523063421028600",
-    "amount": 100.0,
-    "fee": 0.0,
-    "senderName": "JOHN DOE",
-    "senderBank": "",
-    "dateOfTransaction": "2025-06-30T14:07:14.4553594Z",
-    "description": "TRF 9710128903 PAYREF: OneBank Transfer from JOHN DOE to Neosmart Consulting/Onajite Esedere"
+    "accountNumber": "9710301635",
+    "accountName": "Embedly Financial Technology Company Limited/Ifeoluwa Olunubi",
+    "bankCode": "000001",
+    "reference": "100004260219092716152725991782",
+    "amount": 100,
+    "fee": 0,
+    "senderName": "IFEOLUWA EMMANUEL OLUNUBI",
+    "senderBank": "OPAY",
+    "senderBankCode": "100004",
+    "dateOfTransaction": "2026-02-19T09:27:22.5396459Z",
+    "description": "Transfer from IFEOLUWA EMMANUEL OLUNUBI",
+    "senderAccountNumber": "8147615700"
   }
 }
 ```
@@ -274,6 +278,22 @@ func webhookHandler(w http.ResponseWriter, r *http.Request) {
     "recipientName": "Crow Pilot Checkout",
     "reference": "000001251017211645a630c9aa9405",
     "createdAt": "2025-10-17T20:18:38.0815347Z"
+  }
+}
+```
+
+```json Liveness Verdict Success
+{
+  "event": "customer.liveness.approved",
+  "organizationId": "f958ce5d-4878-4e4d-ab64-6e8a6209ed6e",
+  "data": {
+    "customerId": "f958ce5d-4878-4e4d-ab64-6e8a6209ed6e",
+    "submissionId": "9bea6e3e-2e55-46c4-a624-b47b0c8c8053",
+    "status": "success",
+    "attemptNumber": 1,
+    "failure reason": null,
+    "reviewedAt": "2025-10-17T20:18:38.0815347Z",
+    "reviewerEmail": null
   }
 }
 ```

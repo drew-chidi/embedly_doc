@@ -1,0 +1,39 @@
+---
+title: 'Get Product Exemptions by Product'
+api: 'GET https://waas-staging.embedly.ng/api/v1/products/:productId/exemptions'
+description: 'Retrieve exemptions for a specific product.'
+---
+
+<ParamField body='productId' type='string' required>
+  Path parameter: UUID of the product
+</ParamField>
+
+<ResponseExample>
+```json 200 Success
+{
+  "code": "00",
+  "success": true,
+  "message": "Retrieved Successfully",
+  "data": [
+    {
+      "id": "08ded1eb-8e2a-4be5-82aa-916a037bd139",
+      "productId": "3ca924c2-067d-11f1-b253-724d2c90adb1",
+      "keyId": "fcce8dba-47c9-11f0-a818-6045bd97b81d",
+      "keyType": "ORGANIZATION",
+      "organizationId": "fcce8dba-47c9-11f0-a818-6045bd97b81d",
+      "reason": "string",
+      "expiresAt": "2026-06-24T12:23:43",
+      "walletId": null,
+      "mode": "string",
+      "isActive": true,
+      "dateCreated": "2026-06-24T12:24:37",
+      "dateUpdated": null,
+      "dateDeleted": null,
+      "createdBy": "00000000-0000-0000-0000-000000000001",
+      "updatedBy": null,
+      "deletedBy": null
+    }
+  ]
+}
+```
+</ResponseExample>

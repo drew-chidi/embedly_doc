@@ -1,0 +1,66 @@
+---
+title: 'Create Bulk Transaction Batch'
+api: 'POST https://waas-staging.embedly.ng/api/v1/payment-scheduler/batch'
+description: 'Creates a new bulk transaction batch in the upstream payment scheduler. The method posts multipart form data so the CSV file can be uploaded alongside batch metadata.'
+---
+
+<ParamField body='accountNumber' type='string' required>
+  Debit account for the batch
+</ParamField>
+
+<ParamField body='batchReference' type='string' required>
+  Unique batch reference
+</ParamField>
+
+<ParamField body='executionMode' type='string' required>
+  `IMMEDIATE` or `SCHEDULED`
+</ParamField>
+
+<ParamField body='csvFile' type='file' required>
+  Upload containing recipient rows
+</ParamField>
+
+<ParamField body='scheduleType' type='string'>
+  Required only for scheduled execution
+</ParamField>
+
+<ParamField body='scheduledAt' type='string'>
+  Required only for scheduled execution (ISO 8601 DateTime)
+</ParamField>
+
+<ParamField body='recurrencePattern' type='string'>
+  Required for recurring schedules
+</ParamField>
+
+<ParamField body='recurrenceInterval' type='number'>
+  Recurrence interval value
+</ParamField>
+
+<ParamField body='recurrenceDays' type='string'>
+  Comma-separated days for weekly patterns
+</ParamField>
+
+<ParamField body='recurrenceEndAt' type='string'>
+  End date for recurring schedules (ISO 8601 DateTime)
+</ParamField>
+
+<ResponseExample>
+```json 200 Success
+{
+  "statusCode": 200,
+  "message": "Batch created successfully",
+  "data": {
+    "batchId": "08ddaf4f-77d9-4336-8e62-358d622f09e9",
+    "batchReference": "PAYROLL-2026-06",
+    "approvalStatus": "PENDING",
+    "processingStatus": "PENDING",
+    "totalRecipients": 100,
+    "validRecipients": 100,
+    "invalidRecipients": 0,
+    "totalAmount": 50000,
+    "validationErrors": [],
+    "createdAt": "2026-06-05T09:00:00Z"
+  }
+}
+```
+</ResponseExample>

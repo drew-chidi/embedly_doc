@@ -1,0 +1,27 @@
+---
+title: 'Reject Batch'
+api: 'POST https://waas-staging.embedly.ng/api/v1/admin/batch/{batchId}/reject'
+description: 'Rejects a batch with a reason.'
+---
+
+<ParamField path="batchId" type="string" required>
+  The unique identifier of the batch.
+</ParamField>
+
+<ParamField body="reason" type="string" required>
+  Reason for rejection
+</ParamField>
+
+<ResponseExample>
+```json 200 Success
+{
+  "statusCode": 200,
+  "message": "Batch rejected successfully",
+  "data": {
+    "isSuccess": true,
+    "message": "Batch has been rejected",
+    "batchId": "08ddaf4f-77d9-4336-8e62-358d622f09e9"
+  }
+}
+```
+</ResponseExample>

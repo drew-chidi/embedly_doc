@@ -23,26 +23,26 @@ Transfers are instant. A successful response means the transfer has been complet
 For verification, a dedicated requery endpoint is available to check the status of any transaction. See the next section for details.'
 ---
 
-<ParamField body='fromAccount' type='string' required>
+<ParamField body="fromAccount" type="string" required>
   The source account number for the transfer. **Example:** "3025831139"
 </ParamField>
 
-<ParamField body='toAccount' type='string' required>
+<ParamField body="toAccount" type="string" required>
   The destination account number for the transfer. **Example:** "211651183"
 </ParamField>
 
-<ParamField body='amount' type='number' required>
+<ParamField body="amount" type="number" required>
   The amount to transfer. **Example:** 100000
 </ParamField>
 
-<ParamField body='transactionReference' type='string' required>
+<ParamField body="transactionReference" type="string" required>
   A unique reference identifier for the transaction. **Example:**
   "retw33344556670900"
 </ParamField>
 
-<ParamField body='remarks' type='string'>
-  Additional notes or description for the transaction. **Example:** "For
-  Holidays"
+<ParamField body="remarks" type="string">
+  Additional notes or description for the transaction. Remarks here should not
+  be more than 100 characters. **Example:** "For Holidays"
 </ParamField>
 
 <ResponseExample>
