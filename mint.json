@@ -157,6 +157,7 @@
             "api-reference/playground/payout/get_banks",
             "api-reference/playground/payout/name_enquiry",
             "api-reference/playground/payout/interbank_transfer",
+            "api-reference/playground/payout/complete_interbank_transfer",
             "api-reference/playground/payout/check_status"
           ]
         },

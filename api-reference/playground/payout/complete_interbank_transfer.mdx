@@ -1,0 +1,61 @@
+---
+title: "Complete Inter Bank Transfer"
+api: "POST https://payout-staging.embedly.ng/api/Payout/inter-bank-transfer/complete"
+description: "Confirms a pending inter bank transfer with the OTP sent to your organisation's email. Only needed if your organisation has opted in to payout OTP verification."
+---
+
+<Info>
+### **When to use this endpoint**
+
+If your organisation has opted in to payout OTP verification, [Inter Bank Transfer](/api-reference/playground/payout/interbank_transfer) returns `202` with status `PENDING_OTP` and a `pendingReference`, and emails a 6-digit OTP to your organisation's email on file.
+
+Call this endpoint with that `pendingReference` and the OTP to approve the transfer. All transfer checks (limits, wallet, KYC, balance and reference) run again before the payout is queued.
+
+#### **Key Considerations:**
+
+- The OTP is valid for **2 minutes**.
+- You have **2 attempts**. The first wrong OTP returns `400` with one attempt left. The second wrong OTP declines the payout, and you have to start a new transfer.
+- Use the `transactionRef` returned in the `200` response to check the status of the transfer and to match webhook notifications, the same way as a transfer without OTP.
+- Authenticate with the same `x-api-key` header you used to initiate the transfer.
+</Info>
+
+<ParamField body="pendingReference" type="string" required>
+  The `pendingReference` returned in the `202` response from Inter Bank Transfer.
+
+  **Example:** `3fa85f64-5717-4562-b3fc-2c963f66afa6`
+</ParamField>
+
+<ParamField body="otp" type="string" required>
+  The 6-digit OTP sent to your organisation's email.
+
+  **Example:** `123456`
+</ParamField>
+
+<RequestExample>
+```json Request body
+{
+    "pendingReference": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "otp": "123456"
+}
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 Success
+{
+    "data": "EMBe66029d4f6e2432a905a3642fa0dd380",
+    "statusCode": 200,
+    "code": "00",
+    "message": "Request is being processed.",
+    "succeeded": true
+}
+```
+
+```json 400 Incorrect OTP
+{
+    "statusCode": 400,
+    "message": "Incorrect OTP. You have 1 attempt left.",
+    "succeeded": false
+}
+```
+</ResponseExample>
