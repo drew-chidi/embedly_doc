@@ -2,3 +2,5 @@
 Archive.zip
 home/onboarding_new.mdx
 .gitignore
+config.bat
+node_modules
