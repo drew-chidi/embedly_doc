@@ -1,0 +1,127 @@
+---
+title: 'Corporate Customer Director - Address Verification'
+api: 'POST /corporate/customers/{customerId}/directors/{directorId}/address-verification'
+description: "This endpoint enables you to add and verify the address of a corporate customer's director"
+---
+
+---
+
+## Request Parameters
+
+<Note>
+  Send the request body as `application/json`. `application/json-patch+json` is
+  also accepted. If your organisation has IP whitelisting enabled, the request
+  must come from a whitelisted IP.
+</Note>
+
+<ParamField path='customerId' type='string' required>
+  The unique identifier of a corporate customer. It must belong to the
+  organisation that owns the API key and be a corporate customer, otherwise the
+  request fails with a `400` or `404`. **Example:**
+  `58d05345-7cfa-11f0-8d44-4af84d9ff6f1`
+</ParamField>
+
+<ParamField path='directorId' type='string' required>
+  The unique identifier of a director of that corporate customer. A director of
+  a different customer returns `404` "Director not found for this corporate
+  customer". **Example:** `58d05345-7cfa-11f0-8d44-4af84d9ff6f1`
+</ParamField>
+
+<ParamField body='street' type='string' required>
+  Street name. Maximum 250 characters. **Example:** `Professor Gabriel Olusanya
+  St`
+</ParamField>
+
+<ParamField body='city' type='string' required>
+  City or town. Maximum 100 characters. **Example:** `Lekki`
+</ParamField>
+
+<ParamField body='state' type='string' required>
+  State. Maximum 100 characters. **Example:** `Lagos`
+</ParamField>
+
+<ParamField body='country' type='string' required>
+  Country. Maximum 100 characters. **Example:** `Nigeria`
+</ParamField>
+
+<ParamField body='flatNumber' type='string' optional>
+  Flat or apartment number. Maximum 100 characters. **Example:** `12B`
+</ParamField>
+
+<ParamField body='buildingNumber' type='string' optional>
+  House or building number. Maximum 100 characters. **Example:** `8`
+</ParamField>
+
+<ParamField body='landmark' type='string' optional>
+  A nearby landmark to help the field officer find the address. Maximum 500
+  characters. **Example:** `Lekki Phase 1 Gate`
+</ParamField>
+
+<ParamField body='gender' type='string' optional>
+  The director's gender: `M` or `F`. The director record has no gender, so this
+  is the only place it comes from. Defaults to `M` if omitted. **Example:** `F`
+</ParamField>
+
+<ParamField body='image' type='string' optional>
+  A supporting document, such as a utility bill or a photo of the building, as
+  raw base64 without the `data:...;base64,` prefix. Keep the file at 5 MB or
+  less (maximum 30,000,000 characters). **Example:** `/9j/4AAQSkZJRgABAQ...`
+</ParamField>
+
+<ParamField body='imageContentType' type='string' optional>
+  MIME type of the file: `image/jpeg`, `image/png` or `application/pdf`.
+  Required if `image` is sent. Maximum 100 characters. **Example:**
+  `image/jpeg`
+</ParamField>
+
+<RequestExample>
+
+```bash cURL
+curl -X 'POST' \
+  'https://waas-staging.embedly.ng/api/v1/corporate/customers/58d05345-7cfa-11f0-8d44-4af84d9ff6f1/directors/58d05345-7cfa-11f0-8d44-4af84d9ff6f1/address-verification' \
+  -H 'accept: */*' \
+  -H 'x-api-key: <api-key>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "street": "Professor Gabriel Olusanya St",
+  "city": "Lekki",
+  "state": "Lagos",
+  "country": "Nigeria",
+  "flatNumber": "12B",
+  "buildingNumber": "8",
+  "landmark": "Lekki Phase 1 Gate",
+  "gender": "F",
+  "image": "/9j/4AAQSkZJRgABAQ...",
+  "imageContentType": "image/jpeg"
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json 200 Success
+{
+  "data": {
+    "message": "Address verification completed successfully",
+    "referenceNumber": "ADDR_20260409112339_6c6ffb63",
+    "result": "Success"
+  },
+  "status": 200,
+  "message": ""
+}
+```
+
+```json 400 Bad Request
+{
+  "data": {
+    "message": "Address verification failed",
+    "referenceNumber": "ADDR_20260409110211_12b106fa",
+    "error": "Address verification could not be completed"
+  },
+  "status": 400,
+  "message": ""
+}
+```
+
+</ResponseExample>

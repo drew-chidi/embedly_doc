@@ -1,7 +1,7 @@
 ---
 title: "Inter Bank Transfer"
 api: "POST https://payout-staging.embedly.ng/api/Payout/inter-bank-transfer"
-description: "This endpoint initiates a bank funds transfer from an Embedly wallet account within your organization, to an external bank account. (GTBank, OPAY, UBA, etc)."
+description: "This endpoint initiates a bank funds transfer from an Embedly wallet account within your organization, to an external bank account."
 ---
 
 <Info>
@@ -20,6 +20,37 @@ When a payout transaction is successfully submitted, a `transactionRef` is inclu
 On Staging environment, you must include the stagingStatus field in the request body. This allows you to simulate either a successful or failed payout. In both cases, a webhook notification will be sent indicating the outcome of the payout. On Production, you must skip this field entirely. Please ensure that you have configured your webhook URL on your staging dashboard in order to receive webhook notifications.
 
 </Info>
+
+## Destination account
+
+The destination account must be one of your organisation's **active, approved payout accounts** at the same bank. It does not have to be your default payout account. If the destination is not one of your approved payout accounts, the request is rejected with `403`:
+
+`The destination account is not one of your organisation's payout accounts. Add it on the portal or contact support.`
+
+Add the account on the portal, or contact support if your organisation needs to pay out to other destinations.
+
+## OTP verification (opt-in)
+
+If your organisation has opted in to payout OTP verification, a transfer is not queued straight away. Contact support to opt in or out.
+
+<Steps>
+  <Step title="Initiate the transfer">
+    Call this endpoint as usual. Limits, wallet, KYC, balance and duplicate-reference checks run first, so a transfer that would fail returns its error without sending an OTP.
+
+    If the checks pass, the response is `202` with status `PENDING_OTP` and a `pendingReference`. A 6-digit OTP is emailed to your organisation's email on file. It is valid for **2 minutes**.
+  </Step>
+  <Step title="Complete the transfer">
+    Send the `pendingReference` and the OTP to [Complete Inter Bank Transfer](/api-reference/playground/payout/complete_interbank_transfer). Every check runs again, then the response is `200` and the payout is queued.
+  </Step>
+</Steps>
+
+<Note>
+  If your organisation has not opted in, this endpoint returns `200` and queues the payout immediately. No OTP is sent and no further call is needed.
+</Note>
+
+<Warning>
+  If `customerTransactionReference` has already been used, use a new reference before starting another transfer.
+</Warning>
 
 <ParamField body="destinationBankCode" type="string" required>
   **Example:** `000010`
@@ -76,6 +107,26 @@ On Staging environment, you must include the stagingStatus field in the request 
     "code": "00",
     "message": "Request is being processed.",
     "succeeded": true
+}
+```
+
+```json 202 Pending OTP
+{
+    "data": {
+        "status": "PENDING_OTP",
+        "pendingReference": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    },
+    "statusCode": 202,
+    "message": "An OTP has been sent to your organisation's email.",
+    "succeeded": true
+}
+```
+
+```json 403 Destination not approved
+{
+    "statusCode": 403,
+    "message": "The destination account is not one of your organisation's payout accounts. Add it on the portal or contact support.",
+    "succeeded": false
 }
 ```
 </ResponseExample>
